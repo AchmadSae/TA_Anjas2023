@@ -153,13 +153,9 @@ $soa = $this->db->get('tbl_siswa');
     <!-- Header -->
     <header>
         <?php
-        $segment1 = $this->uri->segment(1);
-
-        if ($segment1 !== null && strtolower($segment1) === 'logcs') {
+        if (strtolower($this->uri->segment(1)) == 'logcs') {
             $this->load->view('web/login');
-        }
-
-        ?>
+        } ?>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -188,7 +184,7 @@ $soa = $this->db->get('tbl_siswa');
                         <?php } else { ?>
                             <span class="skills">
                             </span>
-                            <br>
+                           <br>
 
                             <span>
                                 <a href="javascript:void(0);" class="btn btn-danger btn-lg" style="margin:5px;"><i class="fa fa-file faa-pulse animated"></i> &nbsp;<b>PENDAFTARAN PPDB Online DITUTUP</b></a>

@@ -1,0 +1,45 @@
+<mxfile host="Electron" modified="2023-08-13T23:10:17.219Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.1.2 Chrome/106.0.5249.199 Electron/21.4.3 Safari/537.36" etag="jU--lmiOR-NkxRmolBO2" version="21.1.2" type="device">
+  <diagram name="Page-1" id="TmBYBfiIw3bX-lFSrJD7">
+    <mxGraphModel dx="941" dy="692" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ey9x1VamxxvaYLZBhdVK-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="ey9x1VamxxvaYLZBhdVK-1" target="ey9x1VamxxvaYLZBhdVK-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ey9x1VamxxvaYLZBhdVK-1" value="&lt;b&gt;KEPALA SEKOLAH&lt;/b&gt;&lt;br&gt;Lis Gunarto P,S.pd. M.M" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="350" y="70" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ey9x1VamxxvaYLZBhdVK-2" value="&lt;b&gt;KEPALA TATA USAHA&lt;/b&gt;&lt;br&gt;Lis Gunarto P,S.pd. M.M" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="740" y="640" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ey9x1VamxxvaYLZBhdVK-4" value="&lt;b&gt;LABORATORIUM&lt;/b&gt;&lt;br&gt;Indah Susiyanti P,S.pd" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="220" y="260" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ey9x1VamxxvaYLZBhdVK-5" value="&lt;b&gt;KURIKULUM&lt;/b&gt;&lt;br&gt;Yunita Fi Anti M.S.pd" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="90" y="260" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ey9x1VamxxvaYLZBhdVK-6" value="&lt;b&gt;KESISWAN&lt;/b&gt;&lt;br&gt;Dewi Hartini,S.pd" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="350" y="260" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ey9x1VamxxvaYLZBhdVK-7" value="&lt;b&gt;SARANA PRASARANA&lt;/b&gt;&lt;br&gt;Lis Gunarto P,S.pd. M.M" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="520" y="260" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ey9x1VamxxvaYLZBhdVK-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="1" source="ey9x1VamxxvaYLZBhdVK-8" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="410" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ey9x1VamxxvaYLZBhdVK-8" value="&lt;b&gt;WAKA HUMAS SARPAS&lt;/b&gt;&lt;br&gt;Siti Topipah,S.Pd" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="550" y="150" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ey9x1VamxxvaYLZBhdVK-9" value="&lt;b&gt;PEMBINA OSIS&lt;/b&gt;&lt;br&gt;Ika Marlina,S.pd" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="305" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ey9x1VamxxvaYLZBhdVK-10" value="&lt;b&gt;BK&lt;/b&gt;&lt;br&gt;Lis Gunarto P,S.pd. M.M" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="460" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

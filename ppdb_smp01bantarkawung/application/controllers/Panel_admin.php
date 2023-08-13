@@ -15,7 +15,6 @@ class Panel_admin extends CI_Controller
 				'web_ppdb'	=> $this->admin->base('status-ppdb'),
 				'judul_web'	=> "HOME",
 				'v_thn'		=> date('Y'),
-
 			);
 
 			$thn  = date('Y');

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * CodeIgniter
  *
@@ -36,7 +35,7 @@
  * @since	Version 3.0.0
  * @filesource
  */
-defined('BASEPATH') or exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * CodeIgniter Session Driver Class
@@ -47,8 +46,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  * @author	Andrey Andreev
  * @link	https://codeigniter.com/user_guide/libraries/sessions.html
  */
-abstract class CI_Session_driver implements SessionHandlerInterface
-{
+abstract class CI_Session_driver implements SessionHandlerInterface {
 
 	protected $_config;
 
@@ -98,12 +96,15 @@ abstract class CI_Session_driver implements SessionHandlerInterface
 	 */
 	public function __construct(&$params)
 	{
-		$this->_config = &$params;
+		$this->_config =& $params;
 
-		if (is_php('8')) {
+		if (is_php('7'))
+		{
 			$this->_success = TRUE;
 			$this->_failure = FALSE;
-		} else {
+		}
+		else
+		{
 			$this->_success = 0;
 			$this->_failure = -1;
 		}
@@ -159,7 +160,8 @@ abstract class CI_Session_driver implements SessionHandlerInterface
 	 */
 	protected function _release_lock()
 	{
-		if ($this->_lock) {
+		if ($this->_lock)
+		{
 			$this->_lock = FALSE;
 		}
 
