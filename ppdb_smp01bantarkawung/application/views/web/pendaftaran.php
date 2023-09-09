@@ -62,7 +62,7 @@ $user = $this->db->get('tbl_user')->row_array();
   <section>
     <div class="main-content">
       <!-- BEGIN TOPBAR -->
-      <div class="topbar" style="background-color: #275555ff; color: #fff;">
+      <div class="topbar" style="background-color: #7895CB; color: #fff;">
         <div class="header-left">
           <div class="col-sm-12">
             <div style="margin-top:-8px;">
@@ -101,7 +101,7 @@ $user = $this->db->get('tbl_user')->row_array();
                               <div class="form-group" style="padding-bottom:30px;">
                                 <div class="radio bg-success" style="padding-top:10px;padding-bottom:10px;border-radius:3px;color:#222;">
                                   <label>
-                                    <input type="radio" value="cek" name="cek" data-parsley-group="block0" data-radio="iradio_square-blue" data-parsley-errors-container='div[id="condition-ck"]' required> <b>Ya, saya menyetujui ketentuan PPDB Online!</b>
+                                    <input type="radio" value="cek" name="cek" none-none-data-parsley-group="block0" data-radio="iradio_square-blue" data-parsley-errors-container='div[id="condition-ck"]' required> <b>Ya, saya menyetujui ketentuan PPDB Online!</b>
                                   </label>
                                   <div id="condition-ck" style=" background:#FFBABA; color: #D8000C; width:auto; padding-left:10px; font-size: 10px;"></div>
                                 </div>
@@ -169,7 +169,7 @@ $user = $this->db->get('tbl_user')->row_array();
                                       <div class="form-group">
                                         <div class="radio bg-success p-10" style="border-radius:3px;">
                                           <label>
-                                            <input type="radio" value="cekx" name="cekx" data-parsley-group="blockx" data-radio="iradio_square-blue" data-parsley-errors-container='div[id="condition-cx"]' required>
+                                            <input type="radio" value="cekx" name="cekx" none-none-data-parsley-group="blockx" data-radio="iradio_square-blue" data-parsley-errors-container='div[id="condition-cx"]' required>
                                             <b>Ya, data sudah sesuai!</b>
                                           </label>
                                           <div class="faa-flash animated" id="condition-cx" style=" background:#FFBABA; color: #D8000C; width:auto; padding-left:10px; font-size: 10px;"></div>

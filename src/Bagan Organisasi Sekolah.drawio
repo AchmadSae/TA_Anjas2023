@@ -1,0 +1,106 @@
+<mxfile host="Electron" modified="2023-08-21T12:16:02.747Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.1.2 Chrome/106.0.5249.199 Electron/21.4.3 Safari/537.36" etag="iPHChPafc0udu40wR-8L" version="21.1.2" type="device">
+  <diagram name="Page-1" id="TmBYBfiIw3bX-lFSrJD7">
+    <mxGraphModel dx="1568" dy="1153" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="rWKVjru4mFaC3Y2RYVHS-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeWidth=2;" edge="1" parent="1" source="ey9x1VamxxvaYLZBhdVK-1" target="ey9x1VamxxvaYLZBhdVK-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ey9x1VamxxvaYLZBhdVK-1" value="&lt;b&gt;KEPALA SEKOLAH&lt;/b&gt;&lt;br&gt;Lis Gunarto P,S.pd. M.M" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="340" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rWKVjru4mFaC3Y2RYVHS-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.783;entryY=0.948;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;strokeWidth=2;" edge="1" parent="1" source="ey9x1VamxxvaYLZBhdVK-4" target="ey9x1VamxxvaYLZBhdVK-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="434" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ey9x1VamxxvaYLZBhdVK-4" value="&lt;b&gt;LABORATORIUM&lt;/b&gt;&lt;br&gt;Indah Susiyanti P,S.pd" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="450" y="440" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rWKVjru4mFaC3Y2RYVHS-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;strokeWidth=2;" edge="1" parent="1" source="ey9x1VamxxvaYLZBhdVK-5" target="rWKVjru4mFaC3Y2RYVHS-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="540" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ey9x1VamxxvaYLZBhdVK-5" value="&lt;b&gt;KURIKULUM&lt;/b&gt;&lt;br&gt;Yunita Fi Anti M.S.pd" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="340" y="330" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rWKVjru4mFaC3Y2RYVHS-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=none;endFill=0;" edge="1" parent="1" source="ey9x1VamxxvaYLZBhdVK-6" target="ey9x1VamxxvaYLZBhdVK-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="250" y="310" />
+              <mxPoint x="400" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rWKVjru4mFaC3Y2RYVHS-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;strokeWidth=2;" edge="1" parent="1" source="ey9x1VamxxvaYLZBhdVK-6" target="rWKVjru4mFaC3Y2RYVHS-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="230" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ey9x1VamxxvaYLZBhdVK-6" value="&lt;b&gt;KESISWAN&lt;/b&gt;&lt;br&gt;Dewi Hartini,S.pd" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="190" y="330" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rWKVjru4mFaC3Y2RYVHS-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;strokeWidth=2;" edge="1" parent="1" source="ey9x1VamxxvaYLZBhdVK-8" target="ey9x1VamxxvaYLZBhdVK-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="540" y="310" />
+              <mxPoint x="400" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ey9x1VamxxvaYLZBhdVK-8" value="&lt;b&gt;WAKA HUMAS SARPAS&lt;/b&gt;&lt;br&gt;Siti Topipah,S.Pd" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="480" y="330" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rWKVjru4mFaC3Y2RYVHS-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=none;endFill=0;" edge="1" parent="1" source="ey9x1VamxxvaYLZBhdVK-9">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="580" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="270" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ey9x1VamxxvaYLZBhdVK-9" value="&lt;b&gt;PEMBINA OSIS&lt;/b&gt;&lt;br&gt;Ika Marlina,S.pd" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="210" y="600" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rWKVjru4mFaC3Y2RYVHS-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=none;endFill=0;" edge="1" parent="1" source="ey9x1VamxxvaYLZBhdVK-10">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="580" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="550" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ey9x1VamxxvaYLZBhdVK-10" value="&lt;b&gt;BK&lt;/b&gt;&lt;br&gt;Khumaesatul Banat S.pd" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="490" y="600" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rWKVjru4mFaC3Y2RYVHS-1" value="&lt;b&gt;KA PERPUSTAKAAN&lt;/b&gt;&lt;br&gt;Budi Susila M.Pd" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="440" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rWKVjru4mFaC3Y2RYVHS-2" value="&lt;b&gt;WALI KELAS&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="540" width="370" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rWKVjru4mFaC3Y2RYVHS-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.485;entryY=1.056;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;strokeWidth=2;" edge="1" parent="1" source="rWKVjru4mFaC3Y2RYVHS-3" target="rWKVjru4mFaC3Y2RYVHS-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="572" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rWKVjru4mFaC3Y2RYVHS-3" value="&lt;b&gt;SISWA&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="600" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rWKVjru4mFaC3Y2RYVHS-18" value="&lt;b style=&quot;font-size: 20px;&quot;&gt;STRUKTUR ORGANISASI&lt;br&gt;SMPN 01 BANTARKAWUNG&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="260" y="100" width="290" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

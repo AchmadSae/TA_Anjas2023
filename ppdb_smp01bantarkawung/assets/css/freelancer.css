@@ -77,13 +77,14 @@ hr.star-primary:after {
   margin: 0 auto;
 }
 header {
-  margin-top: 6%;
+  margin-top: 5%;
   text-align: center;
-  background-image: url("../../img/bg_header.jpeg");
+  background-image: url("../../img/bg_header.png");
   background-color: #275555ff;
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
+  height:500px
 }
 header .container {
   padding-top: 100px;
@@ -91,7 +92,7 @@ header .container {
 }
 header img {
   display: block;
-  margin: 0 auto 20px;
+  margin: 0 auto 10px;
 }
 header .intro-text .name {
   display: block;
@@ -118,7 +119,7 @@ header .intro-text .skills {
 }
 .navbar-custom {
   /* opacity:0.9; */
-  background: #275555ff;
+  background: #7895CB;
   font-family: "Abel-Regular";
   text-transform: uppercase;
   font-weight: 700;
@@ -201,7 +202,7 @@ section h2 {
   font-size: 3em;
 }
 section.success {
-  background: #2f6868;
+  background:  #7895CB;
   color: white;
 }
 @media (max-width: 767px) {
@@ -212,6 +213,14 @@ section.success {
     padding-top: 75px;
   }
 }
+#card_news {
+  margin-top:2em;
+  border: 10px solid #EEEEEE;
+  border-radius: 30px;
+  background-color: rgba(238, 238, 238, 0.3); /* 30% opacity */
+}
+
+
 #portfolio .portfolio-item {
   margin: 0 0 15px;
   right: 0;
@@ -601,7 +610,7 @@ ol ol li:last-child {
 .hbox {
   margin-top: -10px;
   height: 40px;
-  background-color: #275555ff;
+  background-color: #4A55A2;
   text-align: left;
 }
 .boxtext {

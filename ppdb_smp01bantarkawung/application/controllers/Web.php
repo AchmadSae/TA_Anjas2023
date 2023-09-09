@@ -6,7 +6,7 @@ class Web extends CI_Controller
 
 	public function index()
 	{
-		$data['web_ppdb']	 = $this->web->web_utama();
+		$data['web_ppdb'] = $this->web->web_utama();
 		$this->load->view('web/index', $data);
 	}
 
@@ -18,14 +18,15 @@ class Web extends CI_Controller
 	public function pendaftaran()
 	{
 		$data = array(
-			'id_daftar'			=> $this->web->pendaftaran('id_baru'),
-			'web_ppdb'			=> $this->web->pendaftaran('status_ppdb'),
-			'v_pdd'				=> $this->web->pendaftaran('v_pdd'),
-			'v_penghasilan'		=> $this->web->pendaftaran('v_penghasilan'),
-			'v_pekerjaan_ayah'	=> $this->web->pendaftaran('v_pekerjaan_ayah'),
-			'v_komp'			=> $this->web->pendaftaran('v_komp'),
-			'v_pekerjaan_ibu'	=> $this->web->pendaftaran('v_pekerjaan_ibu'),
-			'v_pekerjaan_wali'	=> $this->web->pendaftaran('v_pekerjaan_wali')
+			'id_daftar' => $this->web->pendaftaran('id_baru'),
+			'web_ppdb' => $this->web->pendaftaran('status_ppdb'),
+			'v_pdd' => $this->web->pendaftaran('v_pdd'),
+			'v_penghasilan' => $this->web->pendaftaran('v_penghasilan'),
+			'v_pekerjaan_ayah' => $this->web->pendaftaran('v_pekerjaan_ayah'),
+			'v_komp' => $this->web->pendaftaran('v_komp'),
+			'v_pekerjaan_ibu' => $this->web->pendaftaran('v_pekerjaan_ibu'),
+			'v_pekerjaan_wali' => $this->web->pendaftaran('v_pekerjaan_wali'),
+			'nisn' => $this->web->pendaftaran('nisn')
 		);
 
 		if ($data['web_ppdb']->status_ppdb == 'tutup') {
@@ -37,16 +38,34 @@ class Web extends CI_Controller
 		if (isset($_POST['btndaftar'])) {
 			// var_dump($this->input->post()); exit();
 			$acts = $this->web->pendaftaran('daftar', $this->input);
-			// 
+			$nisn = $data['nisn']->nisn;
+			// Di controller Anda
+			$upload_config = array(
+				'upload_path' => FCPATH . 'uploads/' . $nisn . '/',
+				'allowed_types' => 'gif|jpg|jpeg|png',
+				'max_size' => 2048,
+				'file_name' => $nisn . '.png'
+			);
 
-			$this->session->set_userdata('no_pendaftaran', $this->input->post('nis'));
-			redirect('panel_siswa');
+			$this->load->model('Pendaftaran_model');
+			$upload_result = $this->Pendaftaran_model->pendaftaran('daftar', $this->input->post(), $upload_config);
+
+			if ($upload_result === true) {
+				// File berhasil diunggah dan data disimpan ke database
+				$this->session->set_flashdata('msg', 'File berhasil diunggah dan data disimpan.');
+				redirect('panel_siswa');
+			} else {
+				// Ada kesalahan dalam unggah file
+				$this->session->set_userdata('no_pendaftaran', $this->input->post('nis'));
+				$this->session->set_flashdata('msg', $upload_result['error']);
+				redirect('pendaftaran');
+			}
 		}
 	}
 
 	public function logcs()
 	{
-		$data['web_ppdb']	 = $this->web->pendaftaran('status_ppdb');
+		$data['web_ppdb'] = $this->web->pendaftaran('status_ppdb');
 		if ($data['web_ppdb']->status_ppdb == 'tutup') {
 			redirect('404');
 		}

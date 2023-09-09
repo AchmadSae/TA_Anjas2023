@@ -26,6 +26,7 @@ $soa = $this->db->get('tbl_siswa');
     <link href="assets/css/freelancer.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- custom css -->
 </head>
 <style>
     table {
@@ -112,7 +113,7 @@ $soa = $this->db->get('tbl_siswa');
 
 <body id="page-top" class="index">
     <!-- Navigation -->
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom bxshad">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -120,8 +121,8 @@ $soa = $this->db->get('tbl_siswa');
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="#page-top">
-                    <img src="img/logo.png" alt="Logo" width="35" style="position:absolute;margin-top:-10px;">
-                    <span style="margin-left:45px;">&nbsp;PPDB Online</span>
+                    <img src="img/logo.png" alt="Logo" width="60" style="position:absolute;margin-top:-18px;">
+                    <span style="margin-left:45px;">&nbsp;PPDB Online STG</span>
                 </a>
             </div>
 
@@ -141,7 +142,7 @@ $soa = $this->db->get('tbl_siswa');
                         <a href="#syarat"><i class="fa fa-briefcase"></i> Syarat</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#contact"><i class="fa fa-phone-square"></i> Kontak</a>
+                        <a href="logcs"><i class="fa fa-sign-in"></i> Login</a>
                     </li>
 
                 </ul>
@@ -152,50 +153,60 @@ $soa = $this->db->get('tbl_siswa');
     </nav>
     <!-- Header -->
     <header>
-        <?php
-        if (strtolower($this->uri->segment(1)) == 'logcs') {
-            $this->load->view('web/login');
-        } ?>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <img class="img-responsive" src="img/logo.png" style="margin-top:-15%;margin-bottom:-10px;" width="100">
-                    <br><br>
-                    <div class="intro-text">
-                        <span class="name shad" style="font-size:35px; line-height: 35px;">
-                            SELAMAT DATANG DI PPDB ONLINE <br> <?php echo $user['nama_lengkap']; ?>
+    <?php
+    if (strtolower($this->uri->segment(1)) == 'logcs') {
+        $this->load->view('web/login');
+    } ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <img class="img-responsive" src="img/logo.png" style="margin-top:-15%;margin-bottom:-10px;" width="100">
+                <br><br>
+                <div class="intro-text">
+                    <span class="name shad" style="font-size:35px; line-height: 35px;">
+                        SELAMAT DATANG DI PPDB ONLINE <br> <?php echo $user['nama_lengkap']; ?>
+                    </span>
+                    <br>
+                    <?php if ($web_ppdb->status_ppdb == 'buka') { ?>
+                        <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                            <span class="skills">
+                                <!-- Your text here -->
+                            </span>
+                            <div class="card bg-dark text-white" id="card_news" style="width: 600px; text-align: center;">
+                                <img class="card-img" src="img/News.svg" alt="Card image" width="200">
+                                <div class="card-img-overlay">
+                                    <h1 class="card-title">PPDB DIBUKA</h1>
+                                    <p class="card-text">
+                                        " Mari Menjadi Bagian dari SMPN 01 Bantarkawung, Terpadu Terpercaya dan Berprestasi "
+                                    </p>
+                                    <a href="web/pendaftaran" class="btn btn-success" style="border-radius: 5px;">
+                                            <i class="fa fa-sign-in"></i>
+                                            <?php if ($ceks == '') {
+                                                echo "DAFTAR";
+                                            } else {
+                                                echo "Panel";
+                                            } ?> SISWA
+                                    </a>&nbsp;&nbsp;
+                                </div>
+                            </div>
+                        </div>
+
+                    <?php } else { ?>
+                        <span class="skills">
                         </span>
                         <br>
-                        <?php if ($web_ppdb->status_ppdb == 'buka') { ?>
-                            <span>
-                                <a href="pendaftaran" class="btn btn-warning" style="margin: 5px; border-radius: 6px;">
-                                    <i class="fa fa-list faa-pulse"></i> &nbsp;
-                                    <b>KLIK DAFTAR</b>
-                                </a>
-                                <a href="logcs" class="btn btn-danger" style="margin: 5px; border-radius: 6px;">
-                                    <i class="fa fa-sign-in faa-pulse"></i> &nbsp;
-                                    <b><?php if ($ceks == '') {
-                                            echo "MASUK";
-                                        } else {
-                                            echo "Panel";
-                                        } ?> SISWA</b></a>
-                                <br>
-                            </span>
-                        <?php } else { ?>
-                            <span class="skills">
-                            </span>
-                           <br>
 
-                            <span>
-                                <a href="javascript:void(0);" class="btn btn-danger btn-lg" style="margin:5px;"><i class="fa fa-file faa-pulse animated"></i> &nbsp;<b>PENDAFTARAN PPDB Online DITUTUP</b></a>
-                                <br>
-                            </span>
-                        <?php } ?>
-                    </div>
+                        <span>
+                            <a href="javascript:void(0);" class="btn btn-danger btn-lg" style="margin:5px;"><i class="fa fa-file faa-pulse animated"></i> &nbsp;<b>PENDAFTARAN PPDB Online DITUTUP</b></a>
+                            <br>
+                        </span>
+                    <?php } ?>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>
+
     <style>
         table {
             margin: auto;
@@ -260,59 +271,36 @@ $soa = $this->db->get('tbl_siswa');
     </style>
 
     <!-- About Section -->
-    <section id="prosedur" style="background: url(img/bg.png) repeat; padding: 30px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Alur PPDB Online</h2>
-                    <hr style="width: 150px;">
+    
+        <section class="success" id="about" style="padding: 30px; border-top: 2px solid #fff;">
+            <div class="container">
+                <div class=" row">
+                    <div class="col-lg-12 text-center">
+                        <h2>Informasi PPDB Online</h2>
+                        <hr style="width: 150px;">
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12" style="margin-top:-10px;">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
-                        <img class="img-responsive" src="img/alur.png" alt="">
+                <div class="row">
+                    <div class="col-lg-4 col-lg-offset-2" style="text-align:justify; line-height: 22px;">
+                        <p><?php echo $user['nama_lengkap']; ?> menyediakan PPDB secara <i>online</i> diharapkan proses PPDB dapat berjalan cepat
+                            dan bisa dilakukan dimanapun dan kapanpun selama sesi PPDB Online dibuka. Proses pendaftaran calon siswa baru di masa pandemi Covid-19 ini dan terhambat oleh jarak jika datang ke madrasah langsung, bisa mengakses website PPDB Online <?php echo $user['nama_lengkap']; ?>. </p>
+                    </div>
+                    <div class="col-lg-4" style="text-align:justify; line-height: 22px;">
+                        <p>Pengisian form PPDB Online mohon diperhatikan data yang dibutuhkan yang nantinya akan dipakai dalam proses PPDB. Setelah proses pengisian form PPDB secara online berhasil dilakukan, calon siswa akan mendapat bukti daftar dengan nomor pendaftaran dan harus disimpan yang akan digunakan untuk proses selanjutnya.</p>
                     </div>
                 </div>
             </div>
-        </div>
-        </div>
-    </section>
-
-    <section class="success" id="about" style="padding: 30px; border-top: 2px solid #fff;">
-        <div class="container">
-            <div class=" row">
-                <div class="col-lg-12 text-center">
-                    <h2>Informasi PPDB Online</h2>
-                    <hr style="width: 150px;">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-lg-offset-2" style="text-align:justify; line-height: 22px;">
-                    <p><?php echo $user['nama_lengkap']; ?> menyediakan PPDB secara <i>online</i> diharapkan proses PPDB dapat berjalan cepat
-                        dan bisa dilakukan dimanapun dan kapanpun selama sesi PPDB Online dibuka. Proses pendaftaran calon siswa baru di masa pandemi Covid-19 ini dan terhambat oleh jarak jika datang ke madrasah langsung, bisa mengakses website PPDB Online <?php echo $user['nama_lengkap']; ?>. </p>
-                </div>
-                <div class="col-lg-4" style="text-align:justify; line-height: 22px;">
-                    <p>Pengisian form PPDB Online mohon diperhatikan data yang dibutuhkan yang nantinya akan dipakai dalam proses PPDB. Setelah proses pengisian form PPDB secara online berhasil dilakukan, calon siswa akan mendapat bukti daftar dengan nomor pendaftaran dan harus disimpan yang akan digunakan untuk proses selanjutnya.</p>
-                </div>
-                <div class="col-lg-8 col-lg-offset-2 text-center page-scroll">
-                    <a href="#page-top" class="btn btn-warning" style="border-radius: 5px;">
-                        <i class="fa fa-home "></i> PPDB ONLINE
-                    </a> &nbsp;&nbsp;
-                    <a href="logcs" class="btn btn-danger" style="border-radius: 5px;">
-                        <i class="fa fa-sign-in"></i>
-                        <?php if ($ceks == '') {
-                            echo "LOGIN";
-                        } else {
-                            echo "Panel";
-                        } ?> SISWA
-                    </a>&nbsp;&nbsp;
-
-                </div>
+        </section>
+    <section id="prosedur" style="background: url('img/alur.png'); background-size: cover; background-repeat: no-repeat; background-position: center center;">
+    <div class="container" style="height: 300px;">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <!-- Your content here -->
             </div>
         </div>
+    </div>
     </section>
+
 
 
     <section id="syarat" style="background: url(img/bg.png) repeat; padding: 30px;">
