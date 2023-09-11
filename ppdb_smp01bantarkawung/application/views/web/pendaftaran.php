@@ -12,7 +12,9 @@ $user = $this->db->get('tbl_user')->row_array();
   <meta name="author" content="themes-lab">
   <base href="<?php echo base_url(); ?>" />
   <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
-  <title>PPDB Online | <?php echo $user['nama_lengkap']; ?></title>
+  <title>PPDB Online |
+    <?php echo $user['nama_lengkap']; ?>
+  </title>
   <link rel="icon" href="assets/images/logo.png" type="image/x-icon" />
   <link href="assets/kitkat/assets/css/style.css" rel="stylesheet">
   <link href="assets/kitkat/assets/css/theme.css" rel="stylesheet">
@@ -81,7 +83,9 @@ $user = $this->db->get('tbl_user')->row_array();
         <div class="page-content page-wizard">
           <div class="header" style="margin-top:-20px; text-align: center;">
             <img src="img/logo.png" style="margin-bottom:10px;" width="100"><br>
-            <h2 align="center">FORM PENDAFTARAN PPDB ONLINE <strong> <br><?php echo $user['nama_lengkap']; ?></strong></h2>
+            <h2 align="center">FORM PENDAFTARAN PPDB ONLINE <strong> <br>
+                <?php echo $user['nama_lengkap']; ?>
+              </strong></h2>
             <hr style="margin-top:20px;">
           </div>
           <div class="row" style="margin-top:-30px;">
@@ -90,20 +94,28 @@ $user = $this->db->get('tbl_user')->row_array();
                 <div class="tab-content">
                   <div class="tab-pane active" id="style">
                     <div class="wizard-div current wizard-sea" id="register">
-                      <form role="form" class="wizard wizard-validation" data-style="sky" role="form" action="" enctype="multipart/form-data" method="post">
+                      <form role="form" class="wizard wizard-validation" data-style="sky" role="form" action=""
+                        enctype="multipart/form-data" method="post">
                         <fieldset>
                           <legend>Ketentuan</legend>
                           <div class="col-md-2"></div>
                           <div class="col-md-8">
                             <?php $this->load->view('web/step/1'); ?>
                             <div class="col-md-12">
-                              <span class="text-primary" style="font-size:18px;color:#222;"><strong>Apakah Anda setuju dengan ketentuan PPDB Online diatas?</strong></span>
+                              <span class="text-primary" style="font-size:18px;color:#222;"><strong>Apakah Anda setuju
+                                  dengan ketentuan PPDB Online diatas?</strong></span>
                               <div class="form-group" style="padding-bottom:30px;">
-                                <div class="radio bg-success" style="padding-top:10px;padding-bottom:10px;border-radius:3px;color:#222;">
+                                <div class="radio bg-success"
+                                  style="padding-top:10px;padding-bottom:10px;border-radius:3px;color:#222;">
                                   <label>
-                                    <input type="radio" value="cek" name="cek" none-none-data-parsley-group="block0" data-radio="iradio_square-blue" data-parsley-errors-container='div[id="condition-ck"]' required> <b>Ya, saya menyetujui ketentuan PPDB Online!</b>
+                                    <input type="radio" value="cek" name="cek" data-parsley-group="block0"
+                                      data-radio="iradio_square-blue"
+                                      data-parsley-errors-container='div[id="condition-ck"]' required> <b>Ya, saya
+                                      menyetujui ketentuan PPDB Online!</b>
                                   </label>
-                                  <div id="condition-ck" style=" background:#FFBABA; color: #D8000C; width:auto; padding-left:10px; font-size: 10px;"></div>
+                                  <div id="condition-ck"
+                                    style=" background:#FFBABA; color: #D8000C; width:auto; padding-left:10px; font-size: 10px;">
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -159,20 +171,29 @@ $user = $this->db->get('tbl_user')->row_array();
                             <div class="col-md-8">
                               <div class="panel">
                                 <div class="panel-heading" style="background: #275555ff; color: honeydew;">
-                                  <h2 align="center" style="margin-top: 10px;">KONFIRMASI<br><b>DATA CALON SISWA</b> </h2>
+                                  <h2 align="center" style="margin-top: 10px;">KONFIRMASI<br><b>DATA CALON SISWA</b>
+                                  </h2>
                                 </div>
                                 <div class="panel-body">
                                   <span style="font-size:15px">
-                                    <p align="center">Proses pendaftaran PPDB Online <?php echo $user['nama_lengkap']; ?> hampir selesai. <br>Silakan periksa kembali data-data yang sudah anda masukkan.</p><br><br>
+                                    <p align="center">Proses pendaftaran PPDB Online
+                                      <?php echo $user['nama_lengkap']; ?> hampir selesai. <br>Silakan periksa kembali
+                                      data-data yang sudah anda masukkan.
+                                    </p><br><br>
                                     <div class="col-md-12">
-                                      <span class="text-primary" style="font-size:18px;"><strong>Apakah data calon siswa sudah sesuai?</strong></span>
+                                      <span class="text-primary" style="font-size:18px;"><strong>Apakah data calon siswa
+                                          sudah sesuai?</strong></span>
                                       <div class="form-group">
                                         <div class="radio bg-success p-10" style="border-radius:3px;">
                                           <label>
-                                            <input type="radio" value="cekx" name="cekx" none-none-data-parsley-group="blockx" data-radio="iradio_square-blue" data-parsley-errors-container='div[id="condition-cx"]' required>
+                                            <input type="radio" value="cekx" name="cekx" data-parsley-group="blockx"
+                                              data-radio="iradio_square-blue"
+                                              data-parsley-errors-container='div[id="condition-cx"]' required>
                                             <b>Ya, data sudah sesuai!</b>
                                           </label>
-                                          <div class="faa-flash animated" id="condition-cx" style=" background:#FFBABA; color: #D8000C; width:auto; padding-left:10px; font-size: 10px;"></div>
+                                          <div class="faa-flash animated" id="condition-cx"
+                                            style=" background:#FFBABA; color: #D8000C; width:auto; padding-left:10px; font-size: 10px;">
+                                          </div>
                                         </div>
                                       </div>
                                   </span>
@@ -189,10 +210,16 @@ $user = $this->db->get('tbl_user')->row_array();
             <div class="footer">
               <div class="copyright">
                 <p class="pull-left sm-pull-reset">
-                  <span>Copyright &copy; <a href="#" target="_blank"><?php echo $user['nama_lengkap']; ?></a> <?php echo date('Y'); ?></span>
+                  <span>Copyright &copy; <a href="#" target="_blank">
+                      <?php echo $user['nama_lengkap']; ?>
+                    </a>
+                    <?php echo date('Y'); ?>
+                  </span>
                 </p>
                 <p class="pull-right sm-pull-reset">
-                  <span><a href="" class="m-r-10"><i class="fa fa-home"></i> Beranda </a> | <a href="#" class="m-l-10 m-r-10" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-legal"></i> Ketentuan & Syarat PPDB</a></span>
+                  <span><a href="" class="m-r-10"><i class="fa fa-home"></i> Beranda </a> | <a href="#"
+                      class="m-l-10 m-r-10" data-toggle="modal" data-target=".bs-example-modal-lg"><i
+                        class="fa fa-legal"></i> Ketentuan & Syarat PPDB</a></span>
                 </p>
               </div>
             </div>
@@ -203,11 +230,13 @@ $user = $this->db->get('tbl_user')->row_array();
         <!-- BEGIN BUILDER -->
         <!-- END BUILDER -->
   </section>
-  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg" style="margin-top:5px;">
       <div class="modal-content">
         <div class="modal-body">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+              class="sr-only">Close</span></button>
           <?php $this->load->view('web/step/1'); ?>
         </div>
       </div>
@@ -220,18 +249,24 @@ $user = $this->db->get('tbl_user')->row_array();
   <script src="assets/kitkat/assets/plugins/jquery-ui/jquery-ui-1.11.2.min.js"></script>
   <script src="assets/kitkat/assets/plugins/gsap/main-gsap.min.js"></script>
   <script src="assets/kitkat/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/kitkat/assets/plugins/jquery-cookies/jquery.cookies.min.js"></script> <!-- Jquery Cookies, for theme -->
-  <script src="assets/kitkat/assets/plugins/jquery-block-ui/jquery.blockUI.min.js"></script> <!-- simulate synchronous behavior when using AJAX -->
-  <script src="assets/kitkat/assets/plugins/translate/jqueryTranslator.min.js"></script> <!-- Translate Plugin with JSON data -->
+  <script src="assets/kitkat/assets/plugins/jquery-cookies/jquery.cookies.min.js"></script>
+  <!-- Jquery Cookies, for theme -->
+  <script src="assets/kitkat/assets/plugins/jquery-block-ui/jquery.blockUI.min.js"></script>
+  <!-- simulate synchronous behavior when using AJAX -->
+  <script src="assets/kitkat/assets/plugins/translate/jqueryTranslator.min.js"></script>
+  <!-- Translate Plugin with JSON data -->
   <script src="assets/kitkat/assets/plugins/bootbox/bootbox.min.js"></script> <!-- Modal with Validation -->
-  <script src="assets/kitkat/assets/plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script> <!-- Custom Scrollbar sidebar -->
-  <script src="assets/kitkat/assets/plugins/bootstrap-dropdown/bootstrap-hover-dropdown.min.js"></script> <!-- Show Dropdown on Mouseover -->
+  <script src="assets/kitkat/assets/plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+  <!-- Custom Scrollbar sidebar -->
+  <script src="assets/kitkat/assets/plugins/bootstrap-dropdown/bootstrap-hover-dropdown.min.js"></script>
+  <!-- Show Dropdown on Mouseover -->
   <script src="assets/kitkat/assets/plugins/charts-sparkline/sparkline.min.js"></script> <!-- Charts Sparkline -->
   <script src="assets/kitkat/assets/plugins/retina/retina.min.js"></script> <!-- Retina Display -->
   <script src="assets/kitkat/assets/plugins/select2/select2.min.js"></script> <!-- Select Inputs -->
   <script src="assets/kitkat/assets/plugins/icheck/icheck.min.js"></script> <!-- Checkbox & Radio Inputs -->
   <script src="assets/kitkat/assets/plugins/backstretch/backstretch.min.js"></script> <!-- Background Image -->
-  <script src="assets/kitkat/assets/plugins/bootstrap-progressbar/bootstrap-progressbar.min.js"></script> <!-- Animated Progress Bar -->
+  <script src="assets/kitkat/assets/plugins/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+  <!-- Animated Progress Bar -->
   <script src="assets/kitkat/assets/plugins/charts-chartjs/Chart.min.js"></script>
   <script src="assets/kitkat/assets/plugins/timepicker/jquery-ui-timepicker-addon.min.js"></script>
   <script src="assets/kitkat/assets/plugins/multidatepicker/multidatespicker.min.js"></script>
@@ -246,8 +281,10 @@ $user = $this->db->get('tbl_user')->row_array();
   <script src="assets/kitkat/assets/js/pages/search.js"></script> <!-- Search Script -->
   <script src="assets/kitkat/js/cust.js"></script> <!-- Search Script -->
   <!-- BEGIN PAGE SCRIPTS -->
-  <script src="assets/kitkat/assets/plugins/step-form-wizard/plugins/parsley/parsley.min.js"></script> <!-- OPTIONAL, IF YOU NEED VALIDATION -->
-  <script src="assets/kitkat/assets/plugins/step-form-wizard/js/step-form-wizard.js"></script> <!-- Step Form Validation -->
+  <script src="assets/kitkat/assets/plugins/step-form-wizard/plugins/parsley/parsley.min.js"></script>
+  <!-- OPTIONAL, IF YOU NEED VALIDATION -->
+  <script src="assets/kitkat/assets/plugins/step-form-wizard/js/step-form-wizard.js"></script>
+  <!-- Step Form Validation -->
   <script src="assets/kitkat/assets/js/pages/form_wizard.js"></script>
   <script src="assets/kitkat/assets/input/js/fileinput.js" type="text/javascript"></script>
   <script>

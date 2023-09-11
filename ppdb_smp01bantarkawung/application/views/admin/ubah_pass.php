@@ -1,6 +1,6 @@
 <?php
 $user = $user;
-$level = $user->level; ?>
+$level = $this->user->level; ?>
 <!-- Main content -->
 <div class="content-wrapper">
 

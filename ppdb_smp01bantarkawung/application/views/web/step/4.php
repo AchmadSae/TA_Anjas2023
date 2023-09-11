@@ -10,7 +10,7 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9 prepend-icon" style="margin-top:1px;">
         <input type="text" name="no_kk" class="form-control bg-blue class" onkeypress="return hanyaAngka(this);"
-          maxlength="16" placeholder="Nomor Kartu Keluarga" none-data-parsley-group="block3"
+          maxlength="16" placeholder="Nomor Kartu Keluarga" data-parsley-group="block3"
           data-parsley-errors-container='div[id="error-no_kk"]' required>
         <div id="error-no_kk"
           style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
@@ -23,7 +23,7 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9 prepend-icon">
         <input type="text" name="kepala_keluarga" class="form-control bg-blue" placeholder="Nama Kepala Keluarga"
-          maxlength="100" none-data-parsley-group="block3" data-radio="iradio_square-blue"
+          maxlength="100" data-parsley-group="block3" data-radio="iradio_square-blue"
           data-parsley-errors-container='div[id="error-kepala_keluarga"]' required>
         <i class="fa fa-user" style="margin-left:15px;"></i>
         <div id="error-kepala_keluarga"
@@ -31,21 +31,6 @@
         <div id="pesan_komentar">*Sesuai dengan KK</div>
       </div>
     </div>
-
-    <!-- file upload Kartu Keluarga  -->
-    <div class="form-group" style="padding-bottom:30px;">
-      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Kartu Keluarga <span
-          class="text-danger">*</span></label>
-      <div class="col-sm-9 prepend-icon" style="margin-top:1px;">
-        <input type="file" class="form-control" name="KK_file" id=KK_file" none-data-parsley-group="block1"
-          data-parsley-errors-container='div[id="error-kk-upload"]'>
-        <i class="fa fa-file-pdf-o" style="margin-left:15px;"></i>
-        <div id="error-kk-upload"
-          style=" background:#FFBABA; color: #D8000C; width:auto; padding-left:10px; font-size: 10px;"></div>
-        <div id="pesan_komentar">*Sesuai dengan Kartu Keluarga asli, file format PDF</div>
-      </div>
-    </div>
-
     <hr>
     <h2><strong class="text-success" style="color:#000000;">
         <center>DATA AYAH KANDUNG</center>
@@ -56,7 +41,7 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9 prepend-icon">
         <input type="text" name="nama_ayah" class="form-control bg-blue" placeholder="Nama Ayah Kandung" maxlength="100"
-          none-data-parsley-group="block3" data-radio="iradio_square-blue"
+          data-parsley-group="block3" data-radio="iradio_square-blue"
           data-parsley-errors-container='div[id="error-nama_ayah"]' required>
         <i class="fa fa-male" style="margin-left:15px;"></i>
         <div id="error-nama_ayah"
@@ -69,7 +54,7 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9 prepend-icon" style="margin-top:1px;">
         <input type="text" name="nik_ayah" class="form-control bg-blue class" onkeypress="return hanyaAngka(this);"
-          maxlength="16" placeholder="NIK Ayah" none-data-parsley-group="block3"
+          maxlength="16" placeholder="NIK Ayah" data-parsley-group="block3"
           data-parsley-errors-container='div[id="error-nik_ayah"]' required>
         <div id="error-nik_ayah"
           style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
@@ -82,7 +67,7 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9 prepend-icon" style="margin-top:1px;">
         <input type="text" name="th_lahir_ayah" class="form-control bg-blue class" onkeypress="return hanyaAngka(this);"
-          maxlength="16" placeholder="Tahun lahir Ayah" none-data-parsley-group="block3"
+          maxlength="16" placeholder="Tahun lahir Ayah" data-parsley-group="block3"
           data-parsley-errors-container='div[id="error-th_lahir_ayah"]' required>
         <div id="error-th_lahir_ayah"
           style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
@@ -94,7 +79,7 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9" style="margin-top:3px;">
         <select class="form-control bg-blue class" data-placeholder="Status Ayah" name="status_ayah"
-          none-data-parsley-group="block3" data-parsley-errors-container='div[id="error-status_ayah"]' required>
+          data-parsley-group="block3" data-parsley-errors-container='div[id="error-status_ayah"]' required>
           <option value="">Pilih Status Ayah</option>
           <option value="1">Masih hidup</option>
           <option value="2">Sudah meninggal</option>
@@ -110,7 +95,7 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9" style="margin-top:3px;">
         <select class="form-control bg-blue class" data-placeholder="Pilih Pekerjaan Ayah" name="pekerjaan_ayah"
-          none-data-parsley-group="block3" data-parsley-errors-container='div[id="error-pekerjaan_ayah"]' required>
+          data-parsley-group="block3" data-parsley-errors-container='div[id="error-pekerjaan_ayah"]' required>
           <option value="">Pilih Pekerjaan Ayah</option>
           <?php foreach ($v_pekerjaan_ayah as $baris): ?>
             <option value="<?php echo $baris->nama_pekerjaan; ?>"><?php echo $baris->nama_pekerjaan; ?></option>
@@ -126,7 +111,7 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9" style="margin-top:3px;">
         <select class="form-control bg-blue class" data-placeholder="Pilih Penghasilan Ayah" name="penghasilan_ayah"
-          none-data-parsley-group="block3" data-parsley-errors-container='div[id="error-penghasilan_ayah"]' required>
+          data-parsley-group="block3" data-parsley-errors-container='div[id="error-penghasilan_ayah"]' required>
           <option value="">Pilih Penghasilan Ayah</option>
           <?php foreach ($v_penghasilan as $baris): ?>
             <option value="<?php echo $baris->nama_penghasilan; ?>"><?php echo $baris->nama_penghasilan; ?></option>
@@ -142,7 +127,7 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9" style="margin-top:3px;">
         <select class="form-control bg-blue class" data-placeholder="Pilih Pendidikan Ayah" name="pdd_ayah"
-          none-data-parsley-group="block3" data-parsley-errors-container='div[id="error-pdd_ayah"]' required>
+          data-parsley-group="block3" data-parsley-errors-container='div[id="error-pdd_ayah"]' required>
           <option value="">Pilih Pendidikan Ayah</option>
           <?php foreach ($v_pdd as $baris): ?>
             <option value="<?php echo $baris->nama_pdd; ?>"><?php echo $baris->nama_pdd; ?></option>
@@ -163,7 +148,7 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9 prepend-icon">
         <input type="text" name="nama_ibu" class="form-control bg-blue" placeholder="Nama Ibu Kandung" maxlength="100"
-          none-data-parsley-group="block3" data-radio="iradio_square-blue"
+          data-parsley-group="block3" data-radio="iradio_square-blue"
           data-parsley-errors-container='div[id="error-nama_ibu"]' required>
         <i class="fa fa-female" style="margin-left:15px;"></i>
         <div id="error-nama_ibu"
@@ -176,7 +161,7 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9 prepend-icon" style="margin-top:1px;">
         <input type="text" name="nik_ibu" class="form-control bg-blue class" onkeypress="return hanyaAngka(this);"
-          maxlength="16" placeholder="NIK Ibu" none-data-parsley-group="block3"
+          maxlength="16" placeholder="NIK Ibu" data-parsley-group="block3"
           data-parsley-errors-container='div[id="error-nik_ibu"]' required>
         <div id="error-nik_ibu"
           style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
@@ -189,7 +174,7 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9 prepend-icon" style="margin-top:1px;">
         <input type="text" name="th_lahir_ibu" class="form-control bg-blue class" onkeypress="return hanyaAngka(this);"
-          maxlength="16" placeholder="Tahun lahir Ibu" none-data-parsley-group="block3"
+          maxlength="16" placeholder="Tahun lahir Ibu" data-parsley-group="block3"
           data-parsley-errors-container='div[id="error-th_lahir_ibu"]' required>
         <div id="error-th_lahir_ibu"
           style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
@@ -201,7 +186,7 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9" style="margin-top:3px;">
         <select class="form-control bg-blue class" data-placeholder="Status Ibu" name="status_ibu"
-          none-data-parsley-group="block3" data-parsley-errors-container='div[id="error-status_ibu"]' required>
+          data-parsley-group="block3" data-parsley-errors-container='div[id="error-status_ibu"]' required>
           <option value="">Pilih Status Ibu</option>
           <option value="1">Masih hidup</option>
           <option value="2">Sudah meninggal</option>
@@ -217,7 +202,7 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9" style="margin-top:3px;">
         <select class="form-control bg-blue class" data-placeholder="Pilih Pekerjaan Ibu" name="pekerjaan_ibu"
-          none-data-parsley-group="block3" data-parsley-errors-container='div[id="error-pekerjaan_ibu"]' required>
+          data-parsley-group="block3" data-parsley-errors-container='div[id="error-pekerjaan_ibu"]' required>
           <option value="">Pilih Pekerjaan Ibu</option>
           <?php foreach ($v_pekerjaan_ayah as $baris): ?>
             <option value="<?php echo $baris->nama_pekerjaan; ?>"><?php echo $baris->nama_pekerjaan; ?></option>
@@ -233,10 +218,10 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9" style="margin-top:3px;">
         <select class="form-control bg-blue class" data-placeholder="Pilih Penghasilan Ayah" name="penghasilan_ibu"
-          none-data-parsley-group="block3" data-parsley-errors-container='div[id="error-penghasilan_ibu"]' required>
+          data-parsley-group="block3" data-parsley-errors-container='div[id="error-penghasilan_ibu"]' required>
           <option value="">Pilih Penghasilan Ibu</option>
           <?php foreach ($v_penghasilan as $baris): ?>
-            <option value="<?php echo $baris->nama_penghasilan; ?>"><?php echo $baris->nama_penghasilan; ?></option>
+            <option value="<?php echo $baris->nilai_penghasilan; ?>"><?php echo $baris->nama_penghasilan; ?></option>
           <?php endforeach; ?>
         </select>
         <div id="error-penghasilan_ibu"
@@ -249,7 +234,7 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9" style="margin-top:3px;">
         <select class="form-control bg-blue class" data-placeholder="Pilih Pendidikan Ibu" name="pdd_ibu"
-          none-data-parsley-group="block3" data-parsley-errors-container='div[id="error-pdd_ibu"]' required>
+          data-parsley-group="block3" data-parsley-errors-container='div[id="error-pdd_ibu"]' required>
           <option value="">Pilih Pendidikan Ibu</option>
           <?php foreach ($v_pdd as $baris): ?>
             <option value="<?php echo $baris->nama_pdd; ?>"><?php echo $baris->nama_pdd; ?></option>
@@ -270,7 +255,7 @@
           class="text-danger"></span></label>
       <div class="col-sm-9 prepend-icon">
         <input type="text" name="nama_wali" class="form-control bg-blue" placeholder="Nama wali " maxlength="100"
-          none-data-parsley-group="block3" data-radio="iradio_square-blue"
+          data-parsley-group="block3" data-radio="iradio_square-blue"
           data-parsley-errors-container='div[id="error-nama_wali"]'>
         <i class="fa fa-user" style="margin-left:15px;"></i>
         <div id="error-nama_wali"
@@ -283,7 +268,7 @@
           class="text-danger"></span></label>
       <div class="col-sm-9 prepend-icon" style="margin-top:1px;">
         <input type="text" name="nik_wali" class="form-control bg-blue class" onkeypress="return hanyaAngka(this);"
-          maxlength="16" placeholder="NIK wali" none-data-parsley-group="block3"
+          maxlength="16" placeholder="NIK wali" data-parsley-group="block3"
           data-parsley-errors-container='div[id="error-nik_wali"]'>
         <div id="error-nik_wali"
           style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
@@ -296,7 +281,7 @@
           class="text-danger"></span></label>
       <div class="col-sm-9 prepend-icon" style="margin-top:1px;">
         <input type="text" name="th_lahir_wali" class="form-control bg-blue class" onkeypress="return hanyaAngka(this);"
-          maxlength="16" placeholder="Tahun lahir wali" none-data-parsley-group="block3"
+          maxlength="16" placeholder="Tahun lahir wali" data-parsley-group="block3"
           data-parsley-errors-container='div[id="error-th_lahir_wali"]'>
         <div id="error-th_lahir_wali"
           style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
@@ -308,7 +293,7 @@
           class="text-danger"></span></label>
       <div class="col-sm-9" style="margin-top:3px;">
         <select class="form-control bg-blue class" data-placeholder="Pilih Pekerjaan wali" name="pekerjaan_wali"
-          none-data-parsley-group="block3" data-parsley-errors-container='div[id="error-pekerjaan_wali"]'>
+          data-parsley-group="block3" data-parsley-errors-container='div[id="error-pekerjaan_wali"]'>
           <option value="">Pilih Pekerjaan wali</option>
           <?php foreach ($v_pekerjaan_ayah as $baris): ?>
             <option value="<?php echo $baris->nama_pekerjaan; ?>"><?php echo $baris->nama_pekerjaan; ?></option>
@@ -324,7 +309,7 @@
           class="text-danger"></span></label>
       <div class="col-sm-9" style="margin-top:3px;">
         <select class="form-control bg-blue class" data-placeholder="Pilih Penghasilan Ayah" name="penghasilan_wali"
-          none-data-parsley-group="block3" data-parsley-errors-container='div[id="error-penghasilan_wali"]'>
+          data-parsley-group="block3" data-parsley-errors-container='div[id="error-penghasilan_wali"]'>
           <option value="">Pilih Penghasilan wali</option>
           <?php foreach ($v_penghasilan as $baris): ?>
             <option value="<?php echo $baris->nama_penghasilan; ?>"><?php echo $baris->nama_penghasilan; ?></option>
@@ -340,7 +325,7 @@
           class="text-danger"></span></label>
       <div class="col-sm-9" style="margin-top:3px;">
         <select class="form-control bg-blue class" data-placeholder="Pilih Pendidikan wali" name="pdd_wali"
-          none-data-parsley-group="block3" data-parsley-errors-container='div[id="error-pdd_wali"]'>
+          data-parsley-group="block3" data-parsley-errors-container='div[id="error-pdd_wali"]'>
           <option value="">Pilih Pendidikan wali</option>
           <?php foreach ($v_pdd as $baris): ?>
             <option value="<?php echo $baris->nama_pdd; ?>"><?php echo $baris->nama_pdd; ?></option>
@@ -356,8 +341,8 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9 prepend-icon" style="margin-top:3px;">
         <input type="text" name="no_hp_ortu" class="form-control bg-blue class" maxlength="14"
-          onkeypress="return hanyaAngka(this);" placeholder="No. Handphone Orangtua/Wali"
-          none-data-parsley-group="block3" data-parsley-errors-container='div[id="error-no_hp_ortu"]'>
+          onkeypress="return hanyaAngka(this);" placeholder="No. Handphone Orangtua/Wali" data-parsley-group="block3"
+          data-parsley-errors-container='div[id="error-no_hp_ortu"]'>
         <i class="fa fa-phone" style="margin-left:15px;"></i>
         <div id="error-no_hp_ortu"
           style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
@@ -375,7 +360,7 @@
         (KKS) <span class="text-danger">*</span></label>
       <div class="col-sm-9 prepend-icon">
         <input type="text" name="no_kks" class="form-control bg-blue" placeholder="No. KKS " maxlength="100"
-          none-data-parsley-group="block3" data-radio="iradio_square-blue"
+          data-parsley-group="block3" data-radio="iradio_square-blue"
           data-parsley-errors-container='div[id="error-no_kks"]' required>
         <i class="" style="margin-left:15px;"></i>
         <div id="error-no_kks"
@@ -389,7 +374,7 @@
         (PKH) <span class="text-danger">*</span></label>
       <div class="col-sm-9 prepend-icon">
         <input type="text" name="no_pkh" class="form-control bg-blue" placeholder="No. PKH " maxlength="100"
-          none-data-parsley-group="block3" data-radio="iradio_square-blue"
+          data-parsley-group="block3" data-radio="iradio_square-blue"
           data-parsley-errors-container='div[id="error-no_pkh"]' required>
         <i class="" style="margin-left:15px;"></i>
         <div id="error-no_pkh"
@@ -403,7 +388,7 @@
         <span class="text-danger">*</span></label>
       <div class="col-sm-9 prepend-icon">
         <input type="text" name="no_kip" class="form-control bg-blue" placeholder="No. KIP " maxlength="100"
-          none-data-parsley-group="block3" data-radio="iradio_square-blue"
+          data-parsley-group="block3" data-radio="iradio_square-blue"
           data-parsley-errors-container='div[id="error-no_kip"]' required>
         <i class="" style="margin-left:15px;"></i>
         <div id="error-no_kip"

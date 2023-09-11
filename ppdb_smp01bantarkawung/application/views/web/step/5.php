@@ -10,7 +10,7 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9 prepend-icon">
         <input type="text" name="nama_sekolah" class="form-control bg-blue" placeholder="Nama Sekolah" maxlength="100"
-          none-data-parsley-group="block4" data-radio="iradio_square-blue"
+          data-parsley-group="block4" data-radio="iradio_square-blue"
           data-parsley-errors-container='div[id="error-nama_sekolah"]' required>
         <i class="fa fa-university" style="margin-left:15px;"></i>
         <div id="error-nama_sekolah"
@@ -23,7 +23,7 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9" style="margin-top:3px;">
         <select class="form-control bg-blue class" data-placeholder="Pilih jenjang sekolah sebelumnya"
-          name="jenjang_sekolah" none-data-parsley-group="block4"
+          name="jenjang_sekolah" data-parsley-group="block4"
           data-parsley-errors-container='div[id="error-jenjang_sekolah"]'>
           <option value="">Pilih Jenjang Sekolah</option>
           <option value="1">SMP</option>
@@ -55,7 +55,7 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9" style="margin-top:3px;">
         <select class="form-control bg-blue class" data-placeholder="Pilih status sekolah sebelumnya"
-          name="status_sekolah" none-data-parsley-group="block4"
+          name="status_sekolah" data-parsley-group="block4"
           data-parsley-errors-container='div[id="error-status_sekolah"]'>
           <option value="">Pilih Status Sekolah</option>
           <option value="NEGERI">NEGERI</option>
@@ -71,7 +71,7 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9 prepend-icon" style="margin-top:1px;">
         <input type="text" name="npsn_sekolah" class="form-control bg-blue class" onkeypress="return hanyaAngka(this);"
-          maxlength="10" placeholder="NPSN Sekolah sebelumnya" none-data-parsley-group="block4"
+          maxlength="10" placeholder="NPSN Sekolah sebelumnya" data-parsley-group="block4"
           data-parsley-errors-container='div[id="error-npsn_sekolah"]'>
         <i class="" style="margin-left:15px;"></i>
         <div id="error-npsn_sekolah"
@@ -84,7 +84,7 @@
           class="text-danger">*</span></label>
       <div class="col-sm-9 prepend-icon">
         <input type="text" name="prestasi" class="form-control bg-blue" placeholder="Nama Prestasi" maxlength="100"
-          none-data-parsley-group="block4" data-radio="iradio_square-blue"
+          data-parsley-group="block4" data-radio="iradio_square-blue"
           data-parsley-errors-container='div[id="error-nama_sekolah"]' required>
         <i class="fa fa-university" style="margin-left:15px;"></i>
         <div id="error-nama_sekolah"
@@ -92,11 +92,11 @@
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Tingkat Presatasi <span
+      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Lokasi sekolah <span
           class="text-danger">*</span></label>
       <div class="col-sm-9" style="margin-top:3px;">
-        <select class="form-control bg-blue class" data-placeholder="Pilih lokasi tingkat prestasi"
-          name="jenjang_sekolah" none-data-parsley-group="block4"
+        <select class="form-control bg-blue class" data-placeholder="Pilih lokasi sekolah sebelumnya"
+          name="lokasi_sekolah" data-parsley-group="block4"
           data-parsley-errors-container='div[id="error-lokasi_sekolah"]'>
           <option value="">Pilih Lokasi Sekolah</option>
           <option value="1">Dalam Kabupaten/Kota</option>
@@ -108,31 +108,31 @@
           style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
       </div>
     </div>
-    <!-- file upload SKHUN  -->
-    <div class="form-group" style="padding-bottom:30px;">
-      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">SKHUN <span
-          class="text-danger">*</span></label>
-      <div class="col-sm-9 prepend-icon" style="margin-top:1px;">
-        <input type="file" class="form-control" name="SKHUN_file" id=KK_file" none-none-data-parsley-group="block1"
-          data-parsley-errors-container='div[id="error-skhun-upload"]'>
-        <i class="fa fa-file-pdf-o" style="margin-left:15px;"></i>
-        <div id="error-skhun-upload"
-          style=" background:#FFBABA; color: #D8000C; width:auto; padding-left:10px; font-size: 10px;"></div>
-        <div id="pesan_komentar">*Sesuai dengan SKHUN, file format PDF</div>
-      </div>
-    </div>
     <div class="form-group" style="padding-bottom:30px;">
       <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Nilai Rata-Rata Ujian Sekolah<span
           class="text-danger">*</span></label>
       <div class="col-sm-9 prepend-icon" style="margin-top:1px;">
-        <input type="text" name="npsn_sekolah" class="form-control bg-blue class" onkeypress="return hanyaAngka(this);"
-          maxlength="10" placeholder="Nilai Rata-Rata Ujian Sekolah" none-data-parsley-group="block4"
+        <input type="text" name="rata_skhun" class="form-control bg-blue class" onkeypress="return hanyaAngka(this);"
+          maxlength="10" placeholder="Nilai Rata-Rata SKHUN" data-parsley-group="block4"
           data-parsley-errors-container='div[id="error-npsn_sekolah"]'>
         <i class="" style="margin-left:15px;"></i>
         <div id="error-npsn_sekolah"
           style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
       </div>
     </div>
+    <div class="form-group" style="padding-bottom:30px;">
+      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Nilai Rata-Rata Raport<span
+          class="text-danger">*</span></label>
+      <div class="col-sm-9 prepend-icon" style="margin-top:1px;">
+        <input type="text" name="rata_raport" class="form-control bg-blue class" onkeypress="return hanyaAngka(this);"
+          maxlength="10" placeholder="Nilai Rata-Rata Raport kelas 4 s/d 6" data-parsley-group="block4"
+          data-parsley-errors-container='div[id="error-npsn_sekolah"]'>
+        <i class="" style="margin-left:15px;"></i>
+        <div id="error-npsn_sekolah"
+          style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
+      </div>
+    </div>
+
 
   </div>
 </div>

@@ -12,7 +12,7 @@ class Model_web extends CI_Model
 		return $this->db->get_where('tbl_web', "id_web='1'")->row();
 	}
 
-	function pendaftaran($menu = '', $data = '', $upload_config = array())
+	function pendaftaran($menu = '', $data = '')
 	{
 		switch ($menu) {
 			case 'daftar':
@@ -20,7 +20,6 @@ class Model_web extends CI_Model
 				$data = array(
 					'no_pendaftaran' => $data->post('nis'),
 					'password' => $data->post('nisn'),
-					'komp_ahli' => $data->post('komp_ahli'),
 					'nisn' => $data->post('nisn'),
 					'nik' => $data->post('nik'),
 					'nama_lengkap' => $data->post('nama_lengkap'),
@@ -77,56 +76,12 @@ class Model_web extends CI_Model
 					'npsn_sekolah' => $data->post('npsn_sekolah'),
 					'lokasi_sekolah' => $data->post('lokasi_sekolah'),
 					'tgl_siswa' => date('Y-m-d H:i:s'),
-					'nisn_file' => $data->post('file_NISN'),
-					'gMaps' => $data->post('link_Gmaps'),
-					'KK_file' => $data->post('file_KK'),
-					'SKHUN_file' => $data->post('file_SKHUN')
-
+					'rata_skhun' => $data->post('rata_skhun'),
+					'rata_raport' => $data->post('rata_raport'),
+					'gMaps' => $data->post('link_Gmaps')
 				);
-
-				// Memuat library Upload dengan konfigurasi yang diterima
-				$this->load->library('upload', $upload_config);
-
-				// Mengunggah file NISN
-				if ($this->upload->do_upload('file_NISN')) {
-					$upload_data_NISN = $this->upload->data();
-					$data['nisn_file'] = $upload_data_NISN['file_name'];
-				} else {
-					// Handle kesalahan jika unggah file NISN gagal
-					$this->session->set_flashdata('msg', 'Gagal mengunggah file NISN: ' . $this->upload->display_errors());
-					return false;
-				}
-
-				// Mengunggah file KK
-				if ($this->upload->do_upload('file_KK')) {
-					$upload_data_KK = $this->upload->data();
-					$data['KK_file'] = $upload_data_KK['file_name'];
-				} else {
-					// Handle kesalahan jika unggah file KK gagal
-					$this->session->set_flashdata('msg', 'Gagal mengunggah file KK: ' . $this->upload->display_errors());
-					return false;
-				}
-
-				// Mengunggah file SKHUN
-				if ($this->upload->do_upload('file_SKHUN')) {
-					$upload_data_SKHUN = $this->upload->data();
-					$data['SKHUN_file'] = $upload_data_SKHUN['file_name'];
-				} else {
-					// Handle kesalahan jika unggah file SKHUN gagal
-					$this->session->set_flashdata('msg', 'Gagal mengunggah file SKHUN: ' . $this->upload->display_errors());
-					return false;
-				}
-
-				if ($this->db->insert('tbl_siswa', $data)) {
-					return $this->db->insert('tbl_siswa', $data);
-					$this->db->insert('nama_tabel', $data_to_insert);
-					break;
-				} else {
-					// Handle kesalahan jika penyisipan data gagal
-					$this->session->set_flashdata('msg', 'Gagal menyimpan data ke database.');
-					return false;
-				}
-
+				return $this->db->insert('tbl_siswa', $data);
+				break;
 
 			case 'id_baru':
 				$no_max = $this->db->select_max('no_pendaftaran', 'kode')->get('tbl_siswa')->row();

@@ -30,18 +30,20 @@ class Model_admin extends CI_Model
 		switch ($option) {
 			case 'tutup':
 				$data = array(
-					'status_ppdb'	=> 'tutup',
-					'tgl_diubah'	=> $date
+					'status_ppdb' => 'tutup',
+					'tgl_diubah' => $date
 				);
-				return $this->db->update('tbl_web', $data, array('id_web' => '1'));;
+				return $this->db->update('tbl_web', $data, array('id_web' => '1'));
+				;
 				break;
 
 			case 'buka':
 				$data = array(
-					'status_ppdb'	=> 'buka',
-					'tgl_diubah'	=> $date
+					'status_ppdb' => 'buka',
+					'tgl_diubah' => $date
 				);
-				return $this->db->update('tbl_web', $data, array('id_web' => '1'));;
+				return $this->db->update('tbl_web', $data, array('id_web' => '1'));
+				;
 				break;
 
 			default:
@@ -54,8 +56,8 @@ class Model_admin extends CI_Model
 	{
 		$query = $this->db->where("username", $data['username'])->where("password", $data['password'])->get('tbl_user');
 		return array(
-			'res'	=> $query->row(),
-			'sum'	=> $query->num_rows()
+			'res' => $query->row(),
+			'sum' => $query->num_rows()
 		);
 	}
 
@@ -69,21 +71,21 @@ class Model_admin extends CI_Model
 		switch ($act) {
 			case 'lulus':
 				$data = array(
-					'status_pendaftaran'	=> 'lulus'
+					'status_pendaftaran' => 'lulus'
 				);
 				return $this->db->update('tbl_siswa', $data, array('no_pendaftaran' => "$id"));
 				break;
 
 			case 'tdk_lulus':
 				$data = array(
-					'status_pendaftaran'	=> 'tidak lulus'
+					'status_pendaftaran' => 'tidak lulus'
 				);
 				return $this->db->update('tbl_siswa', $data, array('no_pendaftaran' => "$id"));
 				break;
 
 			case 'batal':
 				$data = array(
-					'status_pendaftaran'	=> null
+					'status_pendaftaran' => null
 				);
 				return $this->db->update('tbl_siswa', $data, array('no_pendaftaran' => "$id"));
 				break;
@@ -104,19 +106,19 @@ class Model_admin extends CI_Model
 			case 'update':
 				$old_user = $data['old_user'];
 				$data = array(
-					'username'		=> $data['username'],
-					'nama_lengkap'	=> $data['nama_lengkap'],
-					'alamat'		=> $data['alamat'],
-					'telp'			=> $data['telp'],
-					'email'			=> $data['email'],
-					'website'		=> $data['website'],
-					'kab_sekolah'	=> $data['kab_sekolah'],
-					'ketua_panitia'	=> $data['ketua_panitia'],
-					'nip_ketua'		=> $data['nip_ketua'],
-					'th_pelajaran'	=> $data['th_pelajaran'],
-					'no_surat'		=> $data['no_surat'],
-					'kepsek'		=> $data['kepsek'],
-					'nip_kepsek'	=> $data['nip_kepsek']
+					'username' => $data['username'],
+					'nama_lengkap' => $data['nama_lengkap'],
+					'alamat' => $data['alamat'],
+					'telp' => $data['telp'],
+					'email' => $data['email'],
+					'website' => $data['website'],
+					'kab_sekolah' => $data['kab_sekolah'],
+					'ketua_panitia' => $data['ketua_panitia'],
+					'nip_ketua' => $data['nip_ketua'],
+					'th_pelajaran' => $data['th_pelajaran'],
+					'no_surat' => $data['no_surat'],
+					'kepsek' => $data['kepsek'],
+					'nip_kepsek' => $data['nip_kepsek']
 				);
 				return $this->db->update('tbl_user', $data, array('username' => $old_user));
 				break;
@@ -124,7 +126,7 @@ class Model_admin extends CI_Model
 			case 'update-pass':
 				$old_user = $data['old_user'];
 				$data = array(
-					'password'		=> $data['password']
+					'password' => $data['password']
 				);
 				return $this->db->update('tbl_user', $data, array('username' => $old_user));
 				break;
@@ -141,63 +143,63 @@ class Model_admin extends CI_Model
 			case 'update':
 				$old_user = $data['old_user'];
 				$data = array(
-					'no_pendaftaran'		=> $data['no_pendaftaran'],
-					'nisn'					=> $data['nisn'],
-					'nik'					=> $data['nik'],
-					'nama_lengkap'			=> $data['nama_lengkap'],
-					'jk'					=> $data['jk'],
-					'tempat_lahir'			=> $data['tempat_lahir'],
-					'tgl_lahir'				=> $data['tgl_lahir'],
-					'agama'					=> $data['agama'],
-					'status_keluarga'		=> $data['status_keluarga'],
-					'anak_ke'				=> $data['anak_ke'],
-					'jml_saudara'			=> $data['jml_saudara'],
-					'hobi'					=> $data['hobi'],
-					'cita'					=> $data['cita'],
-					'paud'					=> $data['paud'],
-					'tk'					=> $data['tk'],
-					'no_hp_siswa'			=> $data['no_hp_siswa'],
-					'jenis_tinggal'			=> $data['jenis_tinggal'],
-					'alamat_siswa'			=> $data['alamat_siswa'],
-					'desa'					=> $data['desa'],
-					'kec'					=> $data['kec'],
-					'kab'					=> $data['kab'],
-					'prov'					=> $data['prov'],
-					'kode_pos'				=> $data['kode_pos'],
-					'jarak'					=> $data['jarak'],
-					'trans'					=> $data['trans'],
-					'no_kk'					=> $data['no_kk'],
-					'kepala_keluarga'		=> $data['kepala_keluarga'],
-					'nama_ayah'				=> $data['nama_ayah'],
-					'th_lahir_ayah'			=> $data['th_lahir_ayah'],
-					'status_ayah'			=> $data['status_ayah'],
-					'nik_ayah'				=> $data['nik_ayah'],
-					'pdd_ayah'				=> $data['pdd_ayah'],
-					'pekerjaan_ayah'		=> $data['pekerjaan_ayah'],
-					'nama_ibu'				=> $data['nama_ibu'],
-					'th_lahir_ibu'			=> $data['th_lahir_ibu'],
-					'status_ibu'			=> $data['status_ibu'],
-					'nik_ibu'				=> $data['nik_ibu'],
-					'pdd_ibu'				=> $data['pdd_ibu'],
-					'pekerjaan_ibu'			=> $data['pekerjaan_ibu'],
-					'nama_wali'				=> $data['nama_wali'],
-					'th_lahir_wali'			=> $data['th_lahir_wali'],
-					'nik_wali'				=> $data['nik_wali'],
-					'pdd_wali'				=> $data['pdd_wali'],
-					'pekerjaan_wali'		=> $data['pekerjaan_wali'],
-					'penghasilan_ayah'		=> $data['penghasilan_ayah'],
-					'penghasilan_ibu'		=> $data['penghasilan_ibu'],
-					'penghasilan_wali'		=> $data['penghasilan_wali'],
-					'no_kks'				=> $data['no_kks'],
-					'no_pkh'				=> $data['no_pkh'],
-					'no_kip'				=> $data['no_kip'],
-					'no_hp_ortu'			=> $data['no_hp_ortu'],
-					'nama_sekolah'			=> $data['nama_sekolah'],
-					'jenjang_sekolah'		=> $data['jenjang_sekolah'],
-					'status_sekolah'		=> $data['status_sekolah'],
-					'npsn_sekolah'			=> $data['npsn_sekolah'],
-					'lokasi_sekolah'		=> $data['lokasi_sekolah'],
-					'komp_ahli'				=> $data['komp_ahli']
+					'no_pendaftaran' => $data['no_pendaftaran'],
+					'nisn' => $data['nisn'],
+					'nik' => $data['nik'],
+					'nama_lengkap' => $data['nama_lengkap'],
+					'jk' => $data['jk'],
+					'tempat_lahir' => $data['tempat_lahir'],
+					'tgl_lahir' => $data['tgl_lahir'],
+					'agama' => $data['agama'],
+					'status_keluarga' => $data['status_keluarga'],
+					'anak_ke' => $data['anak_ke'],
+					'jml_saudara' => $data['jml_saudara'],
+					'hobi' => $data['hobi'],
+					'cita' => $data['cita'],
+					'paud' => $data['paud'],
+					'tk' => $data['tk'],
+					'no_hp_siswa' => $data['no_hp_siswa'],
+					'jenis_tinggal' => $data['jenis_tinggal'],
+					'alamat_siswa' => $data['alamat_siswa'],
+					'desa' => $data['desa'],
+					'kec' => $data['kec'],
+					'kab' => $data['kab'],
+					'prov' => $data['prov'],
+					'kode_pos' => $data['kode_pos'],
+					'jarak' => $data['jarak'],
+					'trans' => $data['trans'],
+					'no_kk' => $data['no_kk'],
+					'kepala_keluarga' => $data['kepala_keluarga'],
+					'nama_ayah' => $data['nama_ayah'],
+					'th_lahir_ayah' => $data['th_lahir_ayah'],
+					'status_ayah' => $data['status_ayah'],
+					'nik_ayah' => $data['nik_ayah'],
+					'pdd_ayah' => $data['pdd_ayah'],
+					'pekerjaan_ayah' => $data['pekerjaan_ayah'],
+					'nama_ibu' => $data['nama_ibu'],
+					'th_lahir_ibu' => $data['th_lahir_ibu'],
+					'status_ibu' => $data['status_ibu'],
+					'nik_ibu' => $data['nik_ibu'],
+					'pdd_ibu' => $data['pdd_ibu'],
+					'pekerjaan_ibu' => $data['pekerjaan_ibu'],
+					'nama_wali' => $data['nama_wali'],
+					'th_lahir_wali' => $data['th_lahir_wali'],
+					'nik_wali' => $data['nik_wali'],
+					'pdd_wali' => $data['pdd_wali'],
+					'pekerjaan_wali' => $data['pekerjaan_wali'],
+					'penghasilan_ayah' => $data['penghasilan_ayah'],
+					'penghasilan_ibu' => $data['penghasilan_ibu'],
+					'penghasilan_wali' => $data['penghasilan_wali'],
+					'no_kks' => $data['no_kks'],
+					'no_pkh' => $data['no_pkh'],
+					'no_kip' => $data['no_kip'],
+					'no_hp_ortu' => $data['no_hp_ortu'],
+					'nama_sekolah' => $data['nama_sekolah'],
+					'jenjang_sekolah' => $data['jenjang_sekolah'],
+					'status_sekolah' => $data['status_sekolah'],
+					'npsn_sekolah' => $data['npsn_sekolah'],
+					'lokasi_sekolah' => $data['lokasi_sekolah'],
+					'komp_ahli' => $data['komp_ahli']
 
 
 
@@ -217,9 +219,9 @@ class Model_admin extends CI_Model
 			case 'siswa':
 				$res = $this->db->like('tgl_siswa', "$thn", 'after')->order_by('id_siswa', 'DESC')->get('tbl_siswa');
 				return (object) array(
-					'bar'	=> $res->row(),
-					'sum'	=> $res->num_rows(),
-					'ori'	=> $res
+					'bar' => $res->row(),
+					'sum' => $res->num_rows(),
+					'ori' => $res
 				);
 				break;
 
@@ -283,7 +285,7 @@ class Model_admin extends CI_Model
 			case 'announce-edited':
 				$data = (object) $data;
 				$data = array(
-					'ket_pengumuman'	=> $data->post('ket_pengumuman')
+					'ket_pengumuman' => $data->post('ket_pengumuman')
 				);
 				$this->db->update('tbl_pengumuman', $data, array('id_pengumuman' => "1"));
 				break;

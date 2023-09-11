@@ -1,7 +1,7 @@
 <?php
-$cek    = $user;
+$cek = $user;
 $id_user = $cek->id_siswa;
-$nama    = $cek->nama_lengkap;
+$nama = $cek->nama_lengkap;
 $tgl = date('m-Y');
 ?>
 <?php
@@ -28,9 +28,15 @@ $user = $this->db->get('tbl_user')->row_array();
               <div class="panel-body">
                 <h3>
                   <center>
-                    Selamat <b><?php echo $nama; ?></b> <span class="label label-success" style="font-size:20px;">Lulus</span> Seleksi Sebagai Calon Peserta Didik Baru <b><?php echo $user['nama_lengkap']; ?></b>, Silahkan Cetak Surat Pengumuman Sebagai Bukti Lulus Seleksi.
+                    Selamat <b>
+                      <?php echo $nama; ?>
+                    </b> <span class="label label-success" style="font-size:20px;">Lulus</span> Seleksi Sebagai Calon
+                    Peserta Didik Baru <b>
+                      <?php echo $user['nama_lengkap']; ?>
+                    </b>, Silahkan Cetak Surat Pengumuman Sebagai Bukti Lulus Seleksi.
                     <hr>
-                    <a href="panel_siswa/cetak_lulus" class="btn btn-success btn-lg" target="_blank"><i class="icon-printer4"></i> Cetak Bukti Lulus</a>
+                    <a href="panel_siswa/cetak_lulus" class="btn btn-success btn-lg" target="_blank"><i
+                        class="icon-printer4"></i> Cetak Bukti Lulus</a>
                   </center>
                 </h3>
               </div>
@@ -45,9 +51,13 @@ $user = $this->db->get('tbl_user')->row_array();
               <div class="panel-body" style="color:red">
                 <h3>
                   <center>
-                    Mohon Maaf <b><?php echo $nama; ?></b>
+                    Mohon Maaf <b>
+                      <?php echo $nama; ?>
+                    </b>
                     <span class="label label-danger" style="font-size:20px;">Tidak Lulus</span> <br>
-                    Sebagai Calon Peserta Didik Baru <b><?php echo $user['nama_lengkap']; ?></b>.
+                    Sebagai Calon Peserta Didik Baru <b>
+                      <?php echo $user['nama_lengkap']; ?>
+                    </b>.
                   </center>
                   <br>
                 </h3>
@@ -62,7 +72,9 @@ $user = $this->db->get('tbl_user')->row_array();
               </div>
               <div class="panel-body">
                 <h3>
-                  <left>Belum ada pengumuman dari Panitia PPDB Online <?php echo $user['nama_lengkap']; ?></left>
+                  <left>Belum ada pengumuman dari Panitia PPDB Online
+                    <?php echo $user['nama_lengkap']; ?>
+                  </left>
                 </h3>
               </div>
             </div>
@@ -108,25 +120,6 @@ $user = $this->db->get('tbl_user')->row_array();
               </center>
               <!-- /current server load -->
             </div>
-
-            <!-- <div class="col-lg-3">
-              <center>
-                <a href="panel_siswa/rekap_nilai" target="_blank">
-                  <div class="panel bg-blue-400">
-                    <div class="panel-body">
-                      <div class="heading-elements">
-                        <span class="heading-text"></span>
-                      </div>
-                      <h1 class="no-margin">
-                        <i class="icon-printer4" style="font-size:100px;"></i>
-                      </h1>
-                      <br><b>PRINT NILAI RAPOT</b>
-                    </div>
-                  </div>
-                </a>
-              </center>
-            </div> -->
-
             <div class="col-lg-4">
               <center>
                 <a href="files/Panduan_PPDB_Online.pdf">

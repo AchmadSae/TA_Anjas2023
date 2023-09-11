@@ -16,7 +16,9 @@ $soa = $this->db->get('tbl_siswa');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>PPDB Online | <?php echo $user['nama_lengkap']; ?></title>
+    <title>PPDB Online |
+        <?php echo $user['nama_lengkap']; ?>
+    </title>
     <base href="<?php echo base_url(); ?>" />
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
     <!-- Bootstrap Core CSS -->
@@ -117,7 +119,8 @@ $soa = $this->db->get('tbl_siswa');
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="#page-top">
@@ -153,59 +156,65 @@ $soa = $this->db->get('tbl_siswa');
     </nav>
     <!-- Header -->
     <header>
-    <?php
-    if (strtolower($this->uri->segment(1)) == 'logcs') {
-        $this->load->view('web/login');
-    } ?>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <img class="img-responsive" src="img/logo.png" style="margin-top:-15%;margin-bottom:-10px;" width="100">
-                <br><br>
-                <div class="intro-text">
-                    <span class="name shad" style="font-size:35px; line-height: 35px;">
-                        SELAMAT DATANG DI PPDB ONLINE <br> <?php echo $user['nama_lengkap']; ?>
-                    </span>
-                    <br>
-                    <?php if ($web_ppdb->status_ppdb == 'buka') { ?>
-                        <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                            <span class="skills">
-                                <!-- Your text here -->
-                            </span>
-                            <div class="card bg-dark text-white" id="card_news" style="width: 600px; text-align: center;">
-                                <img class="card-img" src="img/News.svg" alt="Card image" width="200">
-                                <div class="card-img-overlay">
-                                    <h1 class="card-title">PPDB DIBUKA</h1>
-                                    <p class="card-text">
-                                        " Mari Menjadi Bagian dari SMPN 01 Bantarkawung, Terpadu Terpercaya dan Berprestasi "
-                                    </p>
-                                    <a href="web/pendaftaran" class="btn btn-success" style="border-radius: 5px;">
+        <?php
+        if (strtolower($this->uri->segment(1)) == 'logcs') {
+            $this->load->view('web/login');
+        } ?>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="img/logo.png" style="margin-top:-15%;margin-bottom:-10px;"
+                        width="100">
+                    <br><br>
+                    <div class="intro-text">
+                        <span class="name shad" style="font-size:35px; line-height: 35px;">
+                            SELAMAT DATANG DI PPDB ONLINE <br>
+                            <?php echo $user['nama_lengkap']; ?>
+                        </span>
+                        <br>
+                        <?php if ($web_ppdb->status_ppdb == 'buka') { ?>
+                            <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                                <span class="skills">
+                                    <!-- Your text here -->
+                                </span>
+                                <div class="card bg-dark text-white" id="card_news"
+                                    style="width: 600px; text-align: center;">
+                                    <img class="card-img" src="img/News.svg" alt="Card image" width="200">
+                                    <div class="card-img-overlay">
+                                        <h1 class="card-title">PPDB DIBUKA</h1>
+                                        <p class="card-text">
+                                            " Mari Menjadi Bagian dari SMPN 01 Bantarkawung, Terpadu Terpercaya dan
+                                            Berprestasi "
+                                        </p>
+                                        <a href="web/pendaftaran" class="btn btn-success" style="border-radius: 5px;">
                                             <i class="fa fa-sign-in"></i>
                                             <?php if ($ceks == '') {
                                                 echo "DAFTAR";
                                             } else {
                                                 echo "Panel";
                                             } ?> SISWA
-                                    </a>&nbsp;&nbsp;
+                                        </a>&nbsp;&nbsp;
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                    <?php } else { ?>
-                        <span class="skills">
-                        </span>
-                        <br>
-
-                        <span>
-                            <a href="javascript:void(0);" class="btn btn-danger btn-lg" style="margin:5px;"><i class="fa fa-file faa-pulse animated"></i> &nbsp;<b>PENDAFTARAN PPDB Online DITUTUP</b></a>
+                        <?php } else { ?>
+                            <span class="skills">
+                            </span>
                             <br>
-                        </span>
-                    <?php } ?>
+
+                            <span>
+                                <a href="javascript:void(0);" class="btn btn-danger btn-lg" style="margin:5px;"><i
+                                        class="fa fa-file faa-pulse animated"></i> &nbsp;<b>PENDAFTARAN PPDB Online
+                                        DITUTUP</b></a>
+                                <br>
+                            </span>
+                        <?php } ?>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
 
     <style>
         table {
@@ -271,34 +280,44 @@ $soa = $this->db->get('tbl_siswa');
     </style>
 
     <!-- About Section -->
-    
-        <section class="success" id="about" style="padding: 30px; border-top: 2px solid #fff;">
-            <div class="container">
-                <div class=" row">
-                    <div class="col-lg-12 text-center">
-                        <h2>Informasi PPDB Online</h2>
-                        <hr style="width: 150px;">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-lg-offset-2" style="text-align:justify; line-height: 22px;">
-                        <p><?php echo $user['nama_lengkap']; ?> menyediakan PPDB secara <i>online</i> diharapkan proses PPDB dapat berjalan cepat
-                            dan bisa dilakukan dimanapun dan kapanpun selama sesi PPDB Online dibuka. Proses pendaftaran calon siswa baru di masa pandemi Covid-19 ini dan terhambat oleh jarak jika datang ke madrasah langsung, bisa mengakses website PPDB Online <?php echo $user['nama_lengkap']; ?>. </p>
-                    </div>
-                    <div class="col-lg-4" style="text-align:justify; line-height: 22px;">
-                        <p>Pengisian form PPDB Online mohon diperhatikan data yang dibutuhkan yang nantinya akan dipakai dalam proses PPDB. Setelah proses pengisian form PPDB secara online berhasil dilakukan, calon siswa akan mendapat bukti daftar dengan nomor pendaftaran dan harus disimpan yang akan digunakan untuk proses selanjutnya.</p>
-                    </div>
+
+    <section class="success" id="about" style="padding: 30px; border-top: 2px solid #fff;">
+        <div class="container">
+            <div class=" row">
+                <div class="col-lg-12 text-center">
+                    <h2>Informasi PPDB Online</h2>
+                    <hr style="width: 150px;">
                 </div>
             </div>
-        </section>
-    <section id="prosedur" style="background: url('img/alur.png'); background-size: cover; background-repeat: no-repeat; background-position: center center;">
-    <div class="container" style="height: 300px;">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <!-- Your content here -->
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2" style="text-align:justify; line-height: 22px;">
+                    <p>
+                        <?php echo $user['nama_lengkap']; ?> menyediakan PPDB secara <i>online</i> diharapkan proses
+                        PPDB dapat berjalan cepat
+                        dan bisa dilakukan dimanapun dan kapanpun selama sesi PPDB Online dibuka. Proses pendaftaran
+                        calon siswa baru di masa pandemi Covid-19 ini dan terhambat oleh jarak jika datang ke madrasah
+                        langsung, bisa mengakses website PPDB Online
+                        <?php echo $user['nama_lengkap']; ?>.
+                    </p>
+                </div>
+                <div class="col-lg-4" style="text-align:justify; line-height: 22px;">
+                    <p>Pengisian form PPDB Online mohon diperhatikan data yang dibutuhkan yang nantinya akan dipakai
+                        dalam proses PPDB. Setelah proses pengisian form PPDB secara online berhasil dilakukan, calon
+                        siswa akan mendapat bukti daftar dengan nomor pendaftaran dan harus disimpan yang akan digunakan
+                        untuk proses selanjutnya.</p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+    <section id="prosedur"
+        style="background: url('img/alur.png'); background-size: cover; background-repeat: no-repeat; background-position: center center;">
+        <div class="container" style="height: 300px;">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <!-- Your content here -->
+                </div>
+            </div>
+        </div>
     </section>
 
 
@@ -334,11 +353,20 @@ $soa = $this->db->get('tbl_siswa');
                 <div class="col-lg-12" style="margin-top:-10px;">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
-                        <h4 align="center">PPDB Online &copy; <?php echo $user['nama_lengkap']; ?><br><?php echo $user['alamat']; ?></h4>
+                        <h4 align="center">PPDB Online &copy;
+                            <?php echo $user['nama_lengkap']; ?><br>
+                            <?php echo $user['alamat']; ?>
+                        </h4>
                         <p align="center" style="font-size: 14px;">
-                            <span><b><i class="fa fa-phone-square">&nbsp;</i> <?php echo $user['telp']; ?></b></span><br>
-                            <span><b><i class="fa fa-envelope">&nbsp;</i> <?php echo $user['email']; ?></b></span><br>
-                            <span><b><i class="fa fa-globe">&nbsp;</i> <?php echo $user['website']; ?></b></span>
+                            <span><b><i class="fa fa-phone-square">&nbsp;</i>
+                                    <?php echo $user['telp']; ?>
+                                </b></span><br>
+                            <span><b><i class="fa fa-envelope">&nbsp;</i>
+                                    <?php echo $user['email']; ?>
+                                </b></span><br>
+                            <span><b><i class="fa fa-globe">&nbsp;</i>
+                                    <?php echo $user['website']; ?>
+                                </b></span>
                         </p>
                     </div>
                 </div>
@@ -351,7 +379,9 @@ $soa = $this->db->get('tbl_siswa');
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        PPDB Online &copy; <?php echo $user['nama_lengkap']; ?> - <?php echo date('Y'); ?>
+                        PPDB Online &copy;
+                        <?php echo $user['nama_lengkap']; ?> -
+                        <?php echo date('Y'); ?>
                     </div>
                 </div>
             </div>
@@ -366,7 +396,9 @@ $soa = $this->db->get('tbl_siswa');
     </div>
 
     <!-- jQuery -->
+
     <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/jquery/datatables.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -381,7 +413,7 @@ $soa = $this->db->get('tbl_siswa');
     <!-- Theme JavaScript -->
     <script src="assets/js/freelancer.min.js"></script>
     <script>
-        $(function() {
+        $(function () {
             $("#example1").DataTable();
             $('#example2').DataTable({
                 "paging": true,

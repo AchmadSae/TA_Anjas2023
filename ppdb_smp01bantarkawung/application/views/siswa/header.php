@@ -1,10 +1,10 @@
 <?php
 date_default_timezone_set('Asia/Jakarta');
-$cek    = $user;
-$nama   = $cek->nama_lengkap;
-$email  = '';
-$level  = 'Calon Siswa';
-$menu 		= strtolower($this->uri->segment(1));
+$cek = $user;
+$nama = $cek->nama_lengkap;
+$email = '';
+$level = 'Calon Siswa';
+$menu = strtolower($this->uri->segment(1));
 $sub_menu = strtolower($this->uri->segment(2));
 $sub_menu3 = strtolower($this->uri->segment(3));
 ?>
@@ -17,7 +17,9 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<base href="<?php echo base_url(); ?>" />
-	<title><?php echo $judul_web; ?> | PPDB Online</title>
+	<title>
+		<?php echo $judul_web; ?> | PPDB Online
+	</title>
 	<link rel="icon" type="image/png" href="img/logo.png">
 	<!-- Global stylesheets -->
 	<!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css"> -->
@@ -46,7 +48,7 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 		<script type="text/javascript" src="assets/panel/js/core/app.js"></script>
 		<!-- <script type="text/javascript" src="assets/panel/js/pages/dashboard.js"></script> -->
 		<!-- /theme JS files -->
-	<?php
+		<?php
 	} ?>
 	<script src="assets/panel/js/select2.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="assets/panel/css/sweetalert.css">
@@ -54,8 +56,8 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 </head>
 
 <body class="navbar-bottom <?php if ($menu == 'panel_siswa' and $sub_menu == 'biodata') {
-								echo 'sidebar-xs';
-							} ?>">
+	echo 'sidebar-xs';
+} ?>">
 
 	<!-- Main navbar -->
 	<div class="navbar navbar-inverse">
@@ -70,19 +72,24 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 
 		<div class="navbar-collapse collapse" id="navbar-mobile">
 			<ul class="nav navbar-nav">
-				<li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a></li>
+				<li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a>
+				</li>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown dropdown-user">
 					<a class="dropdown-toggle" data-toggle="dropdown">
 						<img src="img/logo.png" alt="foto">
-						<span><?php echo ucwords($nama); ?></span>
+						<span>
+							<?php echo ucwords($nama); ?>
+						</span>
 						<i class="caret"></i>
 					</a>
 
 					<ul class="dropdown-menu dropdown-menu-right">
 						<li><a href="panel_siswa/biodata"><i class="icon-user"></i> Biodata</a></li>
+						<li class="divider"></li>
+						<li><a href="panel_siswa/berkas"><i class="fa fa-file-pdf-o"></i> Berkas</a></li>
 						<li class="divider"></li>
 						<li><a href="panel_siswa/logout"><i class="icon-switch2"></i> Keluar</a></li>
 					</ul>
@@ -115,12 +122,17 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 						</div>
 						<div class="category-content sidebar-user">
 							<div class="media">
-								<a href="panel_siswa/biodata" class="media-left"><img src="img/logo.png" class="img-flat img-sm" alt="foto"></a>
+								<a href="panel_siswa/biodata" class="media-left"><img src="img/logo.png"
+										class="img-flat img-sm" alt="foto"></a>
 								<div class="media-body">
 									<div class="text-size-mini text-muted">
-										<i class="icon-user text-size-small"></i> &nbsp;<b><?php echo $level; ?></b>
+										<i class="icon-user text-size-small"></i> &nbsp;<b>
+											<?php echo $level; ?>
+										</b>
 									</div>
-									<span class="media-heading text-semibold"><?php echo ucwords($nama); ?></span>
+									<span class="media-heading text-semibold">
+										<?php echo ucwords($nama); ?>
+									</span>
 								</div>
 							</div>
 						</div>
@@ -128,26 +140,34 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 							<ul class="navigation navigation-main navigation-accordion">
 
 								<!-- Main -->
-								<li class="navigation-header"><span><b>Utama</b></span> <i class="icon-menu" title="Main pages"></i></li>
+								<li class="navigation-header"><span><b>Utama</b></span> <i class="icon-menu"
+										title="Main pages"></i></li>
 								<li class="<?php if ($menu == 'panel_siswa' and $sub_menu == '') {
-												echo 'active';
-											} ?>"><a href="panel_siswa"><i class="icon-home4"></i> <span><b>HOME</b></span></a></li>
+									echo 'active';
+								} ?>"><a href="panel_siswa"><i class="icon-home4"></i> <span><b>HOME</b></span></a></li>
 								<li class="<?php if ($menu == 'panel_siswa' and $sub_menu == 'pengumuman') {
-												echo 'active';
-											} ?>"><a href="panel_siswa/pengumuman"><i class="glyphicon glyphicon-bullhorn"></i> <span><b>PENGUMUMAN</b></span></a></li>
+									echo 'active';
+								} ?>"><a href="panel_siswa/pengumuman"><i class="glyphicon glyphicon-bullhorn"></i>
+										<span><b>PENGUMUMAN</b></span></a></li>
 								<li class="<?php if ($menu == 'panel_siswa' and $sub_menu == 'biodata') {
-												echo 'active';
-											} ?>"><a href="panel_siswa/biodata"><i class="icon-file-check2"></i> <span><b>BIODATA</b></span></a></li>
+									echo 'active';
+								} ?>"><a href="panel_siswa/biodata"><i class="icon-file-check2"></i> <span><b>BIODATA</b></span></a></li>
+								<li class="<?php if ($menu == 'panel_siswa' and $sub_menu == 'berkas') {
+									echo 'active';
+								} ?>"><a href="panel_siswa/berkas"><i class="icon-file-check2"></i> <span><b>BERKAS</b></span></a></li>
 
-								<li><a href="panel_siswa/cetak" target="_blank"><i class="icon-printer2"></i> <span><b>PRINT PENDAFTARAN</b></span></a></li>
+								<li><a href="panel_siswa/cetak" target="_blank"><i class="icon-printer2"></i>
+										<span><b>PRINT PENDAFTARAN</b></span></a></li>
 								<!--<li><a href="panel_siswa/rekap_nilai" target="_blank"><i class="icon-printer4"></i> <span>Rekap Nilai</span></a></li>-->
 
 								<!-- /Main -->
 
 								<!-- Data Lainnya -->
-								<li class="navigation-header"><span><b>Lainnya</b></span> <i class="icon-menu" title="Data visualization"></i></li>
+								<li class="navigation-header"><span><b>Lainnya</b></span> <i class="icon-menu"
+										title="Data visualization"></i></li>
 								<!--<li><a href="files/Panduan_PPDB_Online_SMAN1_Belitang.pdf"><i class="icon-file-download2"></i> <span>Download Panduan</span></a></li>-->
-								<li><a href="panel_siswa/logout"><i class="icon-switch2"></i> <span><b>KELUAR</b></span></a></li>
+								<li><a href="panel_siswa/logout"><i class="icon-switch2"></i>
+										<span><b>KELUAR</b></span></a></li>
 								<!-- /Data Lainnya -->
 
 							</ul>

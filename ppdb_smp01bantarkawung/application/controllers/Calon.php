@@ -1,4 +1,5 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH'))
+  exit('No direct script access allowed');
 
 class Calon extends CI_Controller
 {
@@ -29,7 +30,8 @@ class Calon extends CI_Controller
     $sql_filter = $this->Calon_Model->count_filter($search); // Panggil fungsi count_filter pada SiswaModel
 
     $callback = array(
-      'draw' => $_POST['draw'], // Ini dari datatablenya
+      'draw' => $_POST['draw'],
+      // Ini dari datatablenya
       'recordsTotal' => $sql_total,
       'recordsFiltered' => $sql_filter,
       'data' => $sql_data
