@@ -64,6 +64,7 @@ class Panel_siswa extends CI_Controller
 				'user' => $this->siswa->base_berkas($sess),
 				'judul_web' => "BERKAS"
 			);
+			var_dump($data);
 			$this->load->view('siswa/header', $data);
 			$this->load->view('siswa/berkas', $data);
 			$this->load->view('siswa/footer');
@@ -80,7 +81,7 @@ class Panel_siswa extends CI_Controller
 				$newFileName1 = $no_pendaftaran . '_raport.' . $extension1; // Menggunakan no_pendaftaran sebagai nama file
 
 				$config['upload_path'] = FCPATH . 'public/files/skhun';
-				$config['allowed_types'] = 'jpg|jpeg|png';
+				$config['allowed_types'] = 'jpg|jpeg|png|pdf';
 				$config['max_size'] = 2048;
 				$config['file_name'] = $newFileName; // Menggunakan 'file_name' untuk nama file skhun
 				$this->upload->initialize($config);
@@ -135,7 +136,7 @@ class Panel_siswa extends CI_Controller
 				$newFileName1 = $no_pendaftaran . '_akte.' . $extension1; // Menggunakan no_pendaftaran sebagai nama file
 
 				$config['upload_path'] = FCPATH . 'public/files/keluarga';
-				$config['allowed_types'] = 'jpg|jpeg|png';
+				$config['allowed_types'] = 'jpg|jpeg|png|pdf';
 				$config['max_size'] = 2048;
 				$config['file_name'] = $newFileName; // Menggunakan 'file_name' untuk nama file skhun
 				$this->upload->initialize($config);
@@ -167,15 +168,15 @@ class Panel_siswa extends CI_Controller
 
 
 				$data = array(
-					'no_kk' => $this->session->userdata('no_kk'),
+					'no_kk' => $this->input->post('no_kk'),
 					'no_pendaftaran' => $this->session->userdata('no_pendaftaran'),
 					'nama_siswa' => $this->input->post('nama_siswa'),
-					'file_akte' => $dataBerkasKK,
-					'file_raport' => $dataBerkasRaport
+					'file_kk' => $dataBerkasKK,
+					'file_akte' => $dataBerkasAkte
 				);
 
 				var_dump("sukses upload");
-				$acts = $this->siswa->upload_berkas('prestasi', $data);
+				$acts = $this->siswa->upload_berkas('keluarga', $data);
 				redirect('panel_siswa/berkas');
 			} elseif (isset($_POST['btnPrestasi'])) {
 				// set name
@@ -184,13 +185,13 @@ class Panel_siswa extends CI_Controller
 				$extension = pathinfo($originalFileName, PATHINFO_EXTENSION);
 				$newFileName = $no_pendaftaran . '_sertifikat.' . $extension; // Menggunakan no_pendaftaran sebagai nama file
 
-				$config['upload_path'] = FCPATH . 'public/files/keluarga';
-				$config['allowed_types'] = 'jpg|jpeg|png';
+				$config['upload_path'] = FCPATH . 'public/files/prestasi';
+				$config['allowed_types'] = 'jpg|jpeg|png|pdf';
 				$config['max_size'] = 2048;
 				$config['file_name'] = $newFileName; // Menggunakan 'file_name' untuk nama file skhun
 				$this->upload->initialize($config);
 
-				if ($this->upload->do_upload('file_kk')) {
+				if ($this->upload->do_upload('file_sertifikat')) {
 					$dataBerkasSertifikat = $newFileName;
 					// Setelah berkas berhasil diunggah, ubah nama berkas di direktori
 					$oldFilePath = $config['upload_path'] . $originalFileName;
@@ -198,14 +199,14 @@ class Panel_siswa extends CI_Controller
 					rename($oldFilePath, $newFilePath);
 				} else {
 					$error = $this->upload->display_errors();
-					echo $error . "gagal kk";
+					echo $error . "gagal file prestasi";
 				}
 
 				$data = array(
 					'no_pendaftaran' => $this->session->userdata('no_pendaftaran'),
-					'tingkat' => $this->session->userdata('tingkat'),
+					'tingkat' => $this->input->post('tingkat'),
 					'prestasi' => $this->input->post('prestasi'),
-					'file_akte' => $dataBerkasSertifikat
+					'file_sertifikat' => $dataBerkasSertifikat
 				);
 
 				var_dump("sukses upload");
@@ -214,152 +215,6 @@ class Panel_siswa extends CI_Controller
 			}
 		}
 	}
-
-	public function berkas_skhun()
-	{
-		var_dump("sukses akses");
-		if ($this->session->userdata('no_pendaftaran') == NULL) {
-			redirect('logcs');
-		}
-
-	}
-	public function berkas_keluarga()
-	{
-		if ($this->session->userdata('no_pendaftaran') == NULL) {
-			redirect('logcs');
-		}
-		if (isset($_POST['btnKeluarga'])) {
-
-
-			if (
-				!$this->from_validation->run([
-					'no_kk' => [
-						'rules' => 'required',
-						'errors' => [
-							'required' => '{field} Tidak boleh kosong'
-						]
-					],
-					'no_pendaftaran' => [
-						'rules' => 'required',
-						'errors' => [
-							'required' => '{field} Tidak boleh kosong'
-						]
-					],
-					'file_kk' => [
-						'rules' => 'uploaded[berkas]|mime_in[berkas,image/jpg,image/jpeg,image/gif,image/png, image/pdf]|max_size[berkas,2048]',
-						'errors' => [
-							'uploaded' => 'Harus Ada File yang diupload',
-							'mime_in' => 'File Extention Harus Berupa jpg,jpeg,gif,png',
-							'max_size' => 'Ukuran File Maksimal 2 MB'
-						]
-
-					],
-					'file_akte' => [
-						'rules' => 'uploaded[berkas]|mime_in[berkas,image/jpg,image/jpeg,image/gif,image/png, image/pdf]|max_size[berkas,2048]',
-						'errors' => [
-							'uploaded' => 'Harus Ada File yang diupload',
-							'mime_in' => 'File Extention Harus Berupa jpg,jpeg,gif,png',
-							'max_size' => 'Ukuran File Maksimal 2 MB'
-						]
-
-					]
-				])
-			) {
-				session()->setFlashdata('error', $this->validator->listErrors());
-				return redirect()->back()->withInput();
-			}
-
-			$dataBerkasKK = $this->session->post('file_KK');
-			$dataBerkasAkte = $this->session->post('file_akte');
-
-			$fileNameKK = $dataBerkasKK->getRandomName();
-			$fileNameAkte = $dataBerkasAkte->getRandomName();
-
-
-			$data = array(
-				'no_pendaftaran' => $this->session->userdata('no_pendaftaran'),
-				'no_kk' => $this->input->post('no_kk'),
-				'nama_siswa' => $this->input->post('nama_siswa'),
-				'file_kk' => $fileNameKK,
-				'file_akte' => $fileNameAkte,
-			);
-			$dataBerkasKK->move('assets/berkas/siswa/', $fileNameKK);
-			$dataBerkasAkte->move('assets/berkas/siswa/', $fileNameAkte);
-
-			session()->setFlashdata('success', 'Berkas Berhasil diupload');
-
-			$acts = $this->siswa->upload_berkas('keluarga', $data);
-			redirect('panel_siswa/berkas');
-		}
-	}
-
-
-
-
-	public function berkas_prestasi()
-	{
-		$sess = $this->session->userdata('id_admin');
-		if ($sess == NULL) {
-			redirect('panel_admin/log_in');
-		}
-
-		if (isset($_POST['btnupdate'])) {
-			if (
-				!$this->validate([
-					'no_pendaftaran' => [
-						'rules' => 'required',
-						'errors' => [
-							'required' => '{field} Tidak boleh kosong'
-						]
-					],
-					'prestasi' => [
-						'rules' => 'required',
-						'errors' => [
-							'required' => '{field} Tidak boleh kosong'
-						]
-					],
-					'tingkat' => [
-						'rules' => 'required',
-						'errors' => [
-							'required' => '{field} Tidak boleh kosong'
-						]
-					],
-					'file_sertifikat' => [
-						'rules' => 'uploaded[berkas]|mime_in[berkas,image/jpg,image/jpeg,image/gif,image/png, image/pdf]|max_size[berkas,2048]',
-						'errors' => [
-							'uploaded' => 'Harus Ada File yang diupload',
-							'mime_in' => 'File Extention Harus Berupa jpg,jpeg,gif,png',
-							'max_size' => 'Ukuran File Maksimal 2 MB'
-						]
-
-					]
-				])
-			) {
-				session()->setFlashdata('error', $this->validator->listErrors());
-				return redirect()->back()->withInput();
-			}
-
-			$dataBerkasSertifikat = $this->session->post('file_sertifikat');
-
-			$fileNameSertifikat = $dataBerkasSertifikat->getRandomName();
-
-
-			$data = array(
-				'no_pendaftaran' => $this->session->userdata('no_pendaftaran'),
-				'tingkat' => $this->input->post('no_skhun'),
-				'prestasi' => $this->input->post('prestasi'),
-				'file_skhun' => $fileNameSertifikat
-			);
-			$dataBerkasSertifikat->move('assets/berkas/siswa/', $fileNameSertifikat);
-
-			session()->setFlashdata('success', 'Berkas Berhasil diupload');
-
-			$acts = $this->siswa->upload_berkas('prestasi', $data);
-			redirect('panel_siswa/berkas');
-		}
-
-	}
-
 
 	public function cetak()
 	{

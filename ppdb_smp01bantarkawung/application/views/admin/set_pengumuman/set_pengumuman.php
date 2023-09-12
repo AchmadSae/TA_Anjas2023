@@ -26,8 +26,9 @@
               <select class="form-control" name="thn" onchange="thn()">
                 <?php for ($i = date('Y'); $i >= 2020; $i--) { ?>
                   <option value="<?php echo $i; ?>" <?php if ($v_thn == $i) {
-                                                      echo "selected";
-                                                    } ?>>Tahun <?php echo $i; ?></option>
+                       echo "selected";
+                     } ?>>Tahun <?php echo $i; ?>
+                  </option>
                 <?php } ?>
               </select>
             </div>
@@ -44,7 +45,7 @@
                 <th>NIK</th>
                 <th>Nama Lengkap</th>
                 <th>Status Lulus</th>
-                <th class="text-center" width="220">Aksi</th>
+                <!-- <th class="text-center" width="220">Aksi</th> -->
               </tr>
             </thead>
             <tbody>
@@ -52,11 +53,21 @@
               $no = 1;
               foreach ($v_siswa->result() as $baris) { ?>
                 <tr>
-                  <td><?php echo $no++; ?></td>
-                  <td><?php echo $baris->no_pendaftaran; ?></td>
-                  <td><?php echo $baris->nisn; ?></td>
-                  <td><?php echo $baris->nik; ?></td>
-                  <td><?php echo $baris->nama_lengkap; ?></td>
+                  <td>
+                    <?php echo $no++; ?>
+                  </td>
+                  <td>
+                    <?php echo $baris->no_pendaftaran; ?>
+                  </td>
+                  <td>
+                    <?php echo $baris->nisn; ?>
+                  </td>
+                  <td>
+                    <?php echo $baris->nik; ?>
+                  </td>
+                  <td>
+                    <?php echo $baris->nama_lengkap; ?>
+                  </td>
                   <td align="center">
                     <?php if ($baris->status_pendaftaran == 'lulus') { ?>
                       <label class="label label-success">Lulus</label>
@@ -66,16 +77,16 @@
                       <label class="label label-warning">Proses</label>
                     <?php } ?>
                   </td>
-                  <td align="center">
+                  <!-- <td align="center">
                     <?php if ($baris->status_pendaftaran == '') { ?>
                       <a href="panel_admin/set_pengumuman/tdk_lulus/<?php echo $baris->no_pendaftaran; ?>" class="btn btn-warning btn-xs" title="Tidak Lulus" onclick="return confirm('Apakah Anda yakin?')"><i class="icon-cross3"></i> Tidak Lulus</a>
                       <a href="panel_admin/set_pengumuman/lulus/<?php echo $baris->no_pendaftaran; ?>" class="btn btn-success btn-xs" title="Lulus" onclick="return confirm('Apakah Anda yakin?')"><i class="icon-checkmark4"></i> Lulus</a>
                     <?php } else { ?>
                       <a href="panel_admin/set_pengumuman/batal/<?php echo $baris->no_pendaftaran; ?>" class="btn btn-danger btn-xs" title="Batalkan" onclick="return confirm('Apakah Anda yakin?')"><i class="icon-cross3"></i> Batal</a>
                     <?php } ?>
-                  </td>
+                  </td> -->
                 </tr>
-              <?php
+                <?php
               } ?>
             </tbody>
           </table>

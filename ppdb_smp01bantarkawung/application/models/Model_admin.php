@@ -217,7 +217,16 @@ class Model_admin extends CI_Model
 	{
 		switch ($menu) {
 			case 'siswa':
-				$res = $this->db->like('tgl_siswa', "$thn", 'after')->order_by('id_siswa', 'DESC')->get('tbl_siswa');
+				$this->db->select('tbl_siswa.*, tbl_skhun.file_skhun, tbl_keluarga.file_kk, tbl_keluarga.file_akte, tbl_prestasi.file_sertifikat');
+				$this->db->from('tbl_siswa');
+				$this->db->join('tbl_skhun', 'tbl_siswa.no_pendaftaran = tbl_skhun.no_pendaftaran', 'left');
+				$this->db->join('tbl_keluarga', 'tbl_siswa.no_pendaftaran = tbl_keluarga.no_pendaftaran', 'left');
+				$this->db->join('tbl_prestasi', 'tbl_siswa.no_pendaftaran = tbl_prestasi.no_pendaftaran', 'left');
+				$this->db->like('tgl_siswa', $thn, 'after');
+				$this->db->order_by('id_siswa', 'DESC');
+
+				$res = $this->db->get();
+
 				return (object) array(
 					'bar' => $res->row(),
 					'sum' => $res->num_rows(),
@@ -294,5 +303,84 @@ class Model_admin extends CI_Model
 				# code...
 				break;
 		}
+	}
+
+	public function smart_cal()
+	{
+		// Initialize the results array
+		$results = [];
+
+		try {
+			// Select the required columns from tbl_siswa and join with tbl_prestasi
+			$this->db->select('tbl_siswa.no_pendaftaran,tbl_siswa.penghasilan_ayah, tbl_siswa.penghasilan_ibu, tbl_siswa.jarak, tbl_siswa.rata_skhun, tbl_siswa.rata_raport, tbl_prestasi.tingkat');
+			$this->db->from('tbl_siswa');
+			$this->db->join('tbl_prestasi', 'tbl_siswa.no_pendaftaran = tbl_prestasi.no_pendaftaran', 'left');
+			$this->db->order_by('tbl_siswa.no_pendaftaran');
+
+			// $res_cek_smart = $this - db->get('Select * From tbl_smart');
+			// Get the data as an array
+			$query = $this->db->get();
+			$data = $query->result_array();
+
+			if ($query === false) {
+				// Query failed, handle the error
+				throw new Exception('Database query failed.');
+			}
+			// Perform calculations and store results in an array
+			foreach ($data as $row) {
+				$this->db->where('no_pendaftaran', $row['no_pendaftaran']);
+				$existingResult = $this->db->get('tbl_smart')->row();
+				if (!$existingResult) {
+					$dataToInsert = [
+						'no_pendaftaran' => $row['no_pendaftaran'],
+						'smartRank' => $cekTotal,
+						'isLulus' => $isLulus,
+					];
+					$this->db->insert('tbl_smart', $dataToInsert);
+
+
+					// Calculate the normalized criteria values for the current row
+					$kriteria1Normalized = (($row['penghasilan_ayah'] + $row['penghasilan_ibu']) / 2) * (40 / 100);
+					$kriteria2Normalized = $row['jarak'] * (30 / 100);
+					$kriteria3Normalized = (($row['rata_skhun'] + $row['rata_raport']) / 2) * (20 / 100);
+					$kriteria4Normalized = $row['tingkat'] * (10 / 100);
+
+					// Calculate the total sum of normalized criteria values for the current row
+					$totalSum = $kriteria1Normalized + $kriteria2Normalized + $kriteria3Normalized + $kriteria4Normalized;
+					$cekTotal = floor($totalSum);
+					if ($cekTotal <= 50) {
+						$this->set_announce('tdk_lulus', $row['no_pendaftaran']);
+						$isLulus = 0;
+					} else {
+						$isLulus = 1;
+						$this->set_announce('lulus', $row['no_pendaftaran']);
+					}
+					// Insert the totalSum into the 'smart' table based on no_pendaftaran
+					$results[] = [
+						'no_pendaftaran' => $row['no_pendaftaran'],
+						'smartRank' => $cekTotal,
+						'isLulus' => $isLulus
+					];
+				} else {
+					echo "Result already exists for " . $row['no_pendaftaran'] . "<br>";
+				}
+			}
+
+			foreach ($results as $result) {
+				$this->insert_smart_rank($result);
+			}
+
+			return $results;
+
+		} catch (Exception $e) {
+			// Handle the exception, log the error, or return an error message
+			echo "error smart";
+			return ['error' => $e->getMessage()];
+		}
+	}
+
+	public function insert_smart_rank($data)
+	{
+		$this->db->insert('tbl_smart', $data);
 	}
 }

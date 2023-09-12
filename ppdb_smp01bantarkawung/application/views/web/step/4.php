@@ -114,7 +114,7 @@
           data-parsley-group="block3" data-parsley-errors-container='div[id="error-penghasilan_ayah"]' required>
           <option value="">Pilih Penghasilan Ayah</option>
           <?php foreach ($v_penghasilan as $baris): ?>
-            <option value="<?php echo $baris->nama_penghasilan; ?>"><?php echo $baris->nama_penghasilan; ?></option>
+            <option value="<?php echo $baris->nilai_penghasilan; ?>"><?php echo $baris->nama_penghasilan; ?></option>
           <?php endforeach; ?>
         </select>
         <div id="error-penghasilan_ayah"

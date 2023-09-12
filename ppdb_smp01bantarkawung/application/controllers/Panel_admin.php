@@ -17,6 +17,7 @@ class Panel_admin extends CI_Controller
 				'v_thn' => date('Y'),
 			);
 
+
 			$thn = date('Y');
 			foreach ($this->Model_data->statistik($thn)->result_array() as $row) {
 				$data['grafik'][] = (float) $row['Januari'];
@@ -46,6 +47,11 @@ class Panel_admin extends CI_Controller
 				$acts = $this->admin->ppdb_status('buka', date('Y-m-d H:i:s'));
 				redirect('panel_admin');
 			}
+			if (isset($_POST['btnStartVerifSmart'])) {
+				$result = $this->admin->smart_cal();
+				redirect('panel_admin');
+			}
+
 		}
 	}
 
@@ -299,7 +305,52 @@ class Panel_admin extends CI_Controller
 			}
 		}
 	}
+	public function laporan($aksi = '', $id = '')
+	{
+		$sess = $this->session->userdata('id_admin');
+		if ($sess == NULL) {
+			redirect('panel_admin/log_in');
+		} else {
+			switch ($aksi) {
+				case 'lulus':
+					$cek_status = $this->siswa->base_biodata($id);
+					$data = array(
+						'id' => $id,
+						'status_verifikasi' => ($cek_status->status_verifikasi == 1) ? 0 : 1
+					);
+					$acts = $this->admin->update('change-stu-verif', $data);
+					redirect('panel_admin/verifikasi');
+					break;
+				case 'tdk_lulus':
+					$cek_status = $this->siswa->base_biodata($id);
+					$data = array(
+						'id' => $id,
+						'status_verifikasi' => ($cek_status->status_verifikasi == 1) ? 0 : 1
+					);
+					$acts = $this->admin->update('change-stu-verif', $data);
+					redirect('panel_admin/verifikasi');
+					break;
+				case 'thn':
+					$thn = $id;
+					break;
 
+				default:
+					$thn = date('Y');
+					break;
+			}
+
+			$data = array(
+				'user' => $this->admin->base('bio', $this->session->userdata('id_admin')),
+				'judul_web' => "VERIFIKASI",
+				'v_siswa' => $this->admin->verifikasi('siswa', $thn)->ori,
+				'v_thn' => $thn
+			);
+
+			$this->load->view('admin/header', $data);
+			$this->load->view('admin/laporan', $data);
+			$this->load->view('admin/footer');
+		}
+	}
 	public function verifikasi($aksi = '', $id = '')
 	{
 		$sess = $this->session->userdata('id_admin');
@@ -308,13 +359,13 @@ class Panel_admin extends CI_Controller
 		} else {
 			switch ($aksi) {
 				case 'cek':
-					$cek_status = $this->siswa->base_biodata($id);
 					$data = array(
-						'id' => $id,
-						'status_verifikasi' => ($cek_status->status_verifikasi == 1) ? 0 : 1
+						'user' => $this->siswa->base_biodata($id),
+						'judul_web' => "CETAK_VERIFIKASI_" . ucwords($this->siswa->base_biodata($id)->no_pendaftaran),
+						'thn_ppdb' => date('Y', strtotime($this->siswa->base_biodata($id)->tgl_siswa)),
+						'v_materi' => $this->admin->verifikasi('materi')
 					);
-					$acts = $this->admin->update('change-stu-verif', $data);
-					redirect('panel_admin/verifikasi');
+					$this->load->view('admin/verifikasi/cetak', $data);
 					break;
 
 				case 'thn':

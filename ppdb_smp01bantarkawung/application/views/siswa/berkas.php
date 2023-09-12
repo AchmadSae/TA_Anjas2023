@@ -12,6 +12,18 @@
   #th_center>th {
     text-align: center;
   }
+
+  #containerBtnUpload {
+    background-color: #C5DFF8;
+    transition: background-color 0.3s ease;
+    /* Add smooth transition effect */
+
+  }
+
+  #containerBtnUpload:hover {
+    background-color: #7895CB;
+    /* Change to your desired hover color */
+  }
 </style>
 
 <?php
@@ -59,83 +71,97 @@ $user = $user; ?>
   </div>
 </div>
 <!-- Modal Keluarga-->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="modal_keluarga"
+<div class="modal fade" id="modal_keluarga" tabindex="-1" role="dialog" aria-labelledby="#modal_keluarga"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Upload Berkas Keluarga</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Upload Berkas Berkas Keluarga</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
+        <fieldset class="content-group">
+          <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+            <div class="mb-3 form-group">
+              <label for="file_kk" class="form-label">Berkas Kartu Keluarga</label>
+              <input type="file" class="form-control" id="file_kk" name="file_kk">
+            </div>
+            <div class="mb-3 form-group">
+              <label for="file_akte" class="form-label">Berkas Akte Kelahiran</label>
+              <input type="file" class="form-control" id="file_akte" name="file_akte">
+            </div>
+            <div class="mb-3 form-group">
+              <label for="no_kk" class="form-label">Nomor Kartu Keluarga</label>
+              <input class="form-control" type="text" placeholder="Nomor Kartu keluarga" name="no_kk"
+                value="<?php echo ucwords($user->no_kk); ?>">
+              <input class="form-control d-none" value="<?php echo $user->no_pendaftaran; ?>" type="text"
+                name="no_pendaftaran">
+              <input class="form-control d-none" type="text" value="<?php echo $user->nama_lengkap; ?>"
+                name="nama_siswa">
 
-        <form method="post" action="<?= base_url(); ?>/berkas/save" enctype="multipart/form-data">
-
-
-          <div class="mb-3">
-            <label for="fike_kk" class="form-label">Berkas Kartu Keluarga</label>
-            <input type="file" class="form-control" id="file_kk" name="file_kk">
-          </div>
-          <div class="mb-3">
-            <label for="file_akte" class="form-label">Berkas Akte</label>
-            <input type="file" class="form-control" id="file_akte" name="file_akte">
-            <input class="form-control d-none" value="" type="text" name="no_pendaftaran">
-            <input class="form-control" type="text" value="" name="nama_siswa">
-            <input class="form-control" type="text" value="" name="no_kk">
-
-          </div>
-
-          <div class="mb-3">
-            <input type="submit" class="btn btn-info" value="Upload" />
-          </div>
-        </form>
+            </div>
+            <div class="mb-3 mt-3">
+              <input type="submit" class="btn btn-info" value="Upload" name="btnKeluarga" />
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </form>
+        </fieldset>
       </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Save changes</button>
     </div>
   </div>
 </div>
 <!-- Modal Prestasi-->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="modal_prestasi"
+<div class="modal fade" id="modal_prestasi" tabindex="-1" role="dialog" aria-labelledby="#modal_prestasi"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Upload Prestasi</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Upload Berkas Prestasi/Lomba</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
+        <fieldset class="content-group">
+          <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+            <div class="mb-3 form-group">
+              <label for="file_sertifikat" class="form-label">File Sertifikat</label>
+              <input type="file" class="form-control" id="file_sertifikat" name="file_sertifikat">
+            </div>
+            <div class="mb-3 form-group">
 
-        <form method="post" action="<?= base_url(); ?>/berkas/save" enctype="multipart/form-data">
 
-          <div class="mb-3">
-            <label for="file_sertifikat" class="form-label">Berkas Sertifikat</label>
-            <input type="file" class="form-control" id="file_sertifikat" name="file_sertifikat">
-          </div>
-          <div class="mb-3">
-            <label for="prestasi" class="form-label">Nama Kejuaraan</label>
-            <input class="form-control" type="text" placeholder="Nama prestasi yang dicapai" name="prestasi">
-          </div>
-          <div class="mb-3">
-            <label for="tingkat" class="form-label">SKHUN</label>
-            <input class="form-control" type="text" placeholder="tingkat kejuaraan berdasarkan wilayah" name="tingkat">
-            <input class="form-control d-none" value="" type="text" name="no_pendaftaran">
-          </div>
-          <div class="mb-3">
-            <input type="submit" class="btn btn-info" value="Upload" />
-          </div>
-        </form>
+              <label for="prestasi" class="form-label">Nama Prestasi</label>
+              <input class="form-control mb-3" type="text" placeholder="Nama Prestasi" name="prestasi">
+
+              <div class="col-sm-12" style="margin-top:3px;">
+                <select class="form-control bg-blue class" placeholder="Tingkat kejuaraan wilayah" name="tingkat"
+                  data-parsley-group="block4" data-parsley-errors-container='div[id="error-lokasi_sekolah"]'>
+                  <option value="">Pilih Tingkat Area Kejuaraan</option>
+                  <option value="20">Dalam Desa</option>
+                  <option value="40">Dalam Kecamatan</option>
+                  <option value="60">Dalam Kabupaten</option>
+                  <option value="80">Dalam Provinsi</option>
+                  <option value="100">Dalam Negeri</option>
+                </select>
+                <div id="error-lokasi_sekolah"
+                  style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
+              </div>
+              <input class="form-control d-none" value="<?php echo $user->no_pendaftaran; ?>" type="text"
+                name="no_pendaftaran" style="display:none">
+              <input class="form-control d-none" type="text" value="<?php echo $user->nama_lengkap; ?>"
+                name="nama_siswa" style="display:none">
+
+            </div>
+            <div class="mb-3 mt-3">
+              <input type="submit" class="btn btn-info" value="Upload" name="btnPrestasi" />
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </form>
+        </fieldset>
       </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Save changes</button>
     </div>
   </div>
 </div>
@@ -152,7 +178,7 @@ $user = $user; ?>
         <!-- Current server load -->
         <center>
           <a data-toggle="modal" data-target="#modal_skhun">
-            <div class="panel bg-green">
+            <div id="containerBtnUpload" class="panel bg-green">
               <div class="panel-body">
                 <div class="heading-elements">
                   <span class="heading-text"></span>
@@ -172,8 +198,8 @@ $user = $user; ?>
       <div class="col-lg-3">
         <!-- Current server load -->
         <center>
-          <a data-toggle="modal" data-target="modal_keluarga">
-            <div class="panel bg-teal-400">
+          <a data-toggle="modal" data-target="#modal_keluarga">
+            <div id="containerBtnUpload" class="panel bg-teal-300">
               <div class="panel-body">
                 <div class="heading-elements">
                   <span class="heading-text"></span>
@@ -190,8 +216,8 @@ $user = $user; ?>
       </div>
       <div class="col-lg-3">
         <center>
-          <a data-toggle="modal" data-target="modal_prestasi">
-            <div class="panel bg-orange-400">
+          <a data-toggle="modal" data-target="#modal_prestasi">
+            <div id="containerBtnUpload" class="panel bg-orange-300">
               <div class="panel-body">
                 <div class="heading-elements">
                   <span class="heading-text"></span>
@@ -249,8 +275,8 @@ $user = $user; ?>
                     <th>SKHUN</th>
                     <th>:</th>
                     <td>
-                      <?php if ($user->no_skhun == null) {
-                        echo 'upload berkas terlebih dahulu';
+                      <?php if (!isset($user->no_skhun) || $user->no_skhun === null) {
+                        echo 'Upload berkas terlebih dahulu';
                       } else {
                         echo $user->no_skhun;
                       } ?>
@@ -267,10 +293,10 @@ $user = $user; ?>
                     <th>Berkas SKHUN</th>
                     <th>:</th>
                     <td>
-                      <?php if ($user->no_skhun == null) {
-                        echo 'upload berkas terlebih dahulu';
+                      <?php if (!isset($user->no_skhun) || $user->no_skhun === null) {
+                        echo 'Upload berkas terlebih dahulu';
                       } else {
-                        echo $user - file_skhun;
+                        echo '<img src="' . base_url() . '/public/files/skhun/' . $user->file_skhun . '" alt="" srcset="" class="img-thumbnail" width="100px">';
                       } ?>
                     </td>
                   </tr>
@@ -285,10 +311,10 @@ $user = $user; ?>
                     <th>Berkas Raport</th>
                     <th>:</th>
                     <td>
-                      <?php if ($user->no_skhun == null) {
-                        echo 'upload berkas terlebih dahulu';
+                      <?php if (!isset($user->file_raport) || $user->file_raport === null) {
+                        echo 'Upload berkas terlebih dahulu';
                       } else {
-                        echo $user->file_skhun;
+                        echo '<img src="' . base_url() . '/public/files/skhun/' . $user->file_raport . '" alt="" srcset="" class="img-thumbnail" width="100px">';
                       } ?>
                     </td>
                   </tr>
@@ -324,10 +350,10 @@ $user = $user; ?>
                     <th>Berkas Kartu Keluarga</th>
                     <th>:</th>
                     <td>
-                      <?php if ($user->no_skhun == null) {
-                        echo 'upload berkas terlebih dahulu';
+                      <?php if (!isset($user->file_kk) || $user->file_kk === null) {
+                        echo 'Upload berkas terlebih dahulu';
                       } else {
-                        echo $user->file_kk;
+                        echo '<img src="' . base_url() . '/public/files/keluarga/' . $user->file_kk . '" alt="" srcset="" class="img-thumbnail" width="100px">';
                       } ?>
                     </td>
                   </tr>
@@ -335,10 +361,10 @@ $user = $user; ?>
                     <th>Berkas Akte Kelahiran</th>
                     <th>:</th>
                     <td>
-                      <?php if ($user->no_skhun == null) {
-                        echo 'upload berkas terlebih dahulu';
+                      <?php if (!isset($user->file_akte) || $user->file_akte === null) {
+                        echo 'Upload berkas terlebih dahulu';
                       } else {
-                        echo $user->file_akte;
+                        echo '<img src="' . base_url() . '/public/files/keluarga/' . $user->file_akte . '" alt="" srcset="" class="img-thumbnail" width="100px">';
                       } ?>
                     </td>
                   </tr>
@@ -371,13 +397,20 @@ $user = $user; ?>
                     </td>
                   </tr>
                   <tr>
+                    <th width="20%">Tingkat Prestasi</th>
+                    <th width="1%">:</th>
+                    <td>
+                      <?php echo ucwords($user->tingkat); ?>
+                    </td>
+                  </tr>
+                  <tr>
                     <th>Berkas Prestasi</th>
                     <th>:</th>
                     <td>
-                      <?php if ($user->no_skhun == null) {
-                        echo 'upload berkas terlebih dahulu';
+                      <?php if (!isset($user->file_sertifikat) || $user->file_sertifikat === null) {
+                        echo 'Upload berkas terlebih dahulu';
                       } else {
-                        echo $user->file_sertifikat;
+                        echo '<img src="' . base_url() . '/public/files/prestasi/' . $user->file_sertifikat . '" alt="" srcset="" class="img-thumbnail" width="100px">';
                       } ?>
                     </td>
                   </tr>

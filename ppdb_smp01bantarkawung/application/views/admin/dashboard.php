@@ -107,13 +107,19 @@ $tgl = date('m-Y');
             <?php echo date('d-m-Y H:i:s', strtotime($web_ppdb->tgl_diubah)); ?>.
           </form>
         </div>
+        <div class="alert alert-info alert-dismissible" role="alert">
+          <form action="" method="post">
+            <button type="submit" name="btnStartVerifSmart" class="btn btn-primary"
+              onclick="return confirm('Anda Yakin?')"><i class="icon-laptop"></i> Mulai Verifikasi Berkas Dengan SMART
+              Metode</button>
+          </form>
+        </div>
       <?php } else { ?>
         <div class="alert alert-warning alert-dismissible" role="alert">
           <form action="" method="post">
             <button type="submit" name="btnaktif" class="btn btn-warning" onclick="return confirm('Anda Yakin?')"><i
                 class="icon-laptop"></i> Buka Pendaftaran PPDB Online!</button>
             <strong>Status Pendaftaran PPDB Online</strong> masih ditutup. Terakhir diubah
-            <?php echo date('d-m-Y H:i:s', strtotime($web_ppdb->tgl_diubah)); ?>.
           </form>
         </div>
       <?php } ?>

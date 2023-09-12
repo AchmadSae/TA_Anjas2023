@@ -10,7 +10,17 @@ class Model_siswa extends CI_Model
 	}
 	function base_berkas($sess)
 	{
-		return $this->db->get_where('tbl_siswa', "no_pendaftaran='$sess'")->row();
+		$this->db->select('siswa.no_pendaftaran, siswa.nisn, siswa.rata_raport, siswa.rata_skhun, siswa.nama_lengkap, siswa.no_kk, keluarga.file_kk, keluarga.file_akte, skhun.no_skhun, skhun.file_skhun, prestasi.prestasi, prestasi.tingkat, prestasi.file_sertifikat');
+		$this->db->from('tbl_siswa as siswa');
+		$this->db->join('tbl_keluarga as keluarga', 'siswa.no_pendaftaran = keluarga.no_pendaftaran', 'left');
+		$this->db->join('tbl_skhun as skhun', 'siswa.no_pendaftaran = skhun.no_pendaftaran', 'left');
+		$this->db->join('tbl_prestasi as prestasi', 'siswa.no_pendaftaran = prestasi.no_pendaftaran', 'left');
+		$this->db->where('siswa.no_pendaftaran', $sess);
+
+		return $this->db->get()->row();
+
+
+
 	}
 
 

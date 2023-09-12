@@ -1,12 +1,12 @@
 <?php
 date_default_timezone_set('Asia/Jakarta');
-$cek    = $user;
-$nama   = $cek->nama_lengkap;
-$email  = '';
+$cek = $user;
+$nama = $cek->nama_lengkap;
+$email = '';
 
-$level  = $cek->username;
+$level = $cek->username;
 
-$menu 		= strtolower($this->uri->segment(1));
+$menu = strtolower($this->uri->segment(1));
 $sub_menu = strtolower($this->uri->segment(2));
 $sub_menu3 = strtolower($this->uri->segment(3));
 ?>
@@ -21,7 +21,9 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<base href="<?php echo base_url(); ?>" />
 
-	<title><?php echo $judul_web; ?> - PPDB Online</title>
+	<title>
+		<?php echo $judul_web; ?> - PPDB Online
+	</title>
 	<link rel="icon" type="image/png" href="img/logo.png">
 
 	<!-- Global stylesheets -->
@@ -53,7 +55,7 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 		<script type="text/javascript" src="assets/panel/js/core/app.js"></script>
 		<!-- <script type="text/javascript" src="assets/panel/js/pages/dashboard.js"></script> -->
 		<!-- /theme JS files -->
-	<?php
+		<?php
 	} ?>
 
 	<?php
@@ -66,7 +68,7 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 		<script type="text/javascript" src="assets/panel/js/pages/datatables_basic.js"></script>
 		<!-- /theme JS files -->
 
-	<?php
+		<?php
 	} ?>
 
 	<script src="assets/panel/js/select2.min.js"></script>
@@ -88,14 +90,17 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 
 		<div class="navbar-collapse collapse" id="navbar-mobile">
 			<ul class="nav navbar-nav">
-				<li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a></li>
+				<li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a>
+				</li>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown dropdown-user">
 					<a class="dropdown-toggle" data-toggle="dropdown">
 						<img src="img/logo.png" alt="foto">
-						<span><?php echo ucwords($nama); ?></span>
+						<span>
+							<?php echo ucwords($nama); ?>
+						</span>
 						<i class="caret"></i>
 					</a>
 
@@ -137,12 +142,16 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 						</div>
 						<div class="category-content sidebar-user">
 							<div class="media">
-								<a href="panel_admin/profile" class="media-left"><img src="img/logo.png" class="img-flat img-sm" alt="foto"></a>
+								<a href="panel_admin/profile" class="media-left"><img src="img/logo.png"
+										class="img-flat img-sm" alt="foto"></a>
 								<div class="media-body">
 									<div class="text-size-mini text-muted">
-										<i class="icon-pin text-size-small"></i> &nbsp;<?php echo $level; ?>
+										<i class="icon-pin text-size-small"></i> &nbsp;
+										<?php echo $level; ?>
 									</div>
-									<span class="media-heading text-semibold"><?php echo ucwords($nama); ?></span>
+									<span class="media-heading text-semibold">
+										<?php echo ucwords($nama); ?>
+									</span>
 								</div>
 							</div>
 						</div>
@@ -151,41 +160,49 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 							<ul class="navigation navigation-main navigation-accordion">
 
 								<!-- Main -->
-								<li class="navigation-header"><span>Utama</span> <i class="icon-menu" title="Main pages"></i></li>
+								<li class="navigation-header"><span>Utama</span> <i class="icon-menu"
+										title="Main pages"></i></li>
 								<li class="<?php if ($menu == 'panel_admin' and $sub_menu == '') {
-												echo 'active';
-											} ?>"><a href="panel_admin"><i class="icon-home4"></i> <span><b>HOME</b></span></a></li>
+									echo 'active';
+								} ?>"><a href="panel_admin"><i class="icon-home4"></i> <span><b>HOME</b></span></a></li>
 								<!-- <li class="<?php if ($sub_menu == 'profile') {
-													echo 'active';
-												} ?>"><a href="panel_admin/ubah_siswa"><i class="icon-user"></i><span><b>DATA SISWA</b></span></a></li> -->
+									echo 'active';
+								} ?>"><a href="panel_admin/ubah_siswa"><i class="icon-user"></i><span><b>DATA SISWA</b></span></a></li> -->
 
 								<li class="<?php if ($menu == 'panel_admin' and $sub_menu == 'verifikasi' or $sub_menu == 'edit_materi') {
-												echo 'active';
-											} ?>"><a href="panel_admin/verifikasi"><i class="icon-file-check"></i> <span><b>VERIFIKASI</b></span></a></li>
+									echo 'active';
+								} ?>"><a href="panel_admin/verifikasi"><i class="icon-file-check"></i> <span><b>VERIFIKASI</b></span></a>
+								</li>
 
 								<li class="<?php if ($menu == 'panel_admin' and $sub_menu == 'set_pengumuman') {
-												echo 'active';
-											} ?>"><a href="panel_admin/set_pengumuman"><i class="icon-display4"></i> <span><b>KELULUSAN</b></span></a></li>
+									echo 'active';
+								} ?>"><a href="panel_admin/set_pengumuman"><i class="icon-display4"></i> <span><b>KELULUSAN</b></span></a>
+								</li>
 								<li class="<?php if ($menu == 'panel_admin' and $sub_menu == 'export') {
-												echo 'active';
-											} ?>"><a href="Siswa"><i class="icon-file-excel"></i> <span><b>EXPORT DATA</b></span></a></li>
+									echo 'active';
+								} ?>"><a href="Siswa"><i class="icon-file-excel"></i> <span><b>EXPORT DATA</b></span></a></li>
 
+								<li class="<?php if ($menu == 'panel_admin' and $sub_menu == 'laporan') {
+									echo 'active';
+								} ?>"><a href="panel_admin/laporan"><i class="icon-file-word"></i> <span><b>LAPORAN</b></span></a></li>
 
 								<!-- /Main -->
 								<!-- Data Lainnya -->
-								<li class="navigation-header"><span>Lainnya</span> <i class="icon-menu" title="Data visualization"></i></li>
+								<li class="navigation-header"><span>Lainnya</span> <i class="icon-menu"
+										title="Data visualization"></i></li>
 								<li>
 									<a href="#"><i class="icon-cog3"></i> <span><b>PENGATURAN</b></span></a>
 									<ul>
 										<li class="<?php if ($sub_menu == 'profile') {
-														echo 'active';
-													} ?>"><a href="panel_admin/profile"><i class="icon-user"></i><b>PROFIL</b></a></li>
+											echo 'active';
+										} ?>"><a href="panel_admin/profile"><i class="icon-user"></i><b>PROFIL</b></a></li>
 										<li class="<?php if ($sub_menu == 'ubah_pass') {
-														echo 'active';
-													} ?>"><a href="panel_admin/ubah_pass"><i class="icon-lock"></i><b>UBAH PASSWORD</b></a></li>
+											echo 'active';
+										} ?>"><a href="panel_admin/ubah_pass"><i class="icon-lock"></i><b>UBAH PASSWORD</b></a></li>
 									</ul>
 								</li>
-								<li><a href="panel_admin/logout"><i class="icon-switch2"></i> <span><b>KELUAR</b></span></a></li>
+								<li><a href="panel_admin/logout"><i class="icon-switch2"></i>
+										<span><b>KELUAR</b></span></a></li>
 								<!-- /Data Lainnya -->
 
 							</ul>

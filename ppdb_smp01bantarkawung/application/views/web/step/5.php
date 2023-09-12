@@ -78,16 +78,15 @@
           style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
       </div>
     </div>
-    <!-- prestasi  -->
     <div class="form-group" style="padding-bottom:30px;">
-      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Prestasi <span
+      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Nilai Rata-Rata Raport<span
           class="text-danger">*</span></label>
-      <div class="col-sm-9 prepend-icon">
-        <input type="text" name="prestasi" class="form-control bg-blue" placeholder="Nama Prestasi" maxlength="100"
-          data-parsley-group="block4" data-radio="iradio_square-blue"
-          data-parsley-errors-container='div[id="error-nama_sekolah"]' required>
-        <i class="fa fa-university" style="margin-left:15px;"></i>
-        <div id="error-nama_sekolah"
+      <div class="col-sm-9 prepend-icon" style="margin-top:1px;">
+        <input type="text" name="rata_raport" class="form-control bg-blue class" onkeypress="return hanyaAngka(this);"
+          maxlength="10" placeholder="Nilai Rata-Rata Raport kelas 4 s/d 6" data-parsley-group="block4"
+          data-parsley-errors-container='div[id="error-npsn_sekolah"]'>
+        <i class="" style="margin-left:15px;"></i>
+        <div id="error-npsn_sekolah"
           style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
       </div>
     </div>
@@ -120,18 +119,7 @@
           style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
       </div>
     </div>
-    <div class="form-group" style="padding-bottom:30px;">
-      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Nilai Rata-Rata Raport<span
-          class="text-danger">*</span></label>
-      <div class="col-sm-9 prepend-icon" style="margin-top:1px;">
-        <input type="text" name="rata_raport" class="form-control bg-blue class" onkeypress="return hanyaAngka(this);"
-          maxlength="10" placeholder="Nilai Rata-Rata Raport kelas 4 s/d 6" data-parsley-group="block4"
-          data-parsley-errors-container='div[id="error-npsn_sekolah"]'>
-        <i class="" style="margin-left:15px;"></i>
-        <div id="error-npsn_sekolah"
-          style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
-      </div>
-    </div>
+
 
 
   </div>

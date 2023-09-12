@@ -60,7 +60,7 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 } ?>">
 
 	<!-- Main navbar -->
-	<div class="navbar navbar-inverse">
+	<div class="navbar navbar-inverse" style="background-color:  #7895CB;">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="panel_siswa/">PPDB <label class="label label-success">Online</label> </a>
 
@@ -106,7 +106,7 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 			<div class="sidebar sidebar-main sidebar-default">
 				<div class=" sidebar-content">
 					<!-- Main navigation -->
-					<div class="panel panel-success" style="margin-bottom: 0;">
+					<div class="panel" style="margin-bottom: 0; background-color:  #7895CB;">
 						<div class="panel-heading">
 							<h3 class="panel-title">
 								<i class="glyphicon glyphicon-list"></i>

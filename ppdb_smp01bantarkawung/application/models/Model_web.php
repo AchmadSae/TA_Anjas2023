@@ -78,7 +78,7 @@ class Model_web extends CI_Model
 					'tgl_siswa' => date('Y-m-d H:i:s'),
 					'rata_skhun' => $data->post('rata_skhun'),
 					'rata_raport' => $data->post('rata_raport'),
-					'gMaps' => $data->post('link_Gmaps')
+					'link_Gmaps' => $data->post('gMaps')
 				);
 				return $this->db->insert('tbl_siswa', $data);
 				break;
