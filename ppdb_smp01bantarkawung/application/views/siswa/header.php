@@ -60,7 +60,7 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 } ?>">
 
 	<!-- Main navbar -->
-	<div class="navbar navbar-inverse" style="background-color:  #7895CB;">
+	<div class="navbar navbar-inverse" style="background-color:  #4A55A2">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="panel_siswa/">PPDB <label class="label label-success">Online</label> </a>
 
@@ -155,11 +155,13 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 								<li class="<?php if ($menu == 'panel_siswa' and $sub_menu == 'berkas') {
 									echo 'active';
 								} ?>"><a href="panel_siswa/berkas"><i class="icon-file-check2"></i> <span><b>BERKAS</b></span></a></li>
+								<?php if ($cek->status_pendaftaran == 'lulus') { ?>
+									<li><a href="panel_siswa/cetak" target="_blank"><i class="icon-printer2"></i>
+											<span><b>PRINT PENDAFTARAN</b></span></a></li>
+									<!--<li><a href="panel_siswa/rekap_nilai" target="_blank"><i class="icon-printer4"></i> <span>Rekap Nilai</span></a></li>-->
+								<?php } else { ?>
 
-								<li><a href="panel_siswa/cetak" target="_blank"><i class="icon-printer2"></i>
-										<span><b>PRINT PENDAFTARAN</b></span></a></li>
-								<!--<li><a href="panel_siswa/rekap_nilai" target="_blank"><i class="icon-printer4"></i> <span>Rekap Nilai</span></a></li>-->
-
+								<?php } ?>
 								<!-- /Main -->
 
 								<!-- Data Lainnya -->

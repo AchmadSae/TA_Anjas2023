@@ -10,7 +10,7 @@ $id = $this->db->get('tbl_user')->row_array();
 </div>
 <!-- /page container -->
 <!-- Footer -->
-<div class="navbar navbar-default navbar-fixed-bottom footer" style="background-color:#275555ff;">
+<div class="navbar navbar-default navbar-fixed-bottom footer" style="background-color:#4A55A2;">
   <ul class="nav navbar-nav visible-xs-block">
     <li><a class="text-center collapsed" data-toggle="collapse" data-target="#footer"><i
           class="icon-circle-up2"></i></a></li>

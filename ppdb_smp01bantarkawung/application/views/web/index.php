@@ -322,25 +322,7 @@ $soa = $this->db->get('tbl_siswa');
 
 
 
-    <section id="syarat" style="background: url(img/bg.png) repeat; padding: 30px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Syarat Pendaftaran</h2>
-                    <hr style="width: 150px;">
 
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12" style="margin-top:-10px;">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
-                        <img class="img-responsive" src="img/syarat.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Contact Section -->
     <section class="success" id="contact" style="padding: 30px; border-top: solid 2px #fff;">

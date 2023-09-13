@@ -8,7 +8,9 @@ $id = $this->db->get('tbl_user')->row_array();
 
 <head>
   <meta charset="utf-8">
-  <title><?php echo $judul_web; ?></title>
+  <title>
+    <?php echo $judul_web; ?>
+  </title>
   <base href="<?php echo base_url(); ?>" />
   <link rel="icon" type="image/png" href="img/logo.png" />
   <style>
@@ -49,7 +51,9 @@ $id = $this->db->get('tbl_user')->row_array();
   <b>
     <center>
       PANITIA PENERIMAAN PESERTA DIDIK BARU (PPDB) <br>
-      <?php echo $id['nama_lengkap']; ?> TAHUN PELAJARAN <?php echo $id['th_pelajaran']; ?></center>
+      <?php echo $id['nama_lengkap']; ?> TAHUN PELAJARAN
+      <?php echo $id['th_pelajaran']; ?>
+    </center>
   </b>
   <br>
 
@@ -57,52 +61,72 @@ $id = $this->db->get('tbl_user')->row_array();
     <tr>
       <td width="200">NO. PENDAFTARAN</td>
       <td width="1">:</td>
-      <td><?php echo $user->no_pendaftaran; ?></td>
+      <td>
+        <?php echo $user->no_pendaftaran; ?>
+      </td>
     </tr>
     <tr>
       <td>TANGGAL PENDAFTARAN </td>
       <td>:</td>
-      <td><?php echo $this->lib_data->tgl_id(date('d-m-Y', strtotime($user->tgl_siswa))); ?></td>
+      <td>
+        <?php echo $this->lib_data->tgl_id(date('d-m-Y', strtotime($user->tgl_siswa))); ?>
+      </td>
     </tr>
     <tr>
       <td>TANGGAL CETAK </td>
       <td>:</td>
-      <td><?php echo $this->lib_data->tgl_id(date('d-m-Y')); ?></td>
+      <td>
+        <?php echo $this->lib_data->tgl_id(date('d-m-Y')); ?>
+      </td>
     </tr>
     <tr>
       <td>NIS</td>
       <td>:</td>
-      <td><?php echo $user->nis; ?></td>
+      <td>
+        <?php echo $user->nis; ?>
+      </td>
     </tr>
     <tr>
       <td>NISN</td>
       <td>:</td>
-      <td><?php echo $user->nisn; ?></td>
+      <td>
+        <?php echo $user->nisn; ?>
+      </td>
     </tr>
     <tr>
       <td>NIK</td>
       <td>:</td>
-      <td><?php echo $user->nik; ?></td>
+      <td>
+        <?php echo $user->nik; ?>
+      </td>
     </tr>
     <tr>
       <td>NAMA LENGKAP</td>
       <td>:</td>
-      <td><?php echo ucwords($user->nama_lengkap); ?></td>
+      <td>
+        <?php echo ucwords($user->nama_lengkap); ?>
+      </td>
     </tr>
     <tr>
       <td>JENIS KELAMIN</td>
       <td>:</td>
-      <td><?php echo $user->jk; ?></td>
+      <td>
+        <?php echo $user->jk; ?>
+      </td>
     </tr>
     <tr>
       <td>TEMPAT, TANGGAL LAHIR</td>
       <td>:</td>
-      <td><?php echo "$user->tempat_lahir, " . $this->lib_data->tgl_id($user->tgl_lahir); ?></td>
+      <td>
+        <?php echo "$user->tempat_lahir, " . $this->lib_data->tgl_id($user->tgl_lahir); ?>
+      </td>
     </tr>
     <tr>
       <td>AGAMA</td>
       <td>:</td>
-      <td><?php echo $user->agama; ?></td>
+      <td>
+        <?php echo $user->agama; ?>
+      </td>
     </tr>
     <tr>
       <td>NAMA ORANG TUA /WALI</td>
@@ -112,43 +136,58 @@ $id = $this->db->get('tbl_user')->row_array();
     <tr>
       <td style="padding-left:55px;">AYAH</td>
       <td>:</td>
-      <td><?php echo ucwords($user->nama_ayah); ?></td>
+      <td>
+        <?php echo ucwords($user->nama_ayah); ?>
+      </td>
     </tr>
     <tr>
       <td style="padding-left:55px;">IBU</td>
       <td>:</td>
-      <td><?php echo ucwords($user->nama_ibu); ?></td>
+      <td>
+        <?php echo ucwords($user->nama_ibu); ?>
+      </td>
     </tr>
     <tr>
       <td style="padding-left:55px;">WALI</td>
       <td>:</td>
-      <td><?php echo ucwords($user->nama_wali); ?></td>
+      <td>
+        <?php echo ucwords($user->nama_wali); ?>
+      </td>
     </tr>
     <tr>
       <td>NO. HANDPHONE (HP)</td>
       <td>:</td>
-      <td><?php echo $user->no_hp_siswa; ?></td>
+      <td>
+        <?php echo $user->no_hp_siswa; ?>
+      </td>
     </tr>
     <tr>
       <td>ASAL SEKOLAH</td>
       <td>:</td>
-      <td><?php echo ucwords($user->nama_sekolah); ?></td>
+      <td>
+        <?php echo ucwords($user->nama_sekolah); ?>
+      </td>
     </tr>
   </table>
   <br>
 
   <div style="float:right;">
-    <?php echo $id['kab_sekolah']; ?>, <?php echo $this->lib_data->tgl_id(date('d-m-Y')); ?> <br>
+    <?php echo $id['kab_sekolah']; ?>,
+    <?php echo $this->lib_data->tgl_id(date('d-m-Y')); ?> <br>
     Ketua Panitia PPDB, <br>
     <img src="img/ttd.png" alt="" width="100"><br>
-    <b><u><?php echo $id['ketua_panitia']; ?></u></b><br>
-    NIP. <?php echo $id['nip_ketua']; ?>
+    <b><u>
+        <?php echo $id['ketua_panitia']; ?>
+      </u></b><br>
+    NIP.
+    <?php echo $id['nip_ketua']; ?>
   </div>
   <br><br><br><br><br><br><br><br><br>
 
   <b><u>Siapkan Berkas Berikut Ketika anda melakukan DAFTAR ULANG :</u></b>
   <br>
   <table width="100%" border="0" style="margin-left:5px;">
+
     <tr>
       <td width="1">1.</td>
       <td>Cetak bukti pendaftaran</td>
@@ -168,6 +207,12 @@ $id = $this->db->get('tbl_user')->row_array();
       <td>2 lembar</td>
     </tr>
     <tr>
+      <td>3.</td>
+      <td>Surat Keterangan Sertifikat Kejuaraan <b>(*Apabila ada)</b></td>
+      <td>:</td>
+      <td>1 lembar</td>
+    </tr>
+    <tr>
       <td>4.</td>
       <td>Fc. Kartu NISN <b>(*No. NISN/Screen NISN)</b></td>
       <td>:</td>
@@ -175,7 +220,11 @@ $id = $this->db->get('tbl_user')->row_array();
     </tr>
     <tr>
       <td valign="top">7.</td>
-      <td colspan="3">Semua berkas dimasukan kedalam map biru (PUTRA), map Kuning (PUTRI) dan diserahkan kepada Panitia PPDB <?php echo $id['nama_lengkap']; ?> Tahun Pelajaran <?php echo $id['th_pelajaran']; ?></td>
+      <td colspan="3">Semua berkas dimasukan kedalam map biru (PUTRA), map Kuning (PUTRI) dan diserahkan kepada Panitia
+        PPDB
+        <?php echo $id['nama_lengkap']; ?> Tahun Pelajaran
+        <?php echo $id['th_pelajaran']; ?>
+      </td>
     </tr>
   </table>
 

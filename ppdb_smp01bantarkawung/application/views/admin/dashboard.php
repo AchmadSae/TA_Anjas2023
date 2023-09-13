@@ -16,7 +16,7 @@ $tgl = date('m-Y');
     <div class="row">
       <!-- Basic datatable -->
       <div class="panel panel-success">
-        <div class="panel-heading">
+        <div class="panel-heading" style="background-color:#4A55A2;">
           <h3 class="panel-title">
             <i class="glyphicon glyphicon-send"></i> <b>DASHBOARD</b>
           </h3>

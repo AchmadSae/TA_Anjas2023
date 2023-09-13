@@ -125,7 +125,7 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 			<!-- Main sidebar -->
 			<div class="sidebar sidebar-main sidebar-default">
 				<div class="sidebar-content">
-					<div class="panel panel-success" style="margin-bottom: 0;">
+					<div class="panel" style="margin-bottom: 0; background-color:#4A55A2;">
 						<div class="panel-heading">
 							<h3 class="panel-title">
 								<i class="glyphicon glyphicon-list"></i>
@@ -184,7 +184,7 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 
 								<li class="<?php if ($menu == 'panel_admin' and $sub_menu == 'laporan') {
 									echo 'active';
-								} ?>"><a href="panel_admin/laporan"><i class="icon-file-word"></i> <span><b>LAPORAN</b></span></a></li>
+								} ?>"><a href="panel_admin/v_laporan/"><i class="icon-file-word"></i> <span><b>LAPORAN</b></span></a></li>
 
 								<!-- /Main -->
 								<!-- Data Lainnya -->

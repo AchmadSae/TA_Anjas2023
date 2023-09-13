@@ -1,6 +1,6 @@
 <?php
 $user = $user;
-$level = $this->user->level; ?>
+$level = $user->level; ?>
 <!-- Main content -->
 <div class="content-wrapper">
 
@@ -22,19 +22,22 @@ $level = $this->user->level; ?>
                 <div class="form-group">
                   <label class="control-label col-lg-3">Password Lama</label>
                   <div class="col-lg-9">
-                    <input type="password" name="password_lama" class="form-control" value="" placeholder="Password Lama" required>
+                    <input type="password" name="password_lama" class="form-control" value=""
+                      placeholder="Password Lama" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-lg-3">Password Baru</label>
                   <div class="col-lg-9">
-                    <input type="password" name="password" class="form-control" value="" placeholder="Password Baru" required>
+                    <input type="password" name="password" class="form-control" value="" placeholder="Password Baru"
+                      required>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-lg-3">Ulangi Password Baru</label>
                   <div class="col-lg-9">
-                    <input type="password" name="password2" class="form-control" value="" placeholder="Ulangi Password Baru" required>
+                    <input type="password" name="password2" class="form-control" value=""
+                      placeholder="Ulangi Password Baru" required>
                   </div>
                 </div>
 

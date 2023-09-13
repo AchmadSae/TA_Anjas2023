@@ -237,7 +237,9 @@ class Model_admin extends CI_Model
 			case 'materi':
 				return $this->db->get_where('tbl_verifikasi', "id_verifikasi='1'")->row();
 				break;
-
+			case 'prolog':
+				return $this->db->get_where('tbl_prolog', "id_prolog='1'")->row();
+				break;
 			case 'acc':
 				switch ($thn) {
 					case 'total':
@@ -298,6 +300,20 @@ class Model_admin extends CI_Model
 				);
 				$this->db->update('tbl_pengumuman', $data, array('id_pengumuman' => "1"));
 				break;
+			case 'text_prolog':
+				$data = array(
+					'ket_prolog' => $data['ket_prolog']
+				);
+				$this->db->update('tbl_prolog', $data, array('id_prolog' => 1));
+
+				if ($this->db->affected_rows() > 0) {
+					// Pembaruan berhasil
+					$this->session->set_flashdata('msg', 'Prolog berhasil diperbarui.');
+				} else {
+					// Pembaruan gagal
+					$this->session->set_flashdata('msg', 'Gagal mengupdate prolog.');
+				}
+				break;
 
 			default:
 				# code...
@@ -331,14 +347,6 @@ class Model_admin extends CI_Model
 				$this->db->where('no_pendaftaran', $row['no_pendaftaran']);
 				$existingResult = $this->db->get('tbl_smart')->row();
 				if (!$existingResult) {
-					$dataToInsert = [
-						'no_pendaftaran' => $row['no_pendaftaran'],
-						'smartRank' => $cekTotal,
-						'isLulus' => $isLulus,
-					];
-					$this->db->insert('tbl_smart', $dataToInsert);
-
-
 					// Calculate the normalized criteria values for the current row
 					$kriteria1Normalized = (($row['penghasilan_ayah'] + $row['penghasilan_ibu']) / 2) * (40 / 100);
 					$kriteria2Normalized = $row['jarak'] * (30 / 100);

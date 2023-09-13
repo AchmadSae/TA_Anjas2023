@@ -65,7 +65,7 @@ $user = $this->db->get('tbl_user')->row_array();
             </div>
           <?php } else { ?>
             <div class="panel panel-success">
-              <div class="panel-heading">
+              <div class="panel-heading" style="margin-bottom: 0; background-color:  #7895CB;">
                 <h3 class="panel-title"><b>
                     <i class="glyphicon glyphicon-send"></i> INFO PENGUMUMAN</b>
                 </h3>

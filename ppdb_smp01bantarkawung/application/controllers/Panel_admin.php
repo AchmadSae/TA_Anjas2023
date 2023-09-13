@@ -305,30 +305,21 @@ class Panel_admin extends CI_Controller
 			}
 		}
 	}
-	public function laporan($aksi = '', $id = '')
+	public function v_laporan($aksi = '', $id = '')
 	{
 		$sess = $this->session->userdata('id_admin');
 		if ($sess == NULL) {
 			redirect('panel_admin/log_in');
 		} else {
 			switch ($aksi) {
-				case 'lulus':
-					$cek_status = $this->siswa->base_biodata($id);
+				case 'cek':
 					$data = array(
-						'id' => $id,
-						'status_verifikasi' => ($cek_status->status_verifikasi == 1) ? 0 : 1
+						'user' => $this->siswa->base_biodata($id),
+						'judul_web' => "CETAK_LAPORAN" . ucwords($this->siswa->base_biodata($id)->no_pendaftaran),
+						'thn_ppdb' => date('Y', strtotime($this->siswa->base_biodata($id)->tgl_siswa)),
+						'v_materi' => $this->admin->verifikasi('materi')
 					);
-					$acts = $this->admin->update('change-stu-verif', $data);
-					redirect('panel_admin/verifikasi');
-					break;
-				case 'tdk_lulus':
-					$cek_status = $this->siswa->base_biodata($id);
-					$data = array(
-						'id' => $id,
-						'status_verifikasi' => ($cek_status->status_verifikasi == 1) ? 0 : 1
-					);
-					$acts = $this->admin->update('change-stu-verif', $data);
-					redirect('panel_admin/verifikasi');
+					$this->load->view('admin/verifikasi/cetak', $data);
 					break;
 				case 'thn':
 					$thn = $id;
@@ -341,14 +332,70 @@ class Panel_admin extends CI_Controller
 
 			$data = array(
 				'user' => $this->admin->base('bio', $this->session->userdata('id_admin')),
-				'judul_web' => "VERIFIKASI",
+				'judul_web' => "CETAK_LAPORAN",
 				'v_siswa' => $this->admin->verifikasi('siswa', $thn)->ori,
 				'v_thn' => $thn
 			);
-
 			$this->load->view('admin/header', $data);
 			$this->load->view('admin/laporan', $data);
 			$this->load->view('admin/footer');
+		}
+	}
+	public function laporan($aksi = '', $field = '', $param = '')
+	{
+		$sess = $this->session->userdata('id_admin');
+		if ($sess == NULL) {
+			redirect('panel_admin/log_in');
+		} else {
+			switch ($aksi) {
+				case 'lulus':
+					$dateFromBaseBiodata = $this->siswa->base_tglCetak(); // Sesuaikan dengan parameter yang sesuai
+					$thn_ppdb = date('Y', strtotime($dateFromBaseBiodata));
+
+					$src_data = $this->siswa->base_cetak($field, $param);
+					$data = array(
+						'v_data' => $src_data,
+						'judul_web' => 'CETAK LAPORAN PENDAFTARAN LULUS',
+						'v_prolog' => $this->admin->verifikasi('prolog'),
+						'thn_ppdb' => $thn_ppdb
+					);
+					$this->load->view('admin/laporan/cetak_byLulus', $data);
+					break;
+				case 'tdk_lulus':
+					$src_data = $this->siswa->base_cetak($field, $param);
+					$data = array(
+						'v_data' => $src_data,
+						'judul_web' => 'CETAK LAPORAN PENDAFTARAN TIDAK LULUS',
+						'v_prolog' => $this->admin->verifikasi('prolog')
+					);
+					$this->load->view('admin/laporan/cetak_byTdkLulus', $data);
+					break;
+				case 'custom':
+					$send = array(
+						'field' => $this->input->post('field'),
+						'param' => $this->input->post('param'),
+						'values' => $this->input->post('values')
+					);
+					if ($send['field'] == null || $send['param'] == null || $send['values'] == null) {
+						echo 'gagal karena kosong';
+					} else {
+
+						$src_data = $this->siswa->base_custom_cetak($send['field'], $send['param'], $send['values']);
+
+						$data = array(
+							'v_data' => $src_data,
+							// Menggunakan hasil dari result() langsung
+							'judul_web' => 'CETAK LAPORAN PENDAFTARAN CUSTOM',
+							'v_prolog' => $this->admin->verifikasi('prolog')
+						);
+
+						$this->load->view('admin/laporan/cetak_custom', $data);
+						break;
+					}
+				default:
+					$thn = date('Y');
+					break;
+			}
 		}
 	}
 	public function verifikasi($aksi = '', $id = '')
@@ -359,13 +406,13 @@ class Panel_admin extends CI_Controller
 		} else {
 			switch ($aksi) {
 				case 'cek':
+					$cek_status = $this->siswa->base_biodata($id);
 					$data = array(
-						'user' => $this->siswa->base_biodata($id),
-						'judul_web' => "CETAK_VERIFIKASI_" . ucwords($this->siswa->base_biodata($id)->no_pendaftaran),
-						'thn_ppdb' => date('Y', strtotime($this->siswa->base_biodata($id)->tgl_siswa)),
-						'v_materi' => $this->admin->verifikasi('materi')
+						'id' => $id,
+						'status_verifikasi' => ($cek_status->status_verifikasi == 1) ? 0 : 1
 					);
-					$this->load->view('admin/verifikasi/cetak', $data);
+					$acts = $this->admin->update('change-stu-verif', $data);
+					redirect('panel_admin/verifikasi');
 					break;
 
 				case 'thn':
@@ -415,6 +462,54 @@ class Panel_admin extends CI_Controller
 				$this->session->set_flashdata('msg', $this->err->update_admin('materi'));
 				redirect('panel_admin/verifikasi');
 			}
+		}
+	}
+	public function edit_prolog($aksi = '', $id = '')
+	{
+		$sess = $this->session->userdata('id_admin');
+
+		if ($sess == NULL) {
+			redirect('panel_admin/log_in');
+		} else {
+			$data = array(
+				'user' => $this->admin->base('bio', $sess),
+				'judul_web' => "EDIT PROLOG",
+				'v_prolog' => $this->admin->verifikasi('prolog')
+			);
+
+			$this->load->view('admin/header', $data);
+			$this->load->view('admin/edit_prolog', $data);
+			$this->load->view('admin/footer');
+
+			if (isset($_POST['btnupdateprolog'])) {
+				// Ambil data yang dikirimkan melalui form
+				$ketProlog = $this->input->post('ket_prolog', TRUE);
+
+				// Pastikan $ketProlog tidak kosong
+				if (!empty($ketProlog)) {
+					$data = array(
+						'ket_prolog' => $ketProlog
+					);
+
+					// Panggil fungsi update dengan parameter 'text_prolog'
+					$acts = $this->admin->update('text_prolog', $data);
+
+					if ($acts) {
+						// Berhasil mengupdate, set pesan flashdata
+						$this->session->set_flashdata('msg', $this->err->update_admin('materi'));
+					} else {
+						// Gagal mengupdate, set pesan flashdata error
+						$this->session->set_flashdata('msg', 'Gagal mengupdate prolog.!');
+					}
+				} else {
+					// $ketProlog kosong, set pesan flashdata error
+					$this->session->set_flashdata('msg', 'Kolom prolog harus diisi.');
+				}
+
+				// Redirect ke halaman tertentu, misalnya 'panel_admin/v_laporan'
+				redirect('panel_admin/v_laporan');
+			}
+
 		}
 	}
 

@@ -8,6 +8,44 @@ class Model_siswa extends CI_Model
 	{
 		return $this->db->get_where('tbl_siswa', "no_pendaftaran='$sess'")->row();
 	}
+
+	function base_tglCetak()
+	{
+		$this->db->select('tgl_siswa');
+		$this->db->from('tbl_siswa');
+		$this->db->order_by('tgl_siswa', 'desc');
+		$this->db->limit(1);
+
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) {
+			$row = $query->row();
+			$tgl_siswa = $row->tgl_siswa;
+
+			if (!empty($tgl_siswa)) {
+				$thn_ppdb = date('Y', strtotime($tgl_siswa));
+				return $thn_ppdb;
+			}
+		}
+
+		return null;
+	}
+
+	function base_cetak($field, $param)
+	{
+		$query = "SELECT * FROM tbl_siswa WHERE $field='$param'";
+		$res = $this->db->query($query);
+		return $res->result();
+	}
+	function base_custom_cetak($field, $param, $values)
+	{
+		$query = "SELECT * FROM tbl_siswa WHERE $field $param ?";
+		$res = $this->db->query($query, array($values));
+
+		return $res->result(); // Menggunakan result() untuk mendapatkan semua hasil
+	}
+
+
 	function base_berkas($sess)
 	{
 		$this->db->select('siswa.no_pendaftaran, siswa.nisn, siswa.rata_raport, siswa.rata_skhun, siswa.nama_lengkap, siswa.no_kk, keluarga.file_kk, keluarga.file_akte, skhun.no_skhun, skhun.file_skhun, prestasi.prestasi, prestasi.tingkat, prestasi.file_sertifikat');

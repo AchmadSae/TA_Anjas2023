@@ -19,7 +19,7 @@
           </div>
 
           <br>
-          <a href="panel_admin/edit_materi" class="btn btn-danger"><b>MATERI & JADWAL UJIAN</b></a>
+          <a href="panel_admin/edit_materi" class="btn btn-danger"><b>UBAH ISI PESAN DAFTAR ULANG</b></a>
           <div class="col-md-3" style="float: right; margin-right: 25px;">
             <div class="input-group">
               <div class="input-group-addon"><i class="icon-calendar22"></i></div>

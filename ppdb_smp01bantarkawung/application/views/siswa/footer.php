@@ -10,13 +10,17 @@ $id = $this->db->get('tbl_user')->row_array();
 </div>
 <!-- /page container -->
 <!-- Footer -->
-<div class="navbar navbar-default navbar-fixed-bottom footer" style="background-color:#275555ff;">
+<div class="navbar navbar-default navbar-fixed-bottom footer" style="background-color:#4A55A2;">
   <ul class="nav navbar-nav visible-xs-block">
-    <li><a class="text-center collapsed" data-toggle="collapse" data-target="#footer"><i class="icon-circle-up2"></i></a></li>
+    <li><a class="text-center collapsed" data-toggle="collapse" data-target="#footer"><i
+          class="icon-circle-up2"></i></a></li>
   </ul>
   <div class="navbar-collapse collapse" id="footer">
     <div class="navbar-text" style="color: ivory;">
-      <label class="label label-danger" style="margin-bottom: -10px;"><?php echo $id['nama_lengkap']; ?></label> Copyright &copy; <?php echo date('Y'); ?>
+      <label class="label label-danger" style="margin-bottom: -10px;">
+        <?php echo $id['nama_lengkap']; ?>
+      </label> Copyright &copy;
+      <?php echo date('Y'); ?>
     </div>
   </div>
 </div>

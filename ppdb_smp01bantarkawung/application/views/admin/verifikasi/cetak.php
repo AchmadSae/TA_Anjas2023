@@ -9,7 +9,9 @@ $id = $this->db->get('tbl_user')->row_array();
 
 <head>
   <meta charset="utf-8">
-  <title><?php echo $judul_web; ?></title>
+  <title>
+    <?php echo $judul_web; ?>
+  </title>
   <base href="<?php echo base_url(); ?>" />
   <link rel="icon" type="image/png" href="img/logo.png" />
   <style>
@@ -46,54 +48,79 @@ $id = $this->db->get('tbl_user')->row_array();
 
 <body onload="window.print();">
   <?php $this->load->view('kop_lap'); ?>
-  <h4 align="center" style="margin-top:0px;"><u>HASIL VERIFIKASI PENDAFTARAN PPDB <?php echo $thn_ppdb; ?></u></h4>
+  <h4 align="center" style="margin-top:0px;"><u>HASIL VERIFIKASI BERKAS-BERKAS PENDAFTARAN PPDB
+      <?php echo $thn_ppdb; ?>
+    </u></h4>
 
   <table width="100%" border="0">
     <tr>
       <td width="200">NO. PENDAFTARAN</td>
       <td width="1">:</td>
-      <td><b><i><?php echo $user->no_pendaftaran; ?></i></b></td>
+      <td><b><i>
+            <?php echo $user->no_pendaftaran; ?>
+          </i></b></td>
     </tr>
     <tr>
       <td>NISN</td>
       <td>:</td>
-      <td><?php echo $user->nisn; ?></td>
+      <td>
+        <?php echo $user->nisn; ?>
+      </td>
     </tr>
     <tr>
       <td>NIK</td>
       <td>:</td>
-      <td><?php echo $user->nik; ?></td>
+      <td>
+        <?php echo $user->nik; ?>
+      </td>
     </tr>
     <tr>
-      <td>NAMA LENGKAP</td>
+      <td>Nama Wali Siswa</td>
       <td>:</td>
-      <td><?php echo ucwords($user->nama_lengkap); ?></td>
+      <td>
+        <?php echo $user->nama_ayah; ?>
+      </td>
+    </tr>
+    <tr>
+      <td>NAMA LENGKAP SISWA-SISWI</td>
+      <td>:</td>
+      <td>
+        <?php echo ucwords($user->nama_lengkap); ?>
+      </td>
     </tr>
     <tr>
       <td>JENIS KELAMIN</td>
       <td>:</td>
-      <td><?php echo $user->jk; ?></td>
+      <td>
+        <?php echo $user->jk; ?>
+      </td>
     </tr>
     <tr>
       <td>TEMPAT, TANGGAL LAHIR</td>
       <td>:</td>
-      <td><?php echo "$user->tempat_lahir, " . $this->lib_data->tgl_id($user->tgl_lahir); ?></td>
+      <td>
+        <?php echo "$user->tempat_lahir, " . $this->lib_data->tgl_id($user->tgl_lahir); ?>
+      </td>
     </tr>
     <tr>
       <td>ASAL SEKOLAH</td>
       <td>:</td>
-      <td><?php echo ucwords($user->nama_sekolah); ?></td>
+      <td>
+        <?php echo ucwords($user->nama_sekolah); ?>
+      </td>
     </tr>
   </table><br>
 
   <center>
     <table width="90%" border="1">
       <tr align="center">
-        <th>Materi dan Jadwal Ujian</th>
+        <th>HASIL DAFTAR ULANG</th>
         <th width="100">Ket.</th>
       </tr>
       <tr>
-        <td style="padding-left:10px;"><?php echo $v_materi->isi; ?></td>
+        <td style="padding-left:10px;">
+          <?php echo $v_materi->isi; ?>
+        </td>
         <td></td>
       </tr>
     </table>
@@ -103,16 +130,17 @@ $id = $this->db->get('tbl_user')->row_array();
   <div style="float:right;margin-right:100px;">
     <table>
       <tr>
-        <td>
+        <!-- <td>
           <div style="border:1px solid black;width:120px;margin-right:10px;text-align:center;font-weight:bold">
             <br><br>
             Pas Foto <br><br>
             3 x 4
             <br><br><br>
           </div>
-        </td>
+        </td> -->
         <td>
-          <?php echo $id['kab_sekolah']; ?>,...................<?php echo $thn_ppdb; ?><br>
+          <?php echo $id['kab_sekolah']; ?>,...................
+          <?php echo $thn_ppdb; ?><br>
           Verifikator, <br>
           <br><br><br><br>
           (.............................................)
@@ -121,9 +149,11 @@ $id = $this->db->get('tbl_user')->row_array();
     </table>
   </div>
 
-  Perlengkapan TPA : <br>
+  Catatan : <br>
   <ol style="margin-top:0px;">
-    <li>Membawa bukti hasil verifikasi</li>
+    <li>Simpan bukti daftar ulang !</li>
+    <li>Segala Persyaratan yang Disetujui agar tetap di patuhi !</li>
+
   </ol>
 
   <br>
