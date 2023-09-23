@@ -25,7 +25,9 @@ $user = $this->db->get('tbl_user')->row_array();
                   <i class="glyphicon glyphicon-send"></i> INFO PENGUMUMAN
                 </h3>
               </div>
-              <div class="panel-body">
+              <div class="panel-body" style="text-align: center;">
+                <img class="card-img" src="img/lulus.svg" alt="Card image" width="200">
+
                 <h3>
                   <center>
                     Selamat <b>
@@ -41,14 +43,16 @@ $user = $this->db->get('tbl_user')->row_array();
                 </h3>
               </div>
             </div>
-          <?php } elseif ($cek->status_pendaftaran == 'tidak lulus') { ?>
+          <?php } elseif ($cek->status_pendaftaran == 'tdk_lulus') { ?>
             <div class="panel panel-warning">
               <div class="panel-heading">
                 <h3 class="panel-title">
                   <i class="glyphicon glyphicon-send"></i> INFO PENGUMUMAN
                 </h3>
               </div>
-              <div class="panel-body" style="color:red">
+              <div class="panel-body" style="color:red" style="text-align: center;">
+
+                <img class="card-img" src="img/tdk_lulus.svg" alt="Card image" width="200">
                 <h3>
                   <center>
                     Mohon Maaf <b>
@@ -70,7 +74,9 @@ $user = $this->db->get('tbl_user')->row_array();
                     <i class="glyphicon glyphicon-send"></i> INFO PENGUMUMAN</b>
                 </h3>
               </div>
-              <div class="panel-body">
+              <div class="panel-body" style="text-align: center;">
+                <img class="card-img" src="img/no_notif.svg" alt="Card image" width="200">
+
                 <h3>
                   <left>Belum ada pengumuman dari Panitia PPDB Online
                     <?php echo $user['nama_lengkap']; ?>
@@ -81,7 +87,7 @@ $user = $this->db->get('tbl_user')->row_array();
           <?php } ?>
           <!-- Quick stats boxes -->
           <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-6">
               <!-- Current server load -->
               <center>
                 <a href="panel_siswa/biodata">
@@ -101,7 +107,7 @@ $user = $this->db->get('tbl_user')->row_array();
               <!-- /current server load -->
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-6">
               <!-- Current server load -->
               <center>
                 <a href="panel_siswa/cetak" target="_blank">
@@ -120,23 +126,7 @@ $user = $this->db->get('tbl_user')->row_array();
               </center>
               <!-- /current server load -->
             </div>
-            <div class="col-lg-4">
-              <center>
-                <a href="files/Panduan_PPDB_Online.pdf">
-                  <div class="panel bg-orange-400">
-                    <div class="panel-body">
-                      <div class="heading-elements">
-                        <span class="heading-text"></span>
-                      </div>
-                      <h1 class="no-margin">
-                        <i class="icon-file-download2" style="font-size:100px;"></i>
-                      </h1>
-                      <br><b>UNDUH PANDUAN</b>
-                    </div>
-                  </div>
-                </a>
-              </center>
-            </div>
+
           </div>
           <!-- /quick stats boxes -->
         </div>

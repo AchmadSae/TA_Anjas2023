@@ -34,6 +34,8 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 	<script type="text/javascript" src="assets/panel/js/core/libraries/jquery.min.js"></script>
 	<script type="text/javascript" src="assets/panel/js/core/libraries/bootstrap.min.js"></script>
 	<script type="text/javascript" src="assets/panel/js/plugins/loaders/blockui.min.js"></script>
+	<script type="text/javascript" src="assets/panel/js/plugins/loaders/blockui.min.js"></script>
+
 	<!-- /core JS files -->
 	<?php
 	if ($sub_menu == "" or $sub_menu == "biodata") { ?>
@@ -50,9 +52,7 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 		<!-- /theme JS files -->
 		<?php
 	} ?>
-	<script src="assets/panel/js/select2.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="assets/panel/css/sweetalert.css">
-	<script type="text/javascript" src="assets/panel/js/sweetalert.min.js"></script>
+
 </head>
 
 <body class="navbar-bottom <?php if ($menu == 'panel_siswa' and $sub_menu == 'biodata') {
@@ -155,13 +155,11 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 								<li class="<?php if ($menu == 'panel_siswa' and $sub_menu == 'berkas') {
 									echo 'active';
 								} ?>"><a href="panel_siswa/berkas"><i class="icon-file-check2"></i> <span><b>BERKAS</b></span></a></li>
-								<?php if ($cek->status_pendaftaran == 'lulus') { ?>
-									<li><a href="panel_siswa/cetak" target="_blank"><i class="icon-printer2"></i>
-											<span><b>PRINT PENDAFTARAN</b></span></a></li>
-									<!--<li><a href="panel_siswa/rekap_nilai" target="_blank"><i class="icon-printer4"></i> <span>Rekap Nilai</span></a></li>-->
-								<?php } else { ?>
 
-								<?php } ?>
+								<li><a href="panel_siswa/cetak" target="_blank"><i class="icon-printer2"></i>
+										<span><b>PRINT PENDAFTARAN</b></span></a></li>
+								<!--<li><a href="panel_siswa/rekap_nilai" target="_blank"><i class="icon-printer4"></i> <span>Rekap Nilai</span></a></li>-->
+
 								<!-- /Main -->
 
 								<!-- Data Lainnya -->

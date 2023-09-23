@@ -3,7 +3,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Panel_siswa extends CI_Controller
 {
-
+	public function __construct()
+	{
+		parent::__construct();
+	}
 	public function index()
 	{
 		if ($this->session->userdata('no_pendaftaran') == NULL) {
@@ -53,6 +56,24 @@ class Panel_siswa extends CI_Controller
 		}
 	}
 
+	public function hapus_berkas()
+	{
+		$no_pendaftaran = $this->session->userdata('no_pendaftaran');
+		var_dump("sukses reset");
+		$acts = $this->siswa->hapus_berkas($no_pendaftaran);
+		if (!$acts) {
+			$this->load->helper('swal_helper'); // Memuat 'swal_helper'
+			// Upload gagal, tampilkan SweetAlert error
+			set_notifikasi_swal("Gagal Menghapus", "periksa data yang alan dihapus", "error");
+			redirect('panel_siswa/berkas');
+
+		} else {
+			// Upload berhasil, tampilkan SweetAlert success
+			set_notifikasi_swal("Berhasil Dihapus", "berhasil hapus, silahkan unggah data yang benar", "success");
+			redirect('panel_siswa/berkas');
+		}
+	}
+
 	public function berkas()
 	{
 		if ($this->session->userdata('no_pendaftaran') == NULL) {
@@ -64,7 +85,7 @@ class Panel_siswa extends CI_Controller
 				'user' => $this->siswa->base_berkas($sess),
 				'judul_web' => "BERKAS"
 			);
-			var_dump($data);
+			// var_dump($data);
 			$this->load->view('siswa/header', $data);
 			$this->load->view('siswa/berkas', $data);
 			$this->load->view('siswa/footer');
@@ -119,11 +140,21 @@ class Panel_siswa extends CI_Controller
 					'file_skhun' => $dataBerkasSkhun,
 					'file_raport' => $dataBerkasRaport
 				);
-
-				var_dump("sukses upload");
+				$this->load->helper('swal_helper'); // Memuat 'swal_helper'
 				$acts = $this->siswa->upload_berkas('skhun', $data);
-				redirect('panel_siswa/berkas');
-				// upload data keluarga 
+				if (!$acts) {
+					// Upload gagal, tampilkan SweetAlert error
+					set_notifikasi_swal("Gagal Unggah", "periksa kembali ukuran file dan nomor inputan", "error");
+					redirect('panel_siswa/berkas');
+
+				} else {
+					// Upload berhasil, tampilkan SweetAlert success
+					set_notifikasi_swal("Berhasil Unggah", "berhasil unggah, file akan terlihat dibawah", "success");
+					redirect('panel_siswa/berkas');
+
+				}
+
+				// upload data keluarga  	 	
 			} elseif (isset($_POST['btnKeluarga'])) {
 				// set name
 				$no_pendaftaran = $this->session->userdata('no_pendaftaran');
@@ -177,7 +208,17 @@ class Panel_siswa extends CI_Controller
 
 				var_dump("sukses upload");
 				$acts = $this->siswa->upload_berkas('keluarga', $data);
-				redirect('panel_siswa/berkas');
+				if (!$acts) {
+					// Upload gagal, tampilkan SweetAlert error
+					set_notifikasi_swal("Gagal Unggah", "periksa kembali ukuran file dan nomor inputan", "error");
+					redirect('panel_siswa/berkas');
+
+				} else {
+					// Upload berhasil, tampilkan SweetAlert success
+					set_notifikasi_swal("Berhasil Unggah", "berhasil unggah, file akan terlihat dibawah", "success");
+					redirect('panel_siswa/berkas');
+
+				}
 			} elseif (isset($_POST['btnPrestasi'])) {
 				// set name
 				$no_pendaftaran = $this->session->userdata('no_pendaftaran');
@@ -211,7 +252,17 @@ class Panel_siswa extends CI_Controller
 
 				var_dump("sukses upload");
 				$acts = $this->siswa->upload_berkas('prestasi', $data);
-				redirect('panel_siswa/berkas');
+				if (!$acts) {
+					// Upload gagal, tampilkan SweetAlert error
+					set_notifikasi_swal("Gagal Unggah", "periksa kembali ukuran file dan nomor inputan", "error");
+					redirect('panel_siswa/berkas');
+
+				} else {
+					// Upload berhasil, tampilkan SweetAlert success
+					set_notifikasi_swal("Berhasil Unggah", "berhasil unggah, file akan terlihat dibawah", "success");
+					redirect('panel_siswa/berkas');
+
+				}
 			}
 		}
 	}

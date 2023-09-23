@@ -78,7 +78,7 @@ class Model_admin extends CI_Model
 
 			case 'tdk_lulus':
 				$data = array(
-					'status_pendaftaran' => 'tidak lulus'
+					'status_pendaftaran' => 'tdk_lulus'
 				);
 				return $this->db->update('tbl_siswa', $data, array('no_pendaftaran' => "$id"));
 				break;
@@ -348,9 +348,9 @@ class Model_admin extends CI_Model
 				$existingResult = $this->db->get('tbl_smart')->row();
 				if (!$existingResult) {
 					// Calculate the normalized criteria values for the current row
-					$kriteria1Normalized = (($row['penghasilan_ayah'] + $row['penghasilan_ibu']) / 2) * (40 / 100);
+					$kriteria1Normalized = (($row['penghasilan_ayah'] + $row['penghasilan_ibu']) / 2) * (20 / 100);
 					$kriteria2Normalized = $row['jarak'] * (30 / 100);
-					$kriteria3Normalized = (($row['rata_skhun'] + $row['rata_raport']) / 2) * (20 / 100);
+					$kriteria3Normalized = (($row['rata_skhun'] + $row['rata_raport']) / 2) * (40 / 100);
 					$kriteria4Normalized = $row['tingkat'] * (10 / 100);
 
 					// Calculate the total sum of normalized criteria values for the current row
@@ -387,6 +387,72 @@ class Model_admin extends CI_Model
 		}
 	}
 
+	public function smart_cal_reset()
+	{
+		$existingResults = $this->db->get('tbl_smart')->result_array(); // Mengambil semua data dari tabel smart
+		if (!$existingResults) {
+			return false;
+		} else {
+			$results = array(); // Inisialisasi array untuk menyimpan hasil
+			foreach ($existingResults as $row) {
+				$results[] = [
+					'no_pendaftaran' => $row['no_pendaftaran'],
+				];
+			}
+			foreach ($results as $result) {
+				$no_pendaftaran = $result['no_pendaftaran'];
+
+				// Update data status_pendaftaran di tabel siswa berdasarkan no_pendaftaran
+				$this->db->where('no_pendaftaran', $no_pendaftaran);
+				$this->db->update('tbl_siswa', ['status_pendaftaran' => null]); // Gantilah 'updated_status' sesuai kebutuhan
+
+				// Lanjutkan ke langkah berikutnya
+			}
+			foreach ($results as $result) {
+				$no_pendaftaran = $result['no_pendaftaran'];
+
+				// Hapus data di tabel smart berdasarkan no_pendaftaran
+				$this->db->where('no_pendaftaran', $no_pendaftaran);
+				$this->db->delete('tbl_smart');
+
+				// Lanjutkan ke langkah berikutnya
+			}
+			return true;
+		}
+
+
+	}
+
+	public function smart_cal_laporan()
+	{
+
+		try {
+			// Select the required columns from tbl_siswa and join with tbl_prestasi
+			$this->db->select('tbl_siswa.no_pendaftaran, tbl_siswa.penghasilan_ayah, tbl_siswa.penghasilan_ibu, tbl_siswa.jarak, tbl_siswa.rata_skhun, tbl_siswa.rata_raport, tbl_prestasi.tingkat, tbl_smart.smartRank, tbl_siswa.status_pendaftaran');
+			$this->db->from('tbl_siswa');
+			$this->db->join('tbl_prestasi', 'tbl_siswa.no_pendaftaran = tbl_prestasi.no_pendaftaran', 'left');
+			$this->db->join('tbl_smart', 'tbl_siswa.no_pendaftaran = tbl_smart.no_pendaftaran', 'left');
+			$this->db->order_by('tbl_siswa.no_pendaftaran');
+
+
+			// $res_cek_smart = $this - db->get('Select * From tbl_smart');
+			// Get the data as an array
+			$query = $this->db->get();
+			$data = $query->result();
+
+			if ($query === false) {
+				// Query failed, handle the error
+				throw new Exception('Database query failed.');
+			}
+
+			return $data;
+
+		} catch (Exception $e) {
+			// Handle the exception, log the error, or return an error message
+			echo "error smart";
+			return ['error' => $e->getMessage()];
+		}
+	}
 	public function insert_smart_rank($data)
 	{
 		$this->db->insert('tbl_smart', $data);

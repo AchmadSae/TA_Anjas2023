@@ -41,8 +41,13 @@ class Model_siswa extends CI_Model
 	{
 		$query = "SELECT * FROM tbl_siswa WHERE $field $param ?";
 		$res = $this->db->query($query, array($values));
-
-		return $res->result(); // Menggunakan result() untuk mendapatkan semua hasil
+		if ($res) {
+			// Pastikan query berhasil
+			return $res->result(); // Menggunakan result() untuk mendapatkan semua hasil
+		} else {
+			// Penanganan kesalahan
+			return false;
+		}
 	}
 
 
@@ -57,7 +62,20 @@ class Model_siswa extends CI_Model
 
 		return $this->db->get()->row();
 
+	}
+	function hapus_berkas($no_pendaftaran)
+	{
+		$this->db->where('no_pendaftaran', $no_pendaftaran);
+		$this->db->delete('tbl_skhun');
 
+		$this->db->where('no_pendaftaran', $no_pendaftaran);
+		$this->db->delete('tbl_keluarga');
+
+		$this->db->where('no_pendaftaran', $no_pendaftaran);
+		$this->db->delete('tbl_prestasi');
+
+
+		return true;
 
 	}
 
@@ -75,7 +93,43 @@ class Model_siswa extends CI_Model
 					'created_at' => date('Y-m-d H:i:s'),
 					'updated_at' => date('Y-m-d H:i:s')
 				);
-				return $this->db->insert('tbl_skhun', $data);
+
+				// Menyiapkan query SQL
+				$sql = "
+					INSERT INTO tbl_skhun (
+						no_skhun, 
+						no_pendaftaran, 
+						nama, 
+						file_skhun, 
+						file_raport, 
+						created_at, 
+						updated_at
+					) VALUES (
+						?, ?, ?, ?, ?, ?, ?
+					)
+					ON DUPLICATE KEY UPDATE 
+						no_skhun = VALUES(no_skhun),
+						no_pendaftaran = VALUES(no_pendaftaran),
+						nama = VALUES(nama),
+						file_skhun = VALUES(file_skhun),
+						file_raport = VALUES(file_raport),
+						created_at = VALUES(created_at),
+						updated_at = VALUES(updated_at);
+				";
+
+				// Eksekusi query dengan menggunakan parameter
+				return $this->db->query(
+					$sql,
+					array(
+						$data['no_skhun'],
+						$data['no_pendaftaran'],
+						$data['nama'],
+						$data['file_skhun'],
+						$data['file_raport'],
+						$data['created_at'],
+						$data['updated_at']
+					)
+				);
 				break;
 
 			case 'keluarga':

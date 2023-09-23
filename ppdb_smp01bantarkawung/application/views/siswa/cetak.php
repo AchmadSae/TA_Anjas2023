@@ -173,7 +173,26 @@ $id = $this->db->get('tbl_user')->row_array();
 
   <div style="float:right;">
     <?php echo $id['kab_sekolah']; ?>,
-    <?php echo $this->lib_data->tgl_id(date('d-m-Y')); ?> <br>
+
+    <?php
+    $dateString = date('d-m-Y');
+
+    // Set locale ke bahasa Indonesia
+    $formatter = new IntlDateFormatter(
+      'id_ID',
+      IntlDateFormatter::FULL,
+      IntlDateFormatter::FULL,
+      'Asia/Jakarta', // Atur zona waktu sesuai dengan kebutuhan Anda
+      IntlDateFormatter::GREGORIAN,
+      'EEEE, dd MMMM yyyy' // Format yang hanya mencakup kota, hari, tanggal, dan tahun
+    );
+
+    // Menggunakan format formatter untuk mendapatkan nama hari, tanggal, dan tahun
+    $formattedDate = $formatter->format(strtotime($dateString));
+
+    echo $formattedDate;
+    ?> <br>
+
     Ketua Panitia PPDB, <br>
     <img src="img/ttd.png" alt="" width="100"><br>
     <b><u>

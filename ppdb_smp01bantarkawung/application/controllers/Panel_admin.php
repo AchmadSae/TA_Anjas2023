@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Panel_admin extends CI_Controller
 {
-
 	public function index()
 	{
 		$sess = $this->session->userdata('id_admin');
@@ -37,21 +36,6 @@ class Panel_admin extends CI_Controller
 			$this->load->view('admin/header', $data);
 			$this->load->view('admin/dashboard', $data);
 			$this->load->view('admin/footer');
-
-			if (isset($_POST['btnnonaktif'])) {
-				$acts = $this->admin->ppdb_status('tutup', date('Y-m-d H:i:s'));
-				redirect('panel_admin');
-			}
-
-			if (isset($_POST['btnaktif'])) {
-				$acts = $this->admin->ppdb_status('buka', date('Y-m-d H:i:s'));
-				redirect('panel_admin');
-			}
-			if (isset($_POST['btnStartVerifSmart'])) {
-				$result = $this->admin->smart_cal();
-				redirect('panel_admin');
-			}
-
 		}
 	}
 
@@ -161,8 +145,75 @@ class Panel_admin extends CI_Controller
 			}
 		}
 	}
+	public function start_pendaftaran()
+	{
 
+		$acts = $this->admin->ppdb_status('buka', date('Y-m-d H:i:s'));
+		if (!$acts) {
+			$this->load->helper('swal_helper'); // Memuat 'swal_helper'
 
+			// Upload gagal, tampilkan SweetAlert error
+			set_notifikasi_swal("Gagal Memulai Pendaftaran", "harap hubungi developer", "error");
+			redirect('panel_admin');
+
+		} else {
+			// Upload berhasil, tampilkan SweetAlert success
+			set_notifikasi_swal("Berhasil Memulai Pendaftaran", "berhasil, Anda dapat melihat jumlah pendaftaran", "success");
+			redirect('panel_admin');
+		}
+
+	}
+	public function stop_pendaftaran()
+	{
+
+		$acts = $this->admin->ppdb_status('tutup', date('Y-m-d H:i:s'));
+		if (!$acts) {
+			$this->load->helper('swal_helper'); // Memuat 'swal_helper'
+
+			// Upload gagal, tampilkan SweetAlert error
+			set_notifikasi_swal("Gagal Menutup Pendaftaran", "harap hubungi developer", "error");
+			redirect('panel_admin');
+
+		} else {
+			// Upload berhasil, tampilkan SweetAlert success
+			set_notifikasi_swal("Berhasil Menutup Pendaftaran", "berhasil, klik mulai kembali untuk membuka", "success");
+			redirect('panel_admin');
+		}
+
+	}
+
+	public function start_smart()
+	{
+		$acts = $this->admin->smart_cal();
+		if (!$acts) {
+			$this->load->helper('swal_helper'); // Memuat 'swal_helper'
+			// Upload gagal, tampilkan SweetAlert error
+			set_notifikasi_swal("Gagal Smart Metode", "periksa data pendaftaran sesuai", "error");
+			redirect('panel_admin');
+
+		} else {
+			// Upload berhasil, tampilkan SweetAlert success
+			set_notifikasi_swal("Berhasil Smart Metode", "berhasil, silahkan lihat hasil di dashboard", "success");
+			redirect('panel_admin');
+		}
+
+	}
+	public function reset_smart()
+	{
+		$acts = $this->admin->smart_cal_reset();
+		if (!$acts) {
+			$this->load->helper('swal_helper'); // Memuat 'swal_helper'
+			// Upload gagal, tampilkan SweetAlert error
+			set_notifikasi_swal("Gagal Reset Smart Metode", "hubungi developer untuk menangani ini", "error");
+			redirect('panel_admin');
+
+		} else {
+			// Upload berhasil, tampilkan SweetAlert success
+			set_notifikasi_swal("Berhasil Reset Smart Metode", "berhasil, data status kelulusan sudah di kosongkan", "success");
+			redirect('panel_admin');
+		}
+
+	}
 	public function ubah_siswa($aksi = '', $id = '')
 	{
 		$sess = $this->session->userdata('id_admin');
@@ -370,26 +421,57 @@ class Panel_admin extends CI_Controller
 					);
 					$this->load->view('admin/laporan/cetak_byTdkLulus', $data);
 					break;
+				case 'smart':
+					$src_data = $this->admin->smart_cal_laporan();
+					$data = array(
+						'v_data' => $src_data,
+						'judul_web' => 'CETAK AKUMULASI NILAI SMART METODE',
+						'v_prolog' => $this->admin->verifikasi('prolog')
+					);
+					// var_dump($data);
+					$this->load->view('admin/laporan/cetak_smart', $data);
+					break;
 				case 'custom':
 					$send = array(
 						'field' => $this->input->post('field'),
 						'param' => $this->input->post('param'),
-						'values' => $this->input->post('values')
+						'values' => $this->input->post('values'),
+						'type' => $this->input->post('type')
 					);
 					if ($send['field'] == null || $send['param'] == null || $send['values'] == null) {
 						echo 'gagal karena kosong';
 					} else {
 
-						$src_data = $this->siswa->base_custom_cetak($send['field'], $send['param'], $send['values']);
+						// if($send['param']== simbol <){
 
-						$data = array(
-							'v_data' => $src_data,
-							// Menggunakan hasil dari result() langsung
-							'judul_web' => 'CETAK LAPORAN PENDAFTARAN CUSTOM',
-							'v_prolog' => $this->admin->verifikasi('prolog')
-						);
+						// }
+						$val = null;
+						if ($send['type'] = 1) {
+							$val = (int) $send['values'];
+						} else {
+							$val = $send['values'];
+						}
+						$src_data = $this->siswa->base_custom_cetak($send['field'], $send['param'], $val);
+						// Lakukan tindakan lain dengan data yang berhasil diambil
+						if (!$src_data) {
+							$this->load->helper('swal_helper'); // Memuat 'swal_helper'
 
-						$this->load->view('admin/laporan/cetak_custom', $data);
+							// Upload gagal, tampilkan SweetAlert error
+							set_notifikasi_swal("Gagal Cetak", "pastikan =,<=,>=,<,> untuk angka == untuk huruf, sesuai dengan inputan dan kolom", "error");
+							redirect('panel_admin/v_laporan');
+
+						} else {
+							// Upload berhasil, tampilkan SweetAlert success
+							$data = array(
+								'v_data' => $src_data,
+								// Menggunakan hasil dari result() langsung
+								'judul_web' => 'CETAK LAPORAN PENDAFTARAN CUSTOM',
+								'v_prolog' => $this->admin->verifikasi('prolog')
+							);
+							$this->load->view('admin/laporan/cetak_custom', $data);
+
+						}
+
 						break;
 					}
 				default:

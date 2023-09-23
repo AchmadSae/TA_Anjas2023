@@ -6,7 +6,16 @@ $level = $cek->level;
 
 $tgl = date('m-Y');
 ?>
-
+<style>
+  #alert_ppdb {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Mengatur elemen secara vertikal ke tengah */
+    align-items: center;
+    /* Mengatur elemen secara horizontal ke tengah */
+  }
+</style>
 <!-- Main content -->
 <div class="content-wrapper">
   <!-- Content area -->
@@ -81,7 +90,7 @@ $tgl = date('m-Y');
                   <h3 class="no-margin">
                     <?php
                     $this->db->like('tgl_siswa', $thn_ini, 'after');
-                    echo number_format($this->db->get_where('tbl_siswa', "status_pendaftaran='tidak lulus'")->num_rows(), 0, ",", "."); ?>
+                    echo number_format($this->db->get_where('tbl_siswa', "status_pendaftaran='tdk_lulus'")->num_rows(), 0, ",", "."); ?>
                   </h3>
                   TOTAL TIDAK LULUS PPDB
                   <?php echo $thn_ini; ?>
@@ -99,28 +108,46 @@ $tgl = date('m-Y');
       </div>
 
       <?php if ($web_ppdb->status_ppdb == 'buka') { ?>
-        <div class="alert alert-info alert-dismissible" role="alert">
-          <form action="" method="post">
-            <button type="submit" name="btnnonaktif" class="btn btn-primary" onclick="return confirm('Anda Yakin?')"><i
-                class="icon-laptop"></i> Tutup Pendaftaran PPDB Online!</button>
-            <strong>Status Pendaftaran PPDB Online</strong> masih dibuka. Terakhir diubah
+        <div class="row">
+          <div class="alert alert-info alert-dismissible col-md-12" role="alert" id="alert_ppdb">
+
+            <button type="submit" name="btnnonaktif" class="btn-warning" onclick="stop_pendaftaran()">
+              <div class="button-content">
+                <img class="button-icon" src="img/btn-off.png" alt="off">
+              </div>
+            </button>
+
+            <h2>Status Pendaftaran PPDB Online telah BUKA. <i>Klik untuk menutup Pendaftaran</i> !</h2> <br> Terakhir
+            diubah
             <?php echo date('d-m-Y H:i:s', strtotime($web_ppdb->tgl_diubah)); ?>.
-          </form>
+          </div>
         </div>
-        <div class="alert alert-info alert-dismissible" role="alert">
-          <form action="" method="post">
-            <button type="submit" name="btnStartVerifSmart" class="btn btn-primary"
-              onclick="return confirm('Anda Yakin?')"><i class="icon-laptop"></i> Mulai Verifikasi Berkas Dengan SMART
-              Metode</button>
-          </form>
+        <div class="row">
+          <div class="alert alert-info alert-dismissible col-md-6" role="alert" id="alert_ppdb">
+            <button type="submit" name="btnStartVerifSmart" class="btn btn-primary" onclick="alert_smart_start()"><i
+                class="icon-laptop"></i> MULAI SMART VERIFICATION</button>
+          </div>
+          <div class="alert alert-info alert-dismissible col-md-6" role="alert" id="alert_ppdb">
+
+            <button type="submit" name="btnResetSmart" class="btn btn-primary" onclick="alert_smart_reset()"><i
+                class="icon-reset"></i> RESET METODE SMART</button>
+
+          </div>
         </div>
       <?php } else { ?>
-        <div class="alert alert-warning alert-dismissible" role="alert">
-          <form action="" method="post">
-            <button type="submit" name="btnaktif" class="btn btn-warning" onclick="return confirm('Anda Yakin?')"><i
-                class="icon-laptop"></i> Buka Pendaftaran PPDB Online!</button>
-            <strong>Status Pendaftaran PPDB Online</strong> masih ditutup. Terakhir diubah
-          </form>
+        <div class="row">
+          <div class="alert alert-warning alert-dismissible col-md-12" role="alert" id="alert_ppdb">
+
+            <button type="submit" name="btnaktif" class="btn btn-success" onclick="start_pendaftaran()">
+              <div class="button-content">
+                <img class="button-icon" src="img/btn-on.png" alt="off">
+              </div>
+            </button>
+
+            <h2>Status Pendaftaran PPDB Online telah TUTUP. <i>Klik untuk membuka Pendaftaran</i> !</h2> <br> Terakhir
+            diubah
+            <?php echo date('d-m-Y H:i:s', strtotime($web_ppdb->tgl_diubah)); ?>.
+          </div>
         </div>
       <?php } ?>
 

@@ -134,12 +134,12 @@ $user = $user; ?>
 
 
               <label for="prestasi" class="form-label">Nama Prestasi</label>
-              <input class="form-control mb-3" type="text" placeholder="Nama Prestasi" name="prestasi">
+              <input class="form-control mb-3" type="text" placeholder="isi - jika tidak ada" name="prestasi">
 
               <div class="col-sm-12" style="margin-top:3px;">
                 <select class="form-control bg-blue class" placeholder="Tingkat kejuaraan wilayah" name="tingkat"
                   data-parsley-group="block4" data-parsley-errors-container='div[id="error-lokasi_sekolah"]'>
-                  <option value="">Pilih Tingkat Area Kejuaraan</option>
+                  <option value="0">Pilih Tingkat Area Kejuaraan</option>
                   <option value="20">Dalam Desa</option>
                   <option value="40">Dalam Kecamatan</option>
                   <option value="60">Dalam Kabupaten</option>
@@ -231,7 +231,26 @@ $user = $user; ?>
           </a>
         </center>
       </div>
-      <div class="col-md-3">
+      <div class="col-lg-3">
+        <center>
+          <a onclick="konfirmasi_hapus_berkas()">
+            <div id="containerBtnHapus" class="panel bg-orange-300">
+              <div class="panel-body">
+                <div class="heading-elements">
+                  <span class="heading-text"></span>
+                </div>
+                <h1 class="no-margin">
+                  <i class="icon-file-check2" style="font-size:100px;"></i>
+                </h1>
+                <br><b>RESET DATA</b>
+              </div>
+            </div>
+          </a>
+        </center>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
         <div class="panel panel-flat">
           <div class="panel-body">
             <center>
@@ -243,13 +262,18 @@ $user = $user; ?>
               <b>Tanggal Daftar</b> : <br>
               <?php echo $this->lib_data->tgl_id(date('d-m-Y H:i:s', strtotime($user->tgl_siswa))); ?>
               <hr>
-              <b>No. Pendaftaran : </b>
-              <?php echo $user->no_pendaftaran; ?>
+              <div style="font-weight:bold; font-size:18px;">
+
+                <?php echo 'No. Pendaftaran : ' . $user->no_pendaftaran . '||' . ' Password Akun : ' . $user->nisn; ?>
+
+              </div>
             </fieldset>
             </form>
           </div>
         </div>
       </div>
+    </div>
+    <div class="row">
       <div class="col-md-4">
         <div class="panel panel-flat">
           <div class="panel-body">
@@ -293,10 +317,14 @@ $user = $user; ?>
                     <th>Berkas SKHUN</th>
                     <th>:</th>
                     <td>
-                      <?php if (!isset($user->no_skhun) || $user->no_skhun === null) {
-                        echo 'Upload berkas terlebih dahulu';
+                      <?php if (!isset($user->file_skhun) || $user->file_skhun === null) {
+                        echo 'Berkas belum diupload';
                       } else {
-                        echo '<img src="' . base_url() . '/public/files/skhun/' . $user->file_skhun . '" alt="" srcset="" class="img-thumbnail" width="100px">';
+                        // Menggunakan tag <embed> untuk menampilkan file PDF
+                        echo '<embed src="' . base_url() . '/public/files/skhun/' . $user->file_skhun . '" type="application/pdf" width="100%" height="100px">
+                              <br>
+                              <a href="' . base_url() . '/public/files/skhun/' . $user->file_skhun . '"  target="_blank">Buka PDF</a>
+                        ';
                       } ?>
                     </td>
                   </tr>
@@ -311,10 +339,14 @@ $user = $user; ?>
                     <th>Berkas Raport</th>
                     <th>:</th>
                     <td>
-                      <?php if (!isset($user->file_raport) || $user->file_raport === null) {
-                        echo 'Upload berkas terlebih dahulu';
+                      <?php if (!isset($user->file_sertifikat) || $user->file_raport === null) {
+                        echo 'Berkas belum diupload';
                       } else {
-                        echo '<img src="' . base_url() . '/public/files/skhun/' . $user->file_raport . '" alt="" srcset="" class="img-thumbnail" width="100px">';
+                        // Menggunakan tag <embed> untuk menampilkan file PDF
+                        echo '<embed src="' . base_url() . '/public/files/skhun/' . $user->file_raport . '" type="application/pdf" width="100%" height="100px">
+                              <br>
+                              <a href="' . base_url() . '/public/files/skhun/' . $user->file_raport . '"  target="_blank">Buka PDF</a>
+                        ';
                       } ?>
                     </td>
                   </tr>
@@ -324,7 +356,6 @@ $user = $user; ?>
           </div>
         </div>
       </div>
-
       <div class="col-md-4">
         <div class="panel panel-flat">
           <div class="panel-body">
@@ -351,9 +382,13 @@ $user = $user; ?>
                     <th>:</th>
                     <td>
                       <?php if (!isset($user->file_kk) || $user->file_kk === null) {
-                        echo 'Upload berkas terlebih dahulu';
+                        echo 'Berkas belum diupload';
                       } else {
-                        echo '<img src="' . base_url() . '/public/files/keluarga/' . $user->file_kk . '" alt="" srcset="" class="img-thumbnail" width="100px">';
+                        // Menggunakan tag <embed> untuk menampilkan file PDF
+                        echo '<embed src="' . base_url() . '/public/files/keluarga/' . $user->file_kk . '" type="application/pdf" width="100%" height="100px">
+                              <br>
+                              <a href="' . base_url() . '/public/files/keluarga/' . $user->file_kk . '"  target="_blank">Buka PDF</a>
+                        ';
                       } ?>
                     </td>
                   </tr>
@@ -362,9 +397,13 @@ $user = $user; ?>
                     <th>:</th>
                     <td>
                       <?php if (!isset($user->file_akte) || $user->file_akte === null) {
-                        echo 'Upload berkas terlebih dahulu';
+                        echo 'Berkas belum diupload';
                       } else {
-                        echo '<img src="' . base_url() . '/public/files/keluarga/' . $user->file_akte . '" alt="" srcset="" class="img-thumbnail" width="100px">';
+                        // Menggunakan tag <embed> untuk menampilkan file PDF
+                        echo '<embed src="' . base_url() . '/public/files/keluarga/' . $user->file_akte . '" type="application/pdf" width="100%" height="100px">
+                              <br>
+                              <a href="' . base_url() . '/public/files/keluarga/' . $user->file_akte . '"  target="_blank">Buka PDF</a>
+                        ';
                       } ?>
                     </td>
                   </tr>
@@ -408,9 +447,13 @@ $user = $user; ?>
                     <th>:</th>
                     <td>
                       <?php if (!isset($user->file_sertifikat) || $user->file_sertifikat === null) {
-                        echo 'Upload berkas terlebih dahulu';
+                        echo 'Berkas belum diupload';
                       } else {
-                        echo '<img src="' . base_url() . '/public/files/prestasi/' . $user->file_sertifikat . '" alt="" srcset="" class="img-thumbnail" width="100px">';
+                        // Menggunakan tag <embed> untuk menampilkan file PDF
+                        echo '<embed src="' . base_url() . '/public/files/prestasi/' . $user->file_sertifikat . '" type="application/pdf" width="100%" height="100px">
+                              <br>
+                              <a href="' . base_url() . '/public/files/prestasi/' . $user->file_sertifikat . '"  target="_blank">Buka PDF</a>
+                        ';
                       } ?>
                     </td>
                   </tr>
@@ -421,5 +464,7 @@ $user = $user; ?>
           </div>
         </div>
       </div>
+
     </div>
+
     <!-- /dashboard content -->

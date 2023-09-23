@@ -25,7 +25,85 @@ $id = $this->db->get('tbl_user')->row_array();
   </div>
 </div>
 <!-- /footer -->
+<script type="text/javascript" src="assets/panel/js/sweetalert2.all.min.js"></script>
+<script>
+  var swal_icon = "<?php echo $this->session->flashdata('swal_icon'); ?>";
+  var swal_title = "<?php echo $this->session->flashdata('swal_title'); ?>";
+  var swal_text = "<?php echo $this->session->flashdata('swal_text'); ?>";
 
+  // Memeriksa apakah session flash data tersedia
+  if (swal_icon && swal_title && swal_text) {
+    Swal.fire({
+      icon: swal_icon,
+      title: swal_title,
+      text: swal_text
+    });
+  }
+  function alert_smart_start() {
+    Swal.fire({
+      title: 'MEMULAI SMART METODE?',
+      text: "SMART METODE akan dilakukan, pastikan menutup pendaftaran setelah aksi ini !",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, Mulai !!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "<?php echo base_url('Panel_admin/start_smart'); ?>";
+      }
+    })
+  }
+
+  function alert_smart_reset() {
+    Swal.fire({
+      title: 'RESET SMART METODE?',
+      text: "SMART METODE akan direset, pastikan menutup pendaftaran setelah aksi ini !",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, Mulai !!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "<?php echo base_url('Panel_admin/reset_smart'); ?>";
+      }
+    })
+  }
+
+  function start_pendaftaran() {
+    Swal.fire({
+      title: 'BUKA PENDAFTARAN ?',
+      text: "Pendaftaran akan dibuka, periksa pengaturan antar muka pendaftaran terlebih dahulu!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, Mulai !!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "<?php echo base_url('Panel_admin/start_pendaftaran'); ?>";
+      }
+    })
+  }
+
+  function stop_pendaftaran() {
+    Swal.fire({
+      title: 'TUTUP PENDAFTARAN ?',
+      text: "Pendaftaran akan ditutup, pastikan sudah melakukan SMART Metode terlebih dahulu !",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, Mulai !!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "<?php echo base_url('Panel_admin/stop_pendaftaran'); ?>";
+      }
+    })
+  }
+
+</script>
 <script type="text/javascript">
   function hanyaAngka(evt) {
     var charCode = (evt.which) ? evt.which : event.keyCode

@@ -168,7 +168,7 @@ $soa = $this->db->get('tbl_siswa');
                     <br><br>
                     <div class="intro-text">
                         <span class="name shad" style="font-size:35px; line-height: 35px;">
-                            SELAMAT DATANG DI PPDB ONLINE <br>
+                            SELAMAT DATANG DI PPDB ONLINE<br>
                             <?php echo $user['nama_lengkap']; ?>
                         </span>
                         <br>
@@ -202,6 +202,7 @@ $soa = $this->db->get('tbl_siswa');
                             <span class="skills">
                             </span>
                             <br>
+                            <img class="card-img" src="img/tutup.svg" alt="Card image" width="200">
 
                             <span>
                                 <a href="javascript:void(0);" class="btn btn-danger btn-lg" style="margin:5px;"><i
